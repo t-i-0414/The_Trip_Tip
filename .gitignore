@@ -37,3 +37,12 @@ yarn-debug.log*
 
 # Cloud9関係
 .c9/
+
+# VSCodeのprettier設定ファイル
+.prettierrc.js
+
+# VSCodeのeslint設定ファイル
+.eslintrc.js
+
+# VSCodeのstylelint設定ファイル
+.stylelintrc.js
