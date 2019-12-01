@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   get 'static_pages/home'
   get 'static_pages/signup'
@@ -10,6 +12,6 @@ Rails.application.routes.draw do
   get 'static_pages/error_404'
   get 'static_pages/error_500'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  
+
   root 'application#hello'
 end
