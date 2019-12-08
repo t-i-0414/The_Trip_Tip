@@ -22,6 +22,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   test 'should get signup' do
     get static_pages_signup_url
     assert_response :success, @response.body
+
     assert_select 'title', "ユーザー登録 | #{@base_title}"
   end
 
