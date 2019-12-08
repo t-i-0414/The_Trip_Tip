@@ -32,7 +32,7 @@ end
 
 describe 'rest_password' do
   specify '画面の表示' do
-    visit '/static_pages/rest_password'
+    visit '/static_pages/reset_password'
     expect(page).to have_title('パスワードのリセットリクエスト | The Trip Tip')
   end
 end
