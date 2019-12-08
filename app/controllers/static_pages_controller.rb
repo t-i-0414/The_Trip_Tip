@@ -14,7 +14,7 @@ class StaticPagesController < ApplicationController
   def unlock_user
   end
 
-  def rest_password
+  def reset_password
   end
 
   def about

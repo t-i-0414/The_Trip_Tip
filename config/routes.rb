@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'static_pages/signup'
   get 'static_pages/login'
   get 'static_pages/unlock_user'
-  get 'static_pages/rest_password'
+  get 'static_pages/reset_password'
   get 'static_pages/about'
   get 'static_pages/terms_of_use'
   get 'static_pages/privacy'
