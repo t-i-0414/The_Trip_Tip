@@ -103,6 +103,10 @@ GEM
     guard-minitest (2.4.4)
       guard-compat (~> 1.2)
       minitest (>= 3.0)
+    guard-rspec (4.7.3)
+      guard (~> 2.1)
+      guard-compat (~> 1.1)
+      rspec (>= 2.99.0, < 4.0)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.9.1)
@@ -182,6 +186,10 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     regexp_parser (1.6.0)
+    rspec (3.9.0)
+      rspec-core (~> 3.9.0)
+      rspec-expectations (~> 3.9.0)
+      rspec-mocks (~> 3.9.0)
     rspec-core (3.9.0)
       rspec-support (~> 3.9.0)
     rspec-expectations (3.9.0)
@@ -270,6 +278,7 @@ DEPENDENCIES
   faker
   guard
   guard-minitest
+  guard-rspec
   jbuilder (~> 2.7)
   launchy
   listen (>= 3.0.5, < 3.2)

@@ -37,6 +37,7 @@ group :test do
   gem 'faker'
   gem 'guard'
   gem 'guard-minitest'
+  gem 'guard-rspec', require: false
   gem 'launchy'
   gem 'minitest-reporters'
   gem 'rspec-rails', '~> 3.9.0'
