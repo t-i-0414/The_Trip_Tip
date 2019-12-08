@@ -46,3 +46,6 @@ yarn-debug.log*
 
 # VSCodeのstylelint設定ファイル
 .stylelintrc.js
+
+# Ignore Spring files.
+/spring/*.pid
