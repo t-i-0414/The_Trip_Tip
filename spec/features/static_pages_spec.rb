@@ -5,7 +5,7 @@ require 'rails_helper'
 describe 'Home' do
   specify '画面の表示' do
     visit '/static_pages/home'
-    expect(page).to have_title('トップ | The Trip Tip')
+    expect(page).to have_title('The Trip Tip')
   end
 end
 
