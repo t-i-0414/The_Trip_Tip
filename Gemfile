@@ -7,7 +7,6 @@ ruby '2.6.4'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'jbuilder', '~> 2.7'
-gem 'meta-tags', '>= 2.13.0'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.1'
 gem 'sass-rails', '>= 6'

@@ -14,6 +14,10 @@ guard :minitest, spring: 'bin/rails test', all_on_start: false do
     ["test/controllers/#{matches[1]}_controller_test.rb"] +
       integration_tests(matches[1])
   end
+  watch(%r{^app/views/layouts/.*\.html\.erb$}) do |matches|
+    ["test/controllers/static_pages_controller_test.rb"] +
+      integration_tests(matches[1])
+  end
   watch(%r{^app/helpers/(.*?)_helper\.rb$}) do |matches|
     integration_tests(matches[1])
   end
