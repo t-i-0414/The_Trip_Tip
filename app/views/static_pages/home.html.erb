@@ -1,2 +1,44 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+    <header>
+      <nav class="container">
+        <%= link_to image_tag('/logo_header.svg', alt: 'The Trip Tipのロゴ'),
+                    '#',
+                    class: '',
+                    method: :get
+        %>
+        <ul>
+          <li>
+            <%= link_to '投稿一覧', '#', class: '', method: :get %>  
+          </li>
+          <li>
+            <%= link_to 'ユーザー登録', '#', class: '', method: :get %>
+          </li>
+          <li>
+            <%= link_to 'ログイン', '#', class: '', method: :get %>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="bg">
+      <%= image_tag '/bg_circles.svg', alt: '丸型の飾り図形' %>
+    </div>
+    <div class="container">
+      <h1 class="title_home">
+        <%= image_tag '/txt_title.svg', alt: 'The Trip Tipのサイトタイトル画像' %>  
+      </h1>
+    </div>
+    <footer>
+      <nav class="container">
+        <ul>
+          <li>
+            <%= link_to 'The Trip Tipについて', '#', class: '', method: :get %>  
+          </li>
+          <li>
+            <%= link_to '利用規約', '#', class: '', method: :get %>
+          </li>
+          <li>
+            <%= link_to 'プライバシーポリシー', '#', class: '', method: :get %>
+          </li>
+        </ul>
+        <p><small>&copy;  2019  The Trip Tip  All rights reserved.</small></p>
+      </nav>
+    </footer>
