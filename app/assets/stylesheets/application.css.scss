@@ -1,15 +1,15 @@
- /*
-  *= require_self
-  */
-  
-  // CSS reset
-  @import "ress.min.css";
-  
-  //Common CSS
-  @import "base.scss";
-  
-  //Partials CSS
-  @import "partials/*";
-  
-  //Pages CSS
-  @import "pages/*";
+/*
+ *= require_self
+ */
+
+// CSS reset
+@import "ress.min.css";
+
+//Common CSS
+@import "base.scss";
+
+//Partials CSS
+@import "partials/*";
+
+//Pages CSS
+@import "pages/*";
