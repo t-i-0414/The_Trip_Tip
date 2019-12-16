@@ -14,6 +14,7 @@ html {
   word-break: break-word;
   -moz-tab-size: 4;
   tab-size: 4;
+  
 }
 
 *,
@@ -282,4 +283,12 @@ svg:not([fill]) {
   cursor: default;
 }
 
-// font size
+// font size 10px
+html {
+	font-size: 62.5%;
+}
+
+// body font size 16px
+body {
+	font-size: 1.6em;
+}
