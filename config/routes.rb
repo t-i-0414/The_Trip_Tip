@@ -1,15 +1,12 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'static_pages/home'
-  get 'static_pages/signup'
-  get 'static_pages/login'
-  get 'static_pages/unlock_user'
-  get 'static_pages/reset_password'
-  get 'static_pages/about'
-  get 'static_pages/terms_of_use'
-  get 'static_pages/privacy'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
-  root 'application#hello'
+  root 'static_pages#home'
+  get '/signup', to: 'static_pages#signup'
+  get '/login', to: 'static_pages#login'
+  get '/unlock_user', to: 'static_pages#unlock_user'
+  get '/reset_password', to: 'static_pages#reset_password'
+  get '/about', to: 'static_pages#about'
+  get '/terms_of_use', to: 'static_pages#terms_of_use'
+  get '/privacy', to: 'static_pages#privacy'
 end
