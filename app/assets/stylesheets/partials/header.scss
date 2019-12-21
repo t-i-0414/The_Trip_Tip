@@ -1,8 +1,24 @@
 header {
   height: 80px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(253, 253, 253, 0.9);
+  box-shadow: 0px 3px 6px #00000029;
+  position: fixed;
+  top: 0;
+  left: 0;
 
-  nav {
+  nav.container {
+    height: 100%;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    a.logo_header {
+      height: 40px;
+    }
+    ul {
+      display: flex;
+      justify-content: space-between;
+      width: 362px;
+    }
   }
 }
