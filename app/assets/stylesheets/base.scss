@@ -35,6 +35,7 @@ html {
 * {
   margin: 0;
   padding: 0; /* Reset `padding` and `margin` of all elements */
+  transition: all 0.08s ease-out;
 }
 
 /* # =================================================================
@@ -295,16 +296,19 @@ li {
 
 // body font size 18px
 body {
-  color: #666;
-  font-size: 1.8rem;
-  font-family: Noto sans JP, Arial, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Osaka, 'メイリオ', Meiryo,
-    'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
-  line-height: 1.5;
-  letter-spacing: 0.15em;
+  position: relative;
   min-width: 960px;
 }
 
 .container {
   width: 822px;
   margin: 0 auto;
+}
+
+body > div.container {
+  position: relative;
+  height: 100vh;
+  min-height: 768px;
+  padding: 80px 0;
+  overflow: scroll;
 }
