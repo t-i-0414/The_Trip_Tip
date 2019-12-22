@@ -294,15 +294,9 @@ li {
   list-style: none;
 }
 
-// body font size 18px
 body {
   position: relative;
   min-width: 960px;
-}
-
-.container {
-  width: 822px;
-  margin: 0 auto;
 }
 
 body > div.container {
@@ -311,4 +305,65 @@ body > div.container {
   min-height: 768px;
   padding: 80px 0;
   overflow: scroll;
+}
+
+.container {
+  width: 822px;
+  margin: 0 auto;
+}
+
+.lp {
+  display: block;
+}
+
+.tb {
+  display: none;
+}
+
+.sp {
+  display: none;
+}
+
+@media screen and (max-width: 959px) {
+  body {
+    min-width: 100vw;
+  }
+
+  body > div.container {
+    min-height: 100vh;
+  }
+
+  .container {
+    width: calc(100vw - 24px);
+  }
+
+  .lp {
+    display: none;
+  }
+
+  .tb {
+    display: block;
+  }
+
+  .sp {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 559px) {
+  .container {
+    width: calc(100vw - 10px);
+  }
+
+  .lp {
+    display: none;
+  }
+
+  .tb {
+    display: none;
+  }
+
+  .sp {
+    display: block;
+  }
 }

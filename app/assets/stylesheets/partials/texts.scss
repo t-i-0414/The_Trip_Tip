@@ -6,3 +6,9 @@ body {
   line-height: 1.5;
   letter-spacing: 0.15em;
 }
+
+@media screen and (max-width: 559px) {
+  body {
+    font-size: 1.4rem;
+  }
+}

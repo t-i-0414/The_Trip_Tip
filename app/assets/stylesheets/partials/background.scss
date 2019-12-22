@@ -3,9 +3,6 @@ div.bg {
   top: 0;
   left: 0;
   z-index: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   height: 100vh;
   min-height: 768px;
@@ -13,7 +10,28 @@ div.bg {
   background: linear-gradient(33deg, #8fd3f4 0%, #8ed5ef 24%, #8cdce3 48%, #88e8ce 73%, #84f8b1 99%, #84fab0 100%);
 
   img {
+    position: relative;
+    left: 50%;
     height: 100%;
-    object-fit: cover;
+    transform: translateX(-50%);
+  }
+}
+
+@media screen and (max-width: 959px) {
+  div.bg {
+    min-height: 100vh;
+
+    img {
+      top: 50%;
+      width: calc(100% - 48px);
+      height: auto;
+      transform: translateY(-50%) translateX(-50%);
+    }
+  }
+}
+
+@media screen and (max-width: 559px) {
+  div.bg img {
+    width: calc(100% - 10px);
   }
 }
