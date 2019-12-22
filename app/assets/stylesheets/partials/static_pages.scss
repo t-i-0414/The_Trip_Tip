@@ -1,5 +1,16 @@
+//home
 h1.title_home {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+}
+
+@media screen and (max-width: 959px) {
+  h1.title_home {
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
 }
