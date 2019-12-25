@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <g id="menu-hambuger" transform="translate(0)" opacity="0.7">
+    <path id="パス_804" data-name="パス 804" d="M1.048-.16H20.014c.628,0,1.138.31,1.138.693s-.509.693-1.138.693H1.048C.42,1.226-.09.916-.09.533S.42-.16,1.048-.16Z" transform="translate(0.93 0.176) rotate(45)" fill="#666"/>
+    <path id="パス_805" data-name="パス 805" d="M1.965,3.827H20.931c.628,0,1.138.31,1.138.693s-.509.693-1.138.693H1.965C1.337,5.213.827,4.9.827,4.52S1.337,3.827,1.965,3.827Z" transform="translate(-3.291 12.899) rotate(-45)" fill="#666"/>
+  </g>
+</svg>
