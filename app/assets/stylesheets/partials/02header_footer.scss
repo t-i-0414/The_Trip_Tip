@@ -36,3 +36,9 @@ footer {
     }
   }
 }
+
+@media screen and (max-width: 559px) {
+  li > a:nth-of-type(n):hover::after {
+    width: 0;
+  }
+}
