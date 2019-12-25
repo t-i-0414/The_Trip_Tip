@@ -38,6 +38,10 @@ html {
   transition: all 0.08s ease-out;
 }
 
+*:last-child {
+  margin-bottom: 0;
+}
+
 /* # =================================================================
      # General elements
      # ================================================================= */
@@ -290,6 +294,7 @@ svg:not([fill]) {
   cursor: default;
 }
 
+/* this application's additonal style */
 li {
   list-style: none;
 }
@@ -330,7 +335,7 @@ body > div.container {
   }
 
   body > div.container {
-    min-height: 100vh;
+    min-height: calc(100vh + 230px);
   }
 
   .container {
@@ -365,5 +370,15 @@ body > div.container {
 
   .sp {
     display: block;
+  }
+}
+
+@keyframes rotate360 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }

@@ -22,7 +22,7 @@ div.bg {
     min-height: 100vh;
 
     img {
-      top: 50%;
+      top: calc((100vh - 80px) / 2 + 80px);
       width: calc(100% - 48px);
       height: auto;
       transform: translateY(-50%) translateX(-50%);
@@ -31,7 +31,14 @@ div.bg {
 }
 
 @media screen and (max-width: 559px) {
-  div.bg img {
-    width: calc(100% - 10px);
+  div.bg {
+    display: flex;
+
+    img {
+      position: static;
+      width: calc(100% - 10px);
+      margin: 60px auto 0;
+      animation: rotate360 4.8s linear infinite;
+    }
   }
 }
