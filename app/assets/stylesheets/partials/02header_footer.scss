@@ -37,8 +37,15 @@ footer {
   }
 }
 
-@media screen and (max-width: 559px) {
-  li > a:nth-of-type(n):hover::after {
-    width: 0;
+@media screen and (max-width: 959px) {
+  header,
+  footer {
+    nav.container {
+      ul {
+        li > a:nth-of-type(n):hover::after {
+          width: 0;
+        }
+      }
+    }
   }
 }
