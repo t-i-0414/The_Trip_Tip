@@ -329,6 +329,14 @@ body > div.container {
   display: none;
 }
 
+.unshown {
+  display: none;
+}
+
+.nav-drawer {
+  display: none;
+}
+
 @media screen and (max-width: 959px) {
   body {
     min-width: 100vw;
@@ -352,6 +360,10 @@ body > div.container {
 
   .sp {
     display: none;
+  }
+
+  .nav-drawer {
+    display: block;
   }
 }
 
