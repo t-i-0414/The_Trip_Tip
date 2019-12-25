@@ -16,6 +16,14 @@
             <%= link_to 'ログイン', '#', class: '', method: :get %>
           </li>
         </ul>
+        <div id="nav-drawer" class="nav-drawer">
+          <input id="nav-input" type="checkbox" class="unshown">
+          <label id="nav-open" for="nav-input" class="nav-open"><span></span></label>
+          <label class="nav-close" id="nav-close" for="nav-input"></label>
+          <div id="nav-content" class="nav-content">
+            <label class="btn_nav-close" id="btn_nav-close" for="nav-input"><%= image_tag 'btn_nav-close', alt: 'メニューを閉じるボタン' %></label>
+          </div>
+        </div>
       </nav>
     </header>
     <div class="bg lp">
