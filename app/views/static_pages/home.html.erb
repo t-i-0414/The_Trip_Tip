@@ -22,6 +22,26 @@
           <label class="nav-close" id="nav-close" for="nav-input"></label>
           <div id="nav-content" class="nav-content">
             <label class="btn_nav-close" id="btn_nav-close" for="nav-input"><%= image_tag 'btn_nav-close', alt: 'メニューを閉じるボタン' %></label>
+            <ul>
+              <li>
+                <%= link_to '#', class: '', method: :get do%>
+                  <%= image_tag 'icon_post-index_nav-drawer.svg', alt: '投稿一覧のアイコン' %>
+                  投稿一覧
+                <% end %>
+              </li>
+              <li>
+                <%= link_to '#', class: '', method: :get do %>
+                  <%= image_tag 'icon_user_nav-drawer.svg', alt: 'ユーザーのアイコン' %>
+                  ユーザー登録
+                <% end %>
+              </li>
+              <li>
+                <%= link_to '#', class: '', method: :get do %>
+                  <%= image_tag 'icon_login_nav-drawer.svg', alt: 'ログインのアイコン' %>
+                  ログイン
+                <% end %>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
