@@ -129,6 +129,28 @@ header {
               height: 100%;
             }
           }
+
+          ul {
+            display: flex;
+            flex-direction: column;
+            width: 176px;
+            margin: 136px auto 0;
+            font-weight: bold;
+            font-size: 2rem;
+
+            li {
+              a {
+                img {
+                  margin-right: 8px;
+                  vertical-align: bottom;
+                }
+              }
+            }
+
+            li:not(:last-of-type) {
+              margin-bottom: 48px;
+            }
+          }
         }
 
         #nav-input:checked ~ .nav-close {
