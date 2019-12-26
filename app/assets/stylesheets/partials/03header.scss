@@ -133,13 +133,14 @@ header {
           ul {
             display: flex;
             flex-direction: column;
-            width: 176px;
+            width: 183px;
             margin: 136px auto 0;
-            font-weight: bold;
-            font-size: 2rem;
 
             li {
               a {
+                font-weight: bold;
+                font-size: 2rem;
+
                 img {
                   margin-right: 8px;
                   vertical-align: bottom;
