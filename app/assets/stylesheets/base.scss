@@ -453,13 +453,6 @@ body {
 }
 
 @media screen and (max-width: 559px) {
-  body {
-    div.container {
-      min-height: calc(100vh + 232px);
-      padding-bottom: 232px;
-    }
-  }
-
   .container {
     width: calc(100vw - 10px);
   }
