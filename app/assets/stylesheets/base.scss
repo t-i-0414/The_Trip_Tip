@@ -381,10 +381,8 @@ body {
 
   div.container {
     position: relative;
-    height: 100vh;
     min-height: 768px;
     padding: 80px 0;
-    overflow: scroll;
   }
 }
 
@@ -419,6 +417,10 @@ body {
 
 .mt48 {
   margin-top: 48px;
+}
+
+.h-100vh {
+  height: 100vh;
 }
 
 @media screen and (max-width: 959px) {

@@ -27,8 +27,92 @@ div.container.static_pages {
 
     .container.circles {
       box-sizing: border-box;
-      width: 100%;
       height: 100%;
+
+      .circle {
+        background: linear-gradient(
+          180deg,
+          #96deda 0%,
+          #91dedbcc 16%,
+          #85e0dd 32%,
+          #70e2e2 49%,
+          #53e6e9 66%,
+          #2eebf2 83%,
+          #00f1fd 100%,
+          #00f2fe 100%
+        );
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        border-radius: 50%;
+      }
+
+      .circle-1st {
+        width: 376px;
+        height: 376px;
+        opacity: 0.6;
+      }
+
+      .circle-2nd {
+        width: 133px;
+        height: 133px;
+        opacity: 0.4;
+      }
+
+      .circle-3rd {
+        width: 133px;
+        height: 133px;
+        opacity: 0.4;
+      }
+
+      .circle-4th {
+        width: 133px;
+        height: 133px;
+        opacity: 0.4;
+      }
+
+      .circle-5th {
+        width: 133px;
+        height: 133px;
+        opacity: 0.4;
+      }
+
+      .circle-6th {
+        width: 133px;
+        height: 133px;
+        opacity: 0.4;
+      }
+
+      .circle-7th {
+        width: 133px;
+        height: 133px;
+        opacity: 0.4;
+      }
+
+      .circle-8th {
+        width: 133px;
+        height: 133px;
+        opacity: 0.4;
+      }
+
+      .circle-9th {
+        width: 133px;
+        height: 133px;
+        opacity: 0.4;
+      }
+
+      .circle-10th {
+        width: 133px;
+        height: 133px;
+        opacity: 0.4;
+      }
+
+      .circle-11th {
+        width: 133px;
+        height: 133px;
+        opacity: 0.4;
+      }
     }
   }
 }
