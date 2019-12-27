@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang=ja>
-  <head>
-    <%= render template: "layouts/meta_tags" %>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <!--[if lt IE 9]>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
-      </script>
-    <![endif]-->
-  </head>
-  <body>
-    <%= yield %>
-  </body>
+<head>
+  <%= render template: "layouts/meta_tags" %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= render template: "layouts/shims" %>
+</head>
+<body>
+  <%= render template: "layouts/header" %>
+  <%= render template: "layouts/background" %>
+  <%= yield %>
+  <%= render template: "layouts/footer" %>
+</body>
 </html>
