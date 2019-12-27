@@ -13,7 +13,9 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
-  -webkit-text-size-adjust: 100%; /* Prevent adjustments of font size after orientation changes in iOS */
+  -webkit-text-size-adjust: 100%;
+
+  /* Prevent adjustments of font size after orientation changes in iOS */
   word-break: break-word;
   -moz-tab-size: 4;
   tab-size: 4;
@@ -23,18 +25,24 @@ html {
 ::before,
 ::after {
   box-sizing: inherit;
-  background-repeat: no-repeat; /* Set `background-repeat: no-repeat` to all elements and pseudo elements */
+  background-repeat: no-repeat;
+
+  /* Set `background-repeat: no-repeat` to all elements and pseudo elements */
 }
 
 ::before,
 ::after {
-  text-decoration: inherit; /* Inherit text-decoration and vertical align to ::before and ::after pseudo elements */
+  text-decoration: inherit;
+
+  /* Inherit text-decoration and vertical align to ::before and ::after pseudo elements */
   vertical-align: inherit;
 }
 
 * {
   margin: 0;
-  padding: 0; /* Reset `padding` and `margin` of all elements */
+  padding: 0;
+
+  /* Reset `padding` and `margin` of all elements */
   transition: all 0.08s ease-out;
 }
 
@@ -47,43 +55,61 @@ html {
      # ================================================================= */
 
 hr {
-  height: 0; /* Add the correct box sizing in Firefox */
-  overflow: visible; /* Show the overflow in Edge and IE */
+  height: 0;
+
+  /* Add the correct box sizing in Firefox */
+  overflow: visible;
+
+  /* Show the overflow in Edge and IE */
 }
 
 details,
 main {
-  display: block; /* Render the `main` element consistently in IE. */
+  display: block;
+
+  /* Render the `main` element consistently in IE. */
 }
 
 summary {
-  display: list-item; /* Add the correct display in all browsers */
+  display: list-item;
+
+  /* Add the correct display in all browsers */
 }
 
 small {
-  font-size: 80%; /* Set font-size to 80% in `small` elements */
+  font-size: 80%;
+
+  /* Set font-size to 80% in `small` elements */
 }
 
 [hidden] {
-  display: none; /* Add the correct display in IE */
+  display: none;
+
+  /* Add the correct display in IE */
 }
 
 abbr[title] {
   /* Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari */
   text-decoration: underline;
   text-decoration: underline dotted;
-  border-bottom: none; /* Remove the bottom border in Chrome 57 */
+  border-bottom: none;
+
+  /* Remove the bottom border in Chrome 57 */
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  background-color: transparent; /* Remove the gray background on active links in IE 10 */
+  background-color: transparent;
+
+  /* Remove the gray background on active links in IE 10 */
 }
 
 a:active,
 a:hover {
-  outline-width: 0; /* Remove the outline when hovering in all browsers */
+  outline-width: 0;
+
+  /* Remove the outline when hovering in all browsers */
   opacity: 0.8;
 }
 
@@ -91,16 +117,22 @@ code,
 kbd,
 pre,
 samp {
-  font-family: monospace; /* Specify the font family of code elements */
+  font-family: monospace;
+
+  /* Specify the font family of code elements */
 }
 
 pre {
-  font-size: 1em; /* Correct the odd `em` font sizing in all browsers */
+  font-size: 1em;
+
+  /* Correct the odd `em` font sizing in all browsers */
 }
 
 b,
 strong {
-  font-weight: bolder; /* Add the correct font weight in Chrome, Edge, and Safari */
+  font-weight: bolder;
+
+  /* Add the correct font weight in Chrome, Edge, and Safari */
 }
 
 /* https://gist.github.com/unruthless/413930 */
@@ -135,21 +167,33 @@ input {
 
 [type='number']::-webkit-inner-spin-button,
 [type='number']::-webkit-outer-spin-button {
-  height: auto; /* Correct the cursor style of increment and decrement buttons in Chrome */
+  height: auto;
+
+  /* Correct the cursor style of increment and decrement buttons in Chrome */
 }
 
 [type='search'] {
-  outline-offset: -2px; /* Correct the outline style in Safari */
-  -webkit-appearance: textfield; /* Correct the odd appearance in Chrome and Safari */
+  outline-offset: -2px;
+
+  /* Correct the outline style in Safari */
+  -webkit-appearance: textfield;
+
+  /* Correct the odd appearance in Chrome and Safari */
 }
 
 [type='search']::-webkit-search-decoration {
-  -webkit-appearance: none; /* Remove the inner padding in Chrome and Safari on macOS */
+  -webkit-appearance: none;
+
+  /* Remove the inner padding in Chrome and Safari on macOS */
 }
 
 textarea {
-  overflow: auto; /* Internet Explorer 11+ */
-  resize: vertical; /* Specify textarea resizability */
+  overflow: auto;
+
+  /* Internet Explorer 11+ */
+  resize: vertical;
+
+  /* Specify textarea resizability */
 }
 
 button,
@@ -157,20 +201,28 @@ input,
 optgroup,
 select,
 textarea {
-  font: inherit; /* Specify font inheritance of form elements */
+  font: inherit;
+
+  /* Specify font inheritance of form elements */
 }
 
 optgroup {
-  font-weight: bold; /* Restore the font weight unset by the previous rule */
+  font-weight: bold;
+
+  /* Restore the font weight unset by the previous rule */
 }
 
 button {
-  overflow: visible; /* Address `overflow` set to `hidden` in IE 8/9/10/11 */
+  overflow: visible;
+
+  /* Address `overflow` set to `hidden` in IE 8/9/10/11 */
 }
 
 button,
 select {
-  text-transform: none; /* Firefox 40+, Internet Explorer 11- */
+  text-transform: none;
+
+  /* Firefox 40+, Internet Explorer 11- */
 }
 
 /* Apply cursor pointer to button elements */
@@ -204,7 +256,9 @@ button,
 html [type='button'],
 [type='reset'],
 [type='submit'] {
-  -webkit-appearance: button; /* Correct the inability to style clickable types in iOS */
+  -webkit-appearance: button;
+
+  /* Correct the inability to style clickable types in iOS */
 }
 
 /* Remove the default button styling in all browsers */
@@ -218,29 +272,49 @@ textarea {
 
 /* Style select like a standard input */
 select {
-  -moz-appearance: none; /* Firefox 36+ */
-  -webkit-appearance: none; /* Chrome 41+ */
+  -moz-appearance: none;
+
+  /* Firefox 36+ */
+  -webkit-appearance: none;
+
+  /* Chrome 41+ */
 }
 
 select::-ms-expand {
-  display: none; /* Internet Explorer 11+ */
+  display: none;
+
+  /* Internet Explorer 11+ */
 }
 
 select::-ms-value {
-  color: currentColor; /* Internet Explorer 11+ */
+  color: currentColor;
+
+  /* Internet Explorer 11+ */
 }
 
 legend {
-  display: table; /* Correct the text wrapping in Edge and IE */
-  max-width: 100%; /* Correct the text wrapping in Edge and IE */
-  color: inherit; /* Correct the color inheritance from `fieldset` elements in IE */
-  white-space: normal; /* Correct the text wrapping in Edge and IE */
-  border: 0; /* Correct `color` not being inherited in IE 8/9/10/11 */
+  display: table;
+
+  /* Correct the text wrapping in Edge and IE */
+  max-width: 100%;
+
+  /* Correct the text wrapping in Edge and IE */
+  color: inherit;
+
+  /* Correct the color inheritance from `fieldset` elements in IE */
+  white-space: normal;
+
+  /* Correct the text wrapping in Edge and IE */
+  border: 0;
+
+  /* Correct `color` not being inherited in IE 8/9/10/11 */
 }
 
 ::-webkit-file-upload-button {
   color: inherit;
-  font: inherit; /* Change font properties to `inherit` in Chrome and Safari */
+  font: inherit;
+
+  /* Change font properties to `inherit` in Chrome and Safari */
 
   /* Correct the inability to style clickable types in iOS and Safari */
   -webkit-appearance: button;
@@ -251,7 +325,9 @@ legend {
      # ================================================================= */
 
 img {
-  border-style: none; /* Remove border when inside `a` element in IE 8/9/10 */
+  border-style: none;
+
+  /* Remove border when inside `a` element in IE 8/9/10 */
 }
 
 /* Add the correct vertical alignment in Chrome, Firefox, and Opera */
@@ -302,19 +378,23 @@ li {
 body {
   position: relative;
   min-width: 960px;
-}
 
-body > div.container {
-  position: relative;
-  height: 100vh;
-  min-height: 768px;
-  padding: 80px 0;
-  overflow: scroll;
+  div.container {
+    position: relative;
+    height: 100vh;
+    min-height: 768px;
+    padding: 80px 0;
+    overflow: scroll;
+  }
 }
 
 .container {
   width: 822px;
   margin: 0 auto;
+}
+
+.container.static_pages {
+  width: 100%;
 }
 
 .lp {
@@ -337,13 +417,17 @@ body > div.container {
   display: none;
 }
 
+.mt48 {
+  margin-top: 48px;
+}
+
 @media screen and (max-width: 959px) {
   body {
     min-width: 100vw;
-  }
 
-  body > div.container {
-    min-height: calc(100vh + 230px);
+    div.container {
+      min-height: calc(100vh + 230px);
+    }
   }
 
   .container {
