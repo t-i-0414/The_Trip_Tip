@@ -18,8 +18,8 @@ h1.title_home {
 
 //background
 div.container.static_pages {
-  height: 100vh;
-  padding-top: 0;
+  min-height: 100vh;
+  padding: 0;
 
   .base {
     width: 100%;
