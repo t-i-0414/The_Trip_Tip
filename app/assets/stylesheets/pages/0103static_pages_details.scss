@@ -1,0 +1,55 @@
+//home
+h1.title_home {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media screen and (max-width: 959px) {
+  h1.title_home {
+    position: fixed;
+    top: calc((100vh - 80px) / 2 + 80px);
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+//about
+.about{
+  padding: 72px 0 140px;
+  
+  .p1{
+    width: 518px;
+    margin-left: 160px;
+    
+    .heading_about{
+      margin-bottom: 12px;
+    }
+  }
+  .p2{
+    width: 498px;
+    margin: 32px 0 0 408px;
+  }
+  
+  .p3{
+    width: 498px;
+    margin: 40px 0 0 0px;
+  }
+
+  .p4{
+    width: 500px;
+    margin: 40px 0 0 324px;
+  }
+
+  .p5{
+    width: 498px;
+    margin: 64px 0 0 0;
+  }
+
+  .p6{
+    width: 498px;
+    margin: 88px 0 0 162px;
+  }
+}

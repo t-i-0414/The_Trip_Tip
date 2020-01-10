@@ -1,21 +1,3 @@
-//home
-h1.title_home {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-@media screen and (max-width: 959px) {
-  h1.title_home {
-    position: fixed;
-    top: calc((100vh - 80px) / 2 + 80px);
-
-    img {
-      width: 100%;
-    }
-  }
-}
-
 //background
 div.container.static_pages {
   min-height: 100vh;
@@ -30,7 +12,7 @@ div.container.static_pages {
       box-sizing: border-box;
       height: 100%;
       padding-bottom: 0;
-
+      
       .circle {
         position: absolute;
         background: linear-gradient(
@@ -49,6 +31,7 @@ div.container.static_pages {
         -ms-border-radius: 50%;
         -o-border-radius: 50%;
         border-radius: 50%;
+        z-index:0;
       }
 
       .circle-1st {
@@ -152,6 +135,6 @@ div.container.static_pages {
 
 @media screen and (max-width: 959px) {
   div.container.static_pages {
-    
+    overflow-x: hidden;
   }
 }
