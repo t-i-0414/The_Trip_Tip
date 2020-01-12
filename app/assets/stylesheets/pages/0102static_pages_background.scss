@@ -12,9 +12,10 @@ div.container.static_pages {
       box-sizing: border-box;
       height: 100%;
       padding-bottom: 0;
-      
+
       .circle {
         position: absolute;
+        z-index: 0;
         background: linear-gradient(
           180deg,
           #96deda 0%,
@@ -31,7 +32,6 @@ div.container.static_pages {
         -ms-border-radius: 50%;
         -o-border-radius: 50%;
         border-radius: 50%;
-        z-index:0;
       }
 
       .circle-1st {
