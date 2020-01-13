@@ -8,6 +8,10 @@ body {
   text-align: justify;
 }
 
+.indent-1 {
+  text-indent: 1em;
+}
+
 @media screen and (max-width: 559px) {
   body {
     font-size: 1.4rem;
