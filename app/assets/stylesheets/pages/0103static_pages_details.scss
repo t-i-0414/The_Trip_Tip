@@ -146,3 +146,32 @@ h1.title_home {
     }
   }
 }
+
+@media screen and (max-width: 959px) {
+  .terms_of_use {
+    width: 592px;
+    margin: 0 auto;
+    padding-bottom: 320px;
+  }
+}
+
+@media screen and (max-width: 559px) {
+  .terms_of_use {
+    width: 100%;
+    padding-top: 32px;
+
+    .paragraph {
+      padding: 12px;
+
+      .heading_terms_of_use {
+        font-size: 2rem;
+      }
+
+      .text_terms_of_use {
+        .heading_article {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}
