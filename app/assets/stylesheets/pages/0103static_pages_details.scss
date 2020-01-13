@@ -18,8 +18,6 @@ h1.title_home {
 
 //about
 .about {
-  padding: 72px 0 140px;
-
   .p1 {
     width: 518px;
     margin-left: 160px;
@@ -81,5 +79,70 @@ h1.title_home {
 @media screen and (max-width: 559px) {
   .about {
     width: 100%;
+  }
+}
+
+//terms of use
+.terms_of_use {
+  .paragraph {
+    padding: 48px;
+
+    .heading_terms_of_use {
+      margin-bottom: 24px;
+      font-weight: bold;
+      font-size: 2.4rem;
+      text-align: center;
+    }
+
+    .text_terms_of_use:not(:last-child) {
+      padding-bottom: 24px;
+    }
+
+    .text_terms_of_use {
+      .heading_article {
+        display: block;
+        margin-bottom: 12px;
+        font-weight: bold;
+        font-size: 2rem;
+      }
+
+      .article_text {
+        padding-left: 0.9em;
+        text-indent: 1em;
+      }
+
+      .article_text:not(:last-child) {
+        margin-bottom: 12px;
+      }
+
+      .article_list {
+        counter-reset: item;
+
+        li {
+          padding-left: 2.35em;
+          text-indent: -1.35em;
+
+          ol {
+            margin-top: 8px;
+            counter-reset: item;
+
+            li::before {
+              content: counters(item, '-') '. ';
+              counter-increment: item;
+            }
+          }
+        }
+
+        li::before {
+          padding-right: 0.25em;
+          content: counter(item) '.';
+          counter-increment: item;
+        }
+
+        li + li {
+          margin-top: 8px;
+        }
+      }
+    }
   }
 }
