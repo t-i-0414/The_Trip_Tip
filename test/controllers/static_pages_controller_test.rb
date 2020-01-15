@@ -13,30 +13,6 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_select 'title', @base_title.to_s
   end
 
-  test 'should get signup' do
-    get signup_url
-    assert_response :success
-    assert_select 'title', "ユーザー登録 | #{@base_title}"
-  end
-
-  test 'should get login' do
-    get login_url
-    assert_response :success, @response.body
-    assert_select 'title', "ログイン | #{@base_title}"
-  end
-
-  test 'should get unlock_user' do
-    get unlock_user_url
-    assert_response :success, @response.body
-    assert_select 'title', "アカウントのロック解除リクエスト | #{@base_title}"
-  end
-
-  test 'should get reset_password' do
-    get reset_password_url
-    assert_response :success, @response.body
-    assert_select 'title', "パスワードのリセットリクエスト | #{@base_title}"
-  end
-
   test 'should get about' do
     get about_url
     assert_response :success, @response.body
