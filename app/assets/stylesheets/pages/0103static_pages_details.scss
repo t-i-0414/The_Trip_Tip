@@ -63,11 +63,20 @@ h1.title_home {
       width: 100%;
       margin: 0;
       box-shadow: 0 3px 6px -6px #00000029;
+      padding: 12px 48px;
 
       .heading_about {
         margin-bottom: 32px;
         text-align: center;
       }
+    }
+    
+    .paragraph:first-child {
+      padding-top: 48px;
+    }
+    
+    .paragraph:last-child {
+      padding-bottom: 48px;
     }
 
     .paragraph:not(:last-of-type) {
@@ -79,6 +88,11 @@ h1.title_home {
 @media screen and (max-width: 559px) {
   .about {
     width: 100%;
+    padding-top: 32px;
+    
+    .paragraph {
+      padding: 12px;
+    }
   }
 }
 
