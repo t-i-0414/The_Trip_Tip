@@ -83,22 +83,22 @@ h1.title_home {
 }
 
 //terms of use
-.terms_of_use {
+.bylaw {
   .paragraph {
     padding: 48px;
 
-    .heading_terms_of_use {
+    .heading_bylaw {
       margin-bottom: 24px;
       font-weight: bold;
       font-size: 2.4rem;
       text-align: center;
     }
 
-    .text_terms_of_use:not(:last-child) {
+    .text_bylaw:not(:last-child) {
       padding-bottom: 24px;
     }
 
-    .text_terms_of_use {
+    .text_bylaw {
       .heading_article {
         display: block;
         margin-bottom: 12px;
@@ -148,7 +148,7 @@ h1.title_home {
 }
 
 @media screen and (max-width: 959px) {
-  .terms_of_use {
+  .bylaw {
     width: 592px;
     margin: 0 auto;
     padding-bottom: 320px;
@@ -156,18 +156,18 @@ h1.title_home {
 }
 
 @media screen and (max-width: 559px) {
-  .terms_of_use {
+  .bylaw {
     width: 100%;
     padding-top: 32px;
 
     .paragraph {
       padding: 12px;
 
-      .heading_terms_of_use {
+      .heading_bylaw {
         font-size: 2rem;
       }
 
-      .text_terms_of_use {
+      .text_bylaw {
         .heading_article {
           font-size: 1.6rem;
         }
