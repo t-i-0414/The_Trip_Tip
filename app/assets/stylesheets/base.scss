@@ -436,23 +436,26 @@ body {
 }
 
 .btn {
-  font-size: 2rem;
   display: block;
-  text-align: center;
-  color: #fff;
-  box-shadow: 0 3px 6px #00000029;
-  border-radius: 10px;
   height: 46px;
+  color: #fff;
+  font-size: 2rem;
   line-height: 2.3;
-  vertical-align: middle;
+  text-align: center;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px #00000029;
 }
 
 .navy {
-  background-color: #6F86D6;
+  background-color: #6f86d6;
 }
 
 .red {
-  background-color: #D47FA6;
+  background-color: #d47fa6;
 }
 
 @media screen and (max-width: 959px) {
