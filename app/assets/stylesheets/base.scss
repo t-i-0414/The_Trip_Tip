@@ -423,6 +423,38 @@ body {
   height: 100vh;
 }
 
+.base {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+}
+
+.paragraph {
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 3px 6px #00000029;
+}
+
+.btn {
+  font-size: 2rem;
+  display: block;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 3px 6px #00000029;
+  border-radius: 10px;
+  height: 46px;
+  line-height: 2.3;
+  vertical-align: middle;
+}
+
+.navy {
+  background-color: #6F86D6;
+}
+
+.red {
+  background-color: #D47FA6;
+}
+
 @media screen and (max-width: 959px) {
   body {
     min-width: 100vw;
