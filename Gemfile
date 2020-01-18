@@ -40,6 +40,7 @@ group :test do
   gem 'guard-rspec', require: false
   gem 'launchy'
   gem 'minitest-reporters'
+  gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.9.0'
   gem 'selenium-webdriver'
   gem 'webdrivers'
