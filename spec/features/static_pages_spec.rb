@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.feature 'StaticPages', type: :feature do
+RSpec.feature 'Static pages', type: :feature do
   feature 'Home page' do
     background do
       visit root_path
