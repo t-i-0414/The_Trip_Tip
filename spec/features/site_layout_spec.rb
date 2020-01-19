@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.feature 'StaticPages', type: :feature do
+RSpec.feature 'Site layouts', type: :feature do
   feature 'should render right home page layouts' do
     background do
       visit root_path
