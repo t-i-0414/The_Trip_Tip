@@ -65,4 +65,9 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.web_console.whitelisted_ips = '0.0.0.0/0'
+
+  # VScode
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # aws
+  # config.action_mailer.default_url_options = { protocol: 'https', host: 'https://840995c836e94bac99722844e752104f.vfs.cloud9.us-east-2.amazonaws.com/' }
 end
