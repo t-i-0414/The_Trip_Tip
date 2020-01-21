@@ -7,7 +7,12 @@ ruby '2.6.4'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 gem 'jbuilder', '~> 2.7'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.1'
 gem 'sass-rails', '>= 6'
