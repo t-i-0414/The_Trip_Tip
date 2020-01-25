@@ -4,14 +4,17 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   # omniauth
-  config.omniauth :facebook, Rails.application.credentials.facebook[:key], Rails.application.credentials.facebook[:secret]
-  config.omniauth :twitter, Rails.application.credentials.twitter[:key], Rails.application.credentials.twitter[:secret]
+  config.omniauth :facebook,
+                  Rails.application.credentials.facebook[:key],
+                  Rails.application.credentials.facebook[:secret]
+  config.omniauth :twitter, Rails.application.credentials.twitter[:key],
+                  Rails.application.credentials.twitter[:secret]
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'ce33082754ec17cc3e42648a416fdec3f02c51f9e141a3aea544cf0d7fc1a86b9fcda97b0717961b107514d92840baa081d3361eddc8cb2d2edbbab7edc599d5'
+  config.secret_key = Rails.application.secrets.secret_key_base
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
