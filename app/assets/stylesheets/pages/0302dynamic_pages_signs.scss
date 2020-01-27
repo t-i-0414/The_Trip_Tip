@@ -1,25 +1,31 @@
 .container.dynamic_pages {
-  .container_signs{
-    background-color: #fff;
+  .container_signs {
+    width: 514px;
     margin: 48px auto;
     padding: 40px 20px;
+    background-color: #fff;
+    -webkit-border-radius: 80px 0;
+    -moz-border-radius: 80px 0;
+    -ms-border-radius: 80px 0;
+    -o-border-radius: 80px 0;
+    border-radius: 80px 0;
     box-shadow: 3px 3px 6px #00000029;
-    border-radius: 80px 0px;
-    width: 514px;
-    
+
     h1 {
       margin-bottom: 30px;
     }
-    
+
     a {
-      display: block; 
+      display: block;
     }
-    
+
     .container_sns {
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       width: 313px;
-      
+      height: 110px;
+      margin: 0 auto;
     }
   }
 }
