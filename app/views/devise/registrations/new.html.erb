@@ -3,40 +3,41 @@
   <div class="container_signs">
     <h1>ユーザー新規登録</h1>
     <div class="container_sns">
-      <%= link_to user_twitter_omniauth_authorize_path, class: 'twitter-link btn' do %>
-      ツイッターでログイン
+      <%= link_to user_twitter_omniauth_authorize_path, class: 'sns-link btn twitter' do %>
+      <%= image_tag 'twitter-brands.png', alt: 'twitterのアイコン' %>
+      twitterでログイン
       <% end %>
-      <%= link_to user_facebook_omniauth_authorize_path, class: 'facebook-link btn' do %>
+      <%= link_to user_facebook_omniauth_authorize_path, class: 'sns-link btn facebook' do %>
       Facebookでログイン
       <% end %>
     </div>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-    
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
-    
-      <div class="field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
-      </div>
-    
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-      </div>
-    
-      <div class="actions">
-        <%= f.submit "ユーザー登録" %>
-      </div>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "ユーザー登録" %>
+    </div>
     <% end %>
     <%= link_to "既にアカウントをお持ちの方はこちら", new_session_path(resource_name) %>
     <%= link_to "ユーザー認証メールの再送", new_confirmation_path(resource_name) %>
-    
+
   </div>
 </div>
