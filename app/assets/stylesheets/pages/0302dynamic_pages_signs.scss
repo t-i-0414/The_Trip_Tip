@@ -1,0 +1,25 @@
+.container.dynamic_pages {
+  .container_signs{
+    background-color: #fff;
+    margin: 48px auto;
+    padding: 40px 20px;
+    box-shadow: 3px 3px 6px #00000029;
+    border-radius: 80px 0px;
+    width: 514px;
+    
+    h1 {
+      margin-bottom: 30px;
+    }
+    
+    a {
+      display: block; 
+    }
+    
+    .container_sns {
+      display: flex;
+      flex-direction: column;
+      width: 313px;
+      
+    }
+  }
+}
