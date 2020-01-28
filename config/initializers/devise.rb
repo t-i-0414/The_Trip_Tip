@@ -7,7 +7,8 @@ Devise.setup do |config|
   config.omniauth :facebook,
                   Rails.application.credentials.facebook[:key],
                   Rails.application.credentials.facebook[:secret]
-  config.omniauth :twitter, Rails.application.credentials.twitter[:key],
+  config.omniauth :twitter,
+                  Rails.application.credentials.twitter[:key],
                   Rails.application.credentials.twitter[:secret]
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
