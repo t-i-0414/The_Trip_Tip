@@ -1,25 +1,113 @@
 .container.dynamic_pages {
-  .container_signs{
-    background-color: #fff;
+  .container_signs {
+    width: 514px;
     margin: 48px auto;
     padding: 40px 20px;
+    background-color: #fff;
+    -webkit-border-radius: 80px 0;
+    -moz-border-radius: 80px 0;
+    -ms-border-radius: 80px 0;
+    -o-border-radius: 80px 0;
+    border-radius: 80px 0;
     box-shadow: 3px 3px 6px #00000029;
-    border-radius: 80px 0px;
-    width: 514px;
-    
+
     h1 {
       margin-bottom: 30px;
     }
-    
+
     a {
-      display: block; 
+      display: block;
     }
-    
+
     .container_sns {
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       width: 313px;
-      
+      height: 110px;
+      margin: 0 auto 30px;
+    }
+
+    .separator_wrapper {
+      position: relative;
+      width: 100%;
+      margin-bottom: 30px;
+
+      .separator {
+        display: block;
+        width: fit-content;
+        margin: 0 auto;
+        font-size: 2rem;
+      }
+
+      .separator::before {
+        position: absolute;
+        left: 22px;
+        display: block;
+        width: 140px;
+        height: 1px;
+        margin-top: 15px;
+        background-color: #666;
+        content: '';
+      }
+
+      .separator::after {
+        position: absolute;
+        right: 22px;
+        display: block;
+        width: 140px;
+        height: 1px;
+        margin-top: -15px;
+        background-color: #666;
+        content: '';
+      }
+    }
+
+    .new_user {
+      margin-bottom: 24px;
+      padding: 0 20px 0;
+
+      .field > * {
+        display: block;
+      }
+
+      .field {
+        margin-bottom: 24px;
+
+        .form-input {
+          width: 100%;
+          height: 36px;
+          color: #777;
+          line-height: 1.8;
+          letter-spacing: 0.15em;
+          border-bottom: solid 1px #666;
+        }
+      }
+
+      .actions {
+        margin-top: 64px;
+
+        .btn {
+          height: 46px;
+          margin: 0 auto;
+          padding: 0 35px;
+          line-height: 2.3;
+          letter-spacing: 0.2em;
+          background-color: #6f86d6;
+        }
+      }
+    }
+
+    .wrapper_notification {
+      padding: 0 64px;
+
+      a {
+        font-size: 1.6rem;
+      }
+
+      a + a {
+        margin-top: 12px;
+      }
     }
   }
 }
