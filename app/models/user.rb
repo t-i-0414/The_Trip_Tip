@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :trackable, :confirmable, :lockable, :timeoutable,
          :omniauthable
   with_options if: proc { |a| a.uid.blank? } do |a|
-    a.validates :name, presence: true
+    a.validates :name, presence: true, length: { maximum: 32 }
   end
 
   def self.find_for_oauth(auth)
