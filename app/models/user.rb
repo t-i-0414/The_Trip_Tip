@@ -5,14 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :trackable, :confirmable, :lockable, :timeoutable,
          :omniauthable
-  with_options if: proc { |a| a.uid.blank? } do |a|
-    a.validates :name, presence: true, length: { maximum: 32 }
+  with_options if: proc { |a| a.uid.blank? } do
+    validates :name, presence: true, length: { maximum: 32 }
   end
 
   mount_uploader :image, ImageUploader
 
   def self.find_for_oauth(auth)
-    user = User.where(uid: auth.uid, provider: auth.provider).first
+    user = User.find_by(uid: auth.uid, provider: auth.provider)
     unless user
       user = User.new(
         provider: auth.provider,
