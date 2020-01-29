@@ -4,11 +4,11 @@
     <h1>ユーザー新規登録</h1>
     <div class="container_sns">
       <%= link_to user_twitter_omniauth_authorize_path, class: 'sns-link btn twitter' do %>
-      <%= image_tag 'twitter-brands.svg', alt: 'twitterのアイコン' %>
+      <%= image_tag 'icon_twitter-brands.svg', alt: 'twitterのアイコン' %>
       twitterでログイン
       <% end %>
       <%= link_to user_facebook_omniauth_authorize_path, class: 'sns-link btn facebook' do %>
-      <%= image_tag 'facebook-brands.svg', alt: 'facebookのアイコン' %>
+      <%= image_tag 'icon_facebook-brands.svg', alt: 'facebookのアイコン' %>
       Facebookでログイン
       <% end %>
     </div>
@@ -36,6 +36,14 @@
     <div class="field">
       <%= f.label :password_confirmation, 'パスワードをもう一度入力してください', :class => "form-label" %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-input" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :image, '（任意）プロフィール画像' %>
+      <%= f.label :image, :class => "fileup-btn" do %>
+      <%= image_tag 'icon_plus.svg', alt: 'プラスのアイコン' %>
+      <% end %>
+      <%= f.file_field :image, :class => 'hidden' %>
     </div>
 
     <div class="actions">
