@@ -11,6 +11,7 @@ gem 'devise', '~> 4.7.1'
 gem 'devise-i18n', '~> 1.9.0'
 gem 'devise-i18n-views', '~> 0.3.7'
 gem 'jbuilder', '~> 2.7'
+gem 'jquery-rails', '~> 4.3.1'
 gem 'mini_magick', '~> 4.7.0'
 gem 'omniauth', '~> 1.9.0'
 gem 'omniauth-facebook', '~> 5.0.0'
@@ -21,7 +22,6 @@ gem 'rails-i18n', '~> 6.0.0'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
-
 
 group :development, :test do
   gem 'byebug', platforms: %i[
