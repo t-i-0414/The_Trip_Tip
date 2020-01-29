@@ -2,15 +2,15 @@
 
 # default class
 class StaticPagesController < ApplicationController
-  def home
-  end
+  # def home
+  # end
 
-  def about
-  end
+  # def about
+  # end
 
-  def terms_of_use
-  end
+  # def terms_of_use
+  # end
 
-  def privacy
-  end
+  # def privacy
+  # end
 end
