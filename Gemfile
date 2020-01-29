@@ -6,19 +6,22 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.4'
 
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'devise'
-gem 'devise-i18n'
-gem 'devise-i18n-views'
+gem 'carrierwave', '~> 1.2.2'
+gem 'devise', '~> 4.7.1'
+gem 'devise-i18n', '~> 1.9.0'
+gem 'devise-i18n-views', '~> 0.3.7'
 gem 'jbuilder', '~> 2.7'
-gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'omniauth-twitter'
+gem 'mini_magick', '~> 4.7.0'
+gem 'omniauth', '~> 1.9.0'
+gem 'omniauth-facebook', '~> 5.0.0'
+gem 'omniauth-twitter', '~> 1.4.0'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.1'
-gem 'rails-i18n'
+gem 'rails-i18n', '~> 6.0.0'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
+
 
 group :development, :test do
   gem 'byebug', platforms: %i[
