@@ -1,0 +1,33 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 2.6.4
+  Exclude:
+    - app/channels/**/*
+    - node_modules/**/*
+    - bin/*
+    - test/**/*
+    - spec/**/*
+    - lib/*
+    - db/migrate/*
+    - db/schema.rb
+    - lib/tasks/*
+    - public/*
+    - tmp/*
+    - vendor/**/*
+    - config/spring.rb
+
+Style/Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false
+
+Layout/LineLength:
+  Description: 'This cop checks the length of lines in the source code.'
+  Max: 200
+
+Style/ClassAndModuleChildren:
+  Description: 'This cop checks the style of children definitions at classes and modules.'
+  EnforcedStyle: compact
