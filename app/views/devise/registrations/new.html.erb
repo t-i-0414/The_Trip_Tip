@@ -40,7 +40,7 @@
 
     <div class="field">
       <%= f.label :image, 'プロフィール画像（任意）' %>
-      <%= f.label :image, :class => "fileup-btn" do %>
+      <%= f.label :image, :class => "fileup-btn", :id => "preview_user_image" do %>
       <%= image_tag 'icon_plus.svg', alt: 'プラスのアイコン' %>
       <% end %>
       <%= f.file_field :image, :class => 'hidden' %>
