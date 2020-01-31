@@ -20,19 +20,22 @@ export default {
 .wrapper-loader{
   position: fixed;
   z-index: 999;
-  width: 100vh;
+  width: 100vw;
   height: 100vh;
+  background: linear-gradient(241deg, #F1FFFF 0%, #FFFFFF 100%);
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 .loader {
-
-  color: #ffffff;
-  font-size: 90px;
+  color: #85E0DD;
+  font-size: 40px;
   text-indent: -9999em;
   overflow: hidden;
-  width: 88px;
-  height: 88px;
+  width: 1em;
+  height: 1em;
   border-radius: 50%;
-  margin: 72px auto;
+  margin: 0;
   position: relative;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
@@ -104,6 +107,5 @@ export default {
     transform: rotate(360deg);
   }
 }
-
 </style>
 
