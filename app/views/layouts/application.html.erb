@@ -3,7 +3,8 @@
 <head>
   <%= render template: "layouts/meta_tags" %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <%= render template: "layouts/location_hash" %>
+  <%= render template: "layouts/jquery" %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload',  defer: true %>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
@@ -14,22 +15,5 @@
   <%= render template: "layouts/background" %>
   <%= yield %>
   <%= render template: "layouts/footer" %>
-  <script type="text/javascript">
-    if (window.location.hash && window.location.hash == '#_=_') {
-      if (window.history && history.pushState) {
-        window.history.pushState("", document.title, window.location.pathname);
-      } else {
-        // Prevent scrolling by storing the page's current scroll offset
-        var scroll = {
-          top: document.body.scrollTop,
-          left: document.body.scrollLeft
-        };
-        window.location.hash = '';
-        // Restore the scroll offset, should be flicker free
-        document.body.scrollTop = scroll.top;
-        document.body.scrollLeft = scroll.left;
-      }
-    }
-  </script>
 </body>
 </html>
