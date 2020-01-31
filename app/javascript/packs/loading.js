@@ -8,14 +8,13 @@
 import Vue from 'vue'
 import App from '../loading'
 
-document.addEventListener('DOMContentLoaded', () => {
+$( () => {
   const app = new Vue({
     render: h => h(App)
-  }).$mount()
-  document.body.appendChild(app.$el)
-
-  console.log(app)
-})
+  }).$mount();
+  $(document.body).prepend(app.$el);
+  console.log(app);
+});
 
 
 // The above code uses Vue without the compiler, which means you cannot
