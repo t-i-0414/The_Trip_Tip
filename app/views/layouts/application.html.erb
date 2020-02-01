@@ -12,10 +12,12 @@
 </head>
 <body>
   <%= javascript_packs_with_chunks_tag 'loading', 'data-turbolinks-track': 'reload' %>
-
-  <%= render template: "layouts/header" %>
-  <%= render template: "layouts/background" %>
-  <%= yield %>
-  <%= render template: "layouts/footer" %>
+  <div id="contents-app">
+    <%= render template: "layouts/loading" %>
+    <%= render template: "layouts/header" %>
+    <%= render template: "layouts/background" %>
+    <%= yield %>
+    <%= render template: "layouts/footer" %>
+  </div>
 </body>
 </html>
