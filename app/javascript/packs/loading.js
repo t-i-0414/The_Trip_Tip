@@ -5,17 +5,18 @@
 // like app/views/layouts/application.html.erb.
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
-import Vue from 'vue'
-import App from '../loading'
+import Vue from 'vue/dist/vue.esm';
 
-$( () => {
-  const app = new Vue({
-    render: h => h(App)
-  }).$mount();
-  $(document.body).prepend(app.$el);
-  console.log(app);
+$(() => {
+  new Vue({
+    el: '#contents-app',
+    mounted() {
+      this.$nextTick(function () {
+        $('#loading').fadeOut();
+      });
+    }
+  });
 });
-
 
 // The above code uses Vue without the compiler, which means you cannot
 // use Vue to target elements in your existing html templates. You would
@@ -29,7 +30,6 @@ $( () => {
 //   {{message}}
 //   <app></app>
 // </div>
-
 
 // import Vue from 'vue/dist/vue.esm'
 // import App from '../app.vue'
