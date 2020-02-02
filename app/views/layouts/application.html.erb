@@ -5,20 +5,16 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= render template: "layouts/location_hash" %>
   <%= render template: "layouts/jquery" %>
-  <%= javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': 'reload',  defer: true %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload',  defer: true %>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= render template: "layouts/shims" %>
 </head>
 <body>
-  <%= javascript_packs_with_chunks_tag 'loading', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_packs_with_chunks_tag 'rotate_background', 'data-turbolinks-track': 'reload',  defer: true %>
-  <div id="contents-app">
-    <%= render template: "layouts/loading" %>
-    <%= render template: "layouts/header" %>
-    <%= render template: "layouts/background" %>
-    <%= yield %>
-    <%= render template: "layouts/footer" %>
-  </div>
+  <%= render template: "layouts/loading" %>
+  <%= render template: "layouts/header" %>
+  <%= render template: "layouts/background" %>
+  <%= yield %>
+  <%= render template: "layouts/footer" %>
 </body>
 </html>

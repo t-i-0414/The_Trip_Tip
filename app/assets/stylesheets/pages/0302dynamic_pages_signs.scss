@@ -97,6 +97,8 @@
           color: #fff;
           text-align: center;
           background-color: #9599b3;
+          background-image: url(icon_plus.svg);
+          background-size: cover;
           -webkit-border-radius: 50%;
           -moz-border-radius: 50%;
           -ms-border-radius: 50%;
@@ -105,7 +107,7 @@
           box-shadow: 0 3px 6px #00000029;
           cursor: pointer;
         }
-        
+
         .fileup-btn:hover {
           opacity: 0.8;
         }
