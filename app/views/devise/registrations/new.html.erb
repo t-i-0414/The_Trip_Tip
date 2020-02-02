@@ -38,15 +38,11 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-input" %>
     </div>
 
-    <div class="field">
-      <%= f.label :image, 'プロフィール画像（任意）' %>
-      <%= f.label :image, :class => "fileup-btn", :id => "preview_user_image" do %>
-      <%= image_tag 'icon_plus.svg', alt: 'プラスのアイコン' %>
-      <% end %>
-      <%= f.file_field :image, :class => 'hidden' %>
+    <div class="field" id="preview_user_image">
+      <%= javascript_pack_tag 'preview_image_user-profile', 'data-turbolinks-track': 'reload',  defer: true %>
     </div>
 
-    <div class="actions">
+    <div class=" actions">
       <%= f.submit "ユーザー登録", :class => "btn" %>
     </div>
     <% end %>
@@ -56,5 +52,3 @@
     </div>
   </div>
 </div>
-</div>
-<%= javascript_pack_tag 'preview_image_user-profile' %>

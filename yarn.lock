@@ -842,6 +842,13 @@
     "@types/unist" "*"
     "@types/vfile-message" "*"
 
+"@types/vue@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/vue/-/vue-2.0.0.tgz#ec77b3d89591deb9ca5cb052368aa9c32be088e7"
+  integrity sha1-7Hez2JWR3rnKXLBSNoqpwyvgiOc=
+  dependencies:
+    vue "*"
+
 "@vue/component-compiler-utils@^3.1.0":
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/@vue/component-compiler-utils/-/component-compiler-utils-3.1.1.tgz#d4ef8f80292674044ad6211e336a302e4d2a6575"
@@ -9698,7 +9705,7 @@ vue-turbolinks@^2.0.4:
   dependencies:
     vue "^2.2.4"
 
-vue@^2.2.4, vue@^2.5.16, vue@^2.6.11:
+vue@*, vue@^2.2.4, vue@^2.5.16, vue@^2.6.11:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==
