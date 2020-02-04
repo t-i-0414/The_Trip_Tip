@@ -7,6 +7,7 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "^4.2.0",
     "@types/vue": "^2.0.0",
+    "axios": "^0.19.2",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.11",
     "vue-cropperjs": "^4.0.1",
