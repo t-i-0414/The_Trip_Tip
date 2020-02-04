@@ -1,27 +1,10 @@
 <template>
   <div class="field" id="preview_user_image">
-    <label for="user_image-before">プロフィール画像（任意）</label>
+    <label for="user_image-before"> プロフィール画像（任意）</label>
     <label class="fileup-btn" for="user_image-before" :style="{ backgroundImage: 'url(' + cropImg + ')' }"></label>
-    <input
-      id="user_image-before"
-      ref="input"
-      type="file"
-      name=""
-      accept="image/*"
-      @change="setImage"
-    />
-    <input
-      id="user_image"
-      ref="input"
-      type="file"
-      name="user[image]"
-      accept="image/*"
-    />
+    <input class="hidden" id="user_image-before" ref="input" type="file" name="" accept="image/*" @change="setImage" />
 
-    <div
-      v-if="imgSrc != ''"
-      style="width: 200px; height:200px; border: 1px solid gray; display: inline-block;"
-    >
+    <div v-if="imgSrc != ''" :key="imgSrc" class="view-trimming">
       <vue-cropper
         ref="cropper"
         :guides="true"
@@ -31,31 +14,29 @@
         :min-container-width="200"
         :min-container-height="200"
         :background="true"
-        :rotatable="false"
+        :rotatable="true"
         :src="imgSrc"
-        :img-style="{ 'width': '200px', 'height': '200px' }"
+        :img-style="{ width: '200px', height: '200px' }"
         :aspect-ratio="yoko / tate"
       ></vue-cropper>
 
-      <button @click="cropImage upload" v-if="imgSrc != ''">トリミングする</button>
+      <div class="trimming" @click="cropImage" v-if="imgSrc != ''">
+        画像を切り抜く
+      </div>
+      <div class="trimming" @click="removeImage" v-if="imgSrc != ''">
+        画像選択を解除する
+      </div>
+      <a class="downloader" v-if="cropImg != '/assets/icon_plus.svg'" :href="cropImg" :download="filename">
+        切り抜いた画像を保存する（任意）
+      </a>
     </div>
-    
-    <!--<div v-if="cropImg != '/assets/icon_plus.svg'">-->
-    <!--  <img-->
-    <!--    :src="cropImg"-->
-    <!--    style="width: yoko; height: tate; border: 1px solid gray;"-->
-    <!--    alt="Cropped Image"-->
-    <!--  >-->
-    <!--  <p>-->
-    <!--    <a :href="cropImg" :download="filename">画像を保存</a>-->
-    <!--  </p>-->
-    <!--</div>-->
   </div>
 </template>
 
 <script>
-import VueCropper from "vue-cropperjs";
-import "cropperjs/dist/cropper.css";
+// import axios from 'axios';
+import VueCropper from 'vue-cropperjs';
+import 'cropperjs/dist/cropper.css';
 export default {
   components: {
     VueCropper
@@ -64,56 +45,113 @@ export default {
     return {
       yoko: 1,
       tate: 1,
-      imgSrc: "",
+      imgSrc: '',
       cropImg: '/assets/icon_plus.svg',
-      filename: ""
+      filename: ''
     };
   },
   methods: {
     setImage(e) {
-      e.preventDefault();
-      const file = e.target.files[0];
-      console.log(file);
+      let count = e.target.files.length - 1;
+      let file = e.target.files[count];
       this.filename = file.name;
-      if (!file.type.includes("image/")) {
-        alert("Please select an image file");
+      if (!file.type.includes('image/')) {
+        alert('画像ファイルを選択してください。');
         return;
       }
-      if (typeof FileReader === "function") {
+      if (typeof FileReader === 'function') {
         const reader = new FileReader();
         reader.onload = event => {
           this.imgSrc = event.target.result;
-          // this.$refs.cropper('replace', event.target.result);
         };
         reader.readAsDataURL(file);
       } else {
-        alert("Sorry, FileReader API not supported");
+        alert('この画像ファイルには対応しておりません。');
       }
     },
-    
+
+    removeImage() {
+      this.imgSrc = '';
+      this.cropImg = '/assets/icon_plus.svg';
+      this.filename = '';
+    },
+
     cropImage() {
       this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL();
+      const resizedBlob = this.base64ToBlob(this.cropImg);
+      const resizedImg = window.URL.createObjectURL(resizedBlob);
+      const form = $('#new_user')[0];
+      const formData = new FormData(form);
+      formData.append('user[image]', resizedBlob);
+      // let config = {
+      //   headers: {
+      //     'content-type': 'multipart/form-data'
+      //   }
+      // };
+      // axios
+      //   .post('/users', formData, config)
+      //   .then(function(response) {
+      //     console.log(response);
+      //   })
+      //   .catch(function(error) {
+      //     console.log(error);
+      //   });
     },
-    
-    //ここから　http://tech.aainc.co.jp/archives/10714
+
     upload() {
-      // FormData を利用して File を POST する
-      let formData = new FormData();
-      formData.append('yourFileKey', this.uploadFile);
+      const form = $('#new_user');
+      const formData = new FormData(form);
+      formData.append('image', this.uploadFile);
+      console.log(formData.get('userimage'));
       let config = {
-          headers: {
-              'content-type': 'multipart/form-data'
-          }
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
       };
-      axios
-          .post('yourUploadUrl', formData, config)
-          .then(function(response) {
-              // response 処理
-          })
-          .catch(function(error) {
-              // error 処理
-          })
+      // axios
+      //   .post('yourUploadUrl', formData, config)
+      //   .then(function(response) {
+      //     // response 処理
+      //   })
+      //   .catch(function(error) {
+      //     // error 処理
+      //   });
+    },
+
+    base64ToBlob(base64) {
+      const bin = atob(base64.replace(/^.*,/, ''));
+      const buffer = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) {
+        buffer[i] = bin.charCodeAt(i);
+      }
+      return new Blob([buffer.buffer], {
+        type: 'image/png'
+      });
     }
   }
 };
 </script>
+
+<style scoped>
+.view-trimming {
+  display: inline-block;
+  width: 100%;
+  margin-top: 32px;
+}
+
+.cropper-drag-box {
+  border: 1px solid gray;
+}
+
+.trimming,
+.downloader {
+  margin-top: 8px;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.trimming:hover,
+.downloader:hover {
+  opacity: 0.8;
+}
+</style>
