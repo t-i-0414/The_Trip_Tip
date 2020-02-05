@@ -56,6 +56,7 @@
 
 <script>
 // import axios from 'axios';
+import Vue from 'vue/dist/vue.esm';
 import VueCropper from 'vue-cropperjs';
 import 'cropperjs/dist/cropper.css';
 
@@ -96,17 +97,17 @@ export default {
       this.imgSrc = '';
       this.cropImg = '/assets/icon_plus.svg';
       this.filename = '';
+      this.resizedBlob= '';
     },
     cropImage() {
       this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL();
       this.resizedBlob = this.base64ToBlob(this.cropImg);
       const resizedImg = window.URL.createObjectURL(this.resizedBlob);
       const form = $('#new_user')[0];
-
-      let formData = new FormData(form);
+      const formData = new FormData(form);
       // let request = new XMLHttpRequest();
       // request.open('POST', '/users', false);
-      formData.append('user[image]', this.resizedBlob, 'image.png');
+      
 
       // $('#new_user').addEventListener('formdata', eve => {
 
@@ -131,12 +132,32 @@ export default {
     },
 
     upload(event) {
+      event.preventDefault();
       const form = $('#new_user')[0];
       const formData = new FormData(form);
       const request = new XMLHttpRequest();
-      request.open('POST', '/users');
-      formData.append('user[image]', this.resizedBlob, 'image.png');
+      request.open('post', '/users');
+      request.responseType = "document";
+      request.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+        console.log(this.responseText);
+        // console.log(this.getAllResponseHeaders());
+        }
+      };
+      if(this.resizedBlob != ''){
+        formData.append('user[image]', this.resizedBlob, 'image.png');
+      }
+      
+      // formData.append('user[image]', this.resizedBlob, 'image.png');
+      //console.log(formData.get('user[image]'));
       request.send(formData);
+      
+      // var vm = new Vue({
+      //   el: '#content_app',
+      //   data: request.response.getElementById("content_app").innerText
+      // })
+      
+      // vm.$el.innerHTML = request.response.getElementById("content_app").innerText
       // let config = {
       //   headers: {
       //     'content-type': 'multipart/form-data'

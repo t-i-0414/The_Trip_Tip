@@ -13,7 +13,9 @@
   <%= render template: "layouts/loading" %>
   <%= render template: "layouts/header" %>
   <%= render template: "layouts/background" %>
-  <%= yield %>
+  <div id="content_app">
+    <%= yield %>
+  </div>
   <%= render template: "layouts/footer" %>
 </body>
 </html>
