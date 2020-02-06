@@ -55,7 +55,7 @@
 </template>
 
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 import Vue from 'vue/dist/vue.esm';
 import VueCropper from 'vue-cropperjs';
 import 'cropperjs/dist/cropper.css';
@@ -77,7 +77,7 @@ export default {
   methods: {
     setImage(e) {
       let count = e.target.files.length - 1;
-      let file = e.target.files[count];
+      const file = e.target.files[count];
       this.filename = file.name;
       if (!file.type.includes('image/')) {
         alert('画像ファイルを選択してください。');
@@ -93,86 +93,20 @@ export default {
         alert('この画像ファイルには対応しておりません。');
       }
     },
+    
+    cropImage() {
+      this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL();
+      this.resizedBlob = this.base64ToBlob(this.cropImg);
+      // const resizedImg = window.URL.createObjectURL(this.resizedBlob);
+    },
+    
     removeImage() {
       this.imgSrc = '';
       this.cropImg = '/assets/icon_plus.svg';
       this.filename = '';
       this.resizedBlob= '';
     },
-    cropImage() {
-      this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL();
-      this.resizedBlob = this.base64ToBlob(this.cropImg);
-      const resizedImg = window.URL.createObjectURL(this.resizedBlob);
-      const form = $('#new_user')[0];
-      const formData = new FormData(form);
-      // let request = new XMLHttpRequest();
-      // request.open('POST', '/users', false);
-      
-
-      // $('#new_user').addEventListener('formdata', eve => {
-
-      // request.send(formData);
-
-      // form.append('user[image]', resizedBlob);
-
-      // console.log(form.get('user[image]'));
-      // let config = {
-      //   headers: {
-      //     'content-type': 'multipart/form-data'
-      //   }
-      // };
-      // axios
-      //   .post('/users', formData, config)
-      //   .then(function(response) {
-      //     console.log(response);
-      //   })
-      //   .catch(function(error) {
-      //     console.log(error);
-      //   });
-    },
-
-    upload(event) {
-      event.preventDefault();
-      const form = $('#new_user')[0];
-      const formData = new FormData(form);
-      const request = new XMLHttpRequest();
-      request.open('post', '/users');
-      request.responseType = "document";
-      request.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status == 200){
-        console.log(this.responseText);
-        // console.log(this.getAllResponseHeaders());
-        }
-      };
-      if(this.resizedBlob != ''){
-        formData.append('user[image]', this.resizedBlob, 'image.png');
-      }
-      
-      // formData.append('user[image]', this.resizedBlob, 'image.png');
-      //console.log(formData.get('user[image]'));
-      request.send(formData);
-      
-      // var vm = new Vue({
-      //   el: '#content_app',
-      //   data: request.response.getElementById("content_app").innerText
-      // })
-      
-      // vm.$el.innerHTML = request.response.getElementById("content_app").innerText
-      // let config = {
-      //   headers: {
-      //     'content-type': 'multipart/form-data'
-      //   }
-      // };
-      // axios
-      //   .post('yourUploadUrl', formData, config)
-      //   .then(function(response) {
-      //     // response 処理
-      //   })
-      //   .catch(function(error) {
-      //     // error 処理
-      //   });
-    },
-
+    
     base64ToBlob(base64) {
       const bin = atob(base64.replace(/^.*,/, ''));
       const buffer = new Uint8Array(bin.length);
@@ -182,6 +116,27 @@ export default {
       return new Blob([buffer.buffer], {
         type: 'image/png'
       });
+    },
+    
+    upload(event) {
+      event.preventDefault();
+      const form = $('#new_user')[0];
+      const formData = new FormData(form);
+      if(this.resizedBlob != ''){
+        formData.append('user[image]', this.resizedBlob, 'image.png');
+      }
+      
+      // console.log(formData.get('user[name]'));
+      // console.log(formData.get('user[email]'));
+      // console.log(formData.get('user[password]'));
+      // console.log(formData.get('user[password_confirmation]'));
+      // console.log(formData.get('user[image]'));
+      
+      const request = async () => {
+        const res = await axios.get("/", {});
+        return res.data;
+      };
+      request();
     }
   }
 };
