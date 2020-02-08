@@ -39,7 +39,7 @@
           :href="cropImg"
           :download="filename"
         >切り抜いた画像を保存する（任意）</a>
-        <input class="hidden" id="user_base64" name="user[base64]" type="text" :value="userBase64" />
+        <input class="hidden" id="user_image" name="user[image]" type="text" :value="userBase64" />
       </div>
     </div>
   </div>
@@ -111,7 +111,7 @@ export default {
   }
 };
 $(document).ready(function() {
-  $('#user_base64').val(null);
+  $('#user_image').val(null);
 });
 </script>
 

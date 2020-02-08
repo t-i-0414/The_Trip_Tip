@@ -10,6 +10,7 @@ class User < ApplicationRecord
   end
 
   mount_uploader :image, ImageUploader
+  mount_base64_uploader :image, ImageUploader
 
   def self.find_for_oauth(auth)
     user = User.find_by(uid: auth.uid, provider: auth.provider)
@@ -19,10 +20,9 @@ class User < ApplicationRecord
         uid: auth.uid,
         name: auth.info.name,
         email: auth.info.email,
-        password: Devise.friendly_token[6, 16]
+        password: Devise.friendly_token[6, 16],
+        remote_image_url: auth.info.image.gsub(/http|_normal|picture/, 'http' => 'https', '_normal' => '', 'picture' => 'picture?type=large')
       )
-      user.image = auth.info.image.gsub('_normal', '') if user.provider == 'twitter'
-      user.image = auth.info.image.gsub('picture', 'picture?type=large') if user.provider == 'facebook'
       user.save
     end
     user
