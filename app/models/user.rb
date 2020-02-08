@@ -7,7 +7,6 @@ class User < ApplicationRecord
          :omniauthable
   with_options if: proc { |a| a.uid.blank? } do
     validates :name, presence: true, length: { maximum: 32 }
-    validates :image, presence: true
   end
 
   mount_uploader :image, ImageUploader
