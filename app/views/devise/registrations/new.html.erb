@@ -36,17 +36,19 @@
     <div class="field">
       <%= f.label :password_confirmation, 'パスワードをもう一度入力してください', :class => "form-label" %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-input" %>
+
     </div>
 
-    <div class="field" id="preview_user_image">
-      <%# <%= f.file_field :image %>
+    <%= f.text_field :image, :class => "hidden" %>
+    <div id="preview_user_image">
       <%= javascript_pack_tag 'image_user-profile', 'data-turbolinks-track': 'reload',  defer: true %>
     </div>
 
-    <div class=" actions">
-      <%= f.submit "ユーザー登録", :class => "btn" %>
+    <div class="actions">
+      <%= f.submit "ユーザー登録", class: "btn" %>
     </div>
     <% end %>
+
     <div class="wrapper_notification">
       <%= link_to "既にアカウントをお持ちの方はこちら", new_session_path(resource_name) %>
       <%= link_to "ユーザー認証メールの再送", new_confirmation_path(resource_name) %>
