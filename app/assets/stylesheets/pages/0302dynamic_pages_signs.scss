@@ -116,6 +116,16 @@
           }
         }
 
+        .view-trimming {
+          display: inline-block;
+          width: 100%;
+          margin-top: 32px;
+        }
+
+        .cropper-drag-box {
+          border: 1px solid gray;
+        }
+
         .trimming,
         .downloader {
           margin-top: 8px;
