@@ -31,14 +31,16 @@
           :img-style="{ width: '200px', height: '200px' }"
           :aspect-ratio="yoko / tate"
         ></vue-cropper>
-        <div class="trimming" @click="cropImage" v-if="imgSrc != ''">画像を切り抜く</div>
-        <div class="trimming" @click="removeImage" v-if="imgSrc != ''">画像選択を解除する</div>
-        <a
-          class="downloader"
-          v-if="cropImg != '/assets/icon_plus.svg'"
-          :href="cropImg"
-          :download="filename"
-        >切り抜いた画像を保存する（任意）</a>
+        <div class="cropper_actions">
+          <div class="trimming" @click="cropImage" v-if="imgSrc != ''">画像を切り抜く</div>
+          <div class="trimming" @click="removeImage" v-if="imgSrc != ''">画像選択を解除する</div>
+          <a
+            class="downloader"
+            v-if="cropImg != '/assets/icon_plus.svg'"
+            :href="cropImg"
+            :download="filename"
+          >切り抜いた画像を保存する（任意）</a>
+        </div>
         <input class="hidden" id="user_image" name="user[image]" type="text" :value="userBase64" />
       </div>
     </div>
@@ -114,27 +116,3 @@ $(document).ready(function() {
   $('#user_image').val(null);
 });
 </script>
-
-<style scoped>
-.view-trimming {
-  display: inline-block;
-  width: 100%;
-  margin-top: 32px;
-}
-
-.cropper-drag-box {
-  border: 1px solid gray;
-}
-
-.trimming,
-.downloader {
-  margin-top: 8px;
-  font-size: 1.6rem;
-  cursor: pointer;
-}
-
-.trimming:hover,
-.downloader:hover {
-  opacity: 0.8;
-}
-</style>

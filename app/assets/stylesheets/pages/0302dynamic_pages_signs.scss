@@ -86,29 +86,55 @@
         .hidden {
           display: none;
         }
+      }
 
-        .fileup-btn {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          width: 80px;
-          height: 80px;
-          margin-top: 16px;
-          color: #fff;
-          text-align: center;
-          background-color: #9599b3;
-          background-image: url(icon_plus.svg);
-          background-size: cover;
-          -webkit-border-radius: 50%;
-          -moz-border-radius: 50%;
-          -ms-border-radius: 50%;
-          -o-border-radius: 50%;
-          border-radius: 50%;
-          box-shadow: 0 3px 6px #00000029;
+      #preview_user_image {
+        .field {
+          .fileup-btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            margin-top: 16px;
+            color: #fff;
+            text-align: center;
+            background-color: #9599b3;
+            background-image: url(icon_plus.svg);
+            background-size: cover;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            border-radius: 50%;
+            box-shadow: 0 3px 6px #00000029;
+            cursor: pointer;
+          }
+
+          .fileup-btn:hover {
+            opacity: 0.8;
+          }
+        }
+
+        .view-trimming {
+          display: inline-block;
+          width: 100%;
+          margin-top: 32px;
+        }
+
+        .cropper-drag-box {
+          border: 1px solid gray;
+        }
+
+        .trimming,
+        .downloader {
+          margin-top: 8px;
+          font-size: 1.6rem;
           cursor: pointer;
         }
 
-        .fileup-btn:hover {
+        .trimming:hover,
+        .downloader:hover {
           opacity: 0.8;
         }
       }
@@ -136,6 +162,112 @@
 
       a + a {
         margin-top: 12px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 559px) {
+  .container.dynamic_pages {
+    .container_signs {
+      width: 100%;
+      margin-top: 32px;
+
+      h1 {
+        margin-bottom: 40px;
+      }
+
+      .container_sns {
+        width: 293px;
+        max-width: 100%;
+        margin: 0 auto 40px;
+      }
+
+      .separator_wrapper {
+        margin-bottom: 40px;
+
+        .separator {
+          font-size: 1.6rem;
+        }
+
+        .separator::before {
+          left: 0;
+          width: 120px;
+          margin-top: 12px;
+        }
+
+        .separator::after {
+          right: 0;
+          width: 120px;
+          margin-top: -12px;
+        }
+      }
+
+      .new_user {
+        margin-bottom: 24px;
+        padding: 0;
+
+        #preview_user_image {
+          margin-top: 48px;
+
+          .field {
+            text-align: center;
+
+            .fileup-btn {
+              margin: 16px auto 0;
+            }
+
+            .cropper_actions {
+              width: 260px;
+              margin: 8px auto 0;
+              text-align: left;
+
+              .trimming,
+              .downloader {
+                font-size: 1.4rem;
+              }
+            }
+          }
+        }
+
+        .actions {
+          .btn {
+            padding: 0 50px;
+            font-size: 1.4rem;
+            line-height: 3.29;
+          }
+        }
+      }
+
+      .wrapper_notification {
+        width: fit-content;
+        margin: 0 auto;
+        padding: 0;
+        white-space: nowrap;
+
+        a {
+          font-size: 1.4rem;
+        }
+
+        a + a {
+          margin-top: 12px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .container.dynamic_pages {
+    .container_signs {
+      .separator_wrapper {
+        .separator::before {
+          width: 100px;
+        }
+
+        .separator::after {
+          width: 100px;
+        }
       }
     }
   }
