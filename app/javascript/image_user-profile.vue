@@ -116,15 +116,3 @@ $(document).ready(function() {
   $('#user_image').val(null);
 });
 </script>
-
-<style scoped>
-.view-trimming {
-  display: inline-block;
-  width: 100%;
-  margin-top: 32px;
-}
-
-.cropper-drag-box {
-  border: 1px solid gray;
-}
-</style>
