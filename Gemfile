@@ -30,7 +30,8 @@ group :development, :test do
     mingw
     x64_mingw
   ]
-  gem 'spring-commands-rspec'
+  gem 'factory_bot_rails', '~> 5.1.1'
+  gem 'spring-commands-rspec', '~> 1.0.4'
   gem 'sqlite3', '~> 1.4'
 end
 
@@ -38,25 +39,24 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop', require: false
   gem 'rubocop-rails'
-  gem 'spring'
+  gem 'spring', '~> 2.1.0'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
 end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'database_cleaner'
-  gem 'factory_bot_rails'
-  gem 'faker'
-  gem 'guard'
-  gem 'guard-minitest'
-  gem 'guard-rspec', require: false
-  gem 'launchy'
-  gem 'minitest-reporters'
-  gem 'rails-controller-testing'
+  gem 'database_cleaner', '~> 1.7.0'
+  gem 'faker', '~> 2.8.1'
+  gem 'guard', '~> 2.13.0'
+  gem 'guard-minitest', '~> 2.4.4'
+  gem 'guard-rspec', '~> 4.7.3', require: false
+  gem 'launchy', '~> 2.4.3'
+  gem 'minitest-reporters', '~> 1.1.14'
+  gem 'rails-controller-testing', '~> 1.0.4'
   gem 'rspec-rails', '~> 3.9.0'
-  gem 'selenium-webdriver'
-  gem 'webdrivers'
+  gem 'selenium-webdriver', '~> 3.142.6'
+  gem 'webdrivers', '~> 4.1.3'
 end
 
 group :production do
