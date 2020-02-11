@@ -10,10 +10,10 @@
         <%= link_to '投稿一覧', '#', class: '', method: :get %>
       </li>
       <li>
-        <%= link_to 'ユーザー登録', new_user_registration_path , class: '', method: :get %>
+        <%= link_to 'ユーザー登録', new_user_registration_path, class: '', method: :get %>
       </li>
       <li>
-        <%= link_to 'ログイン', '#', class: '', method: :get %>
+        <%= link_to 'ログイン', new_user_session_path, class: '', method: :get %>
       </li>
     </ul>
     <div id="nav-drawer" class="nav-drawer">
@@ -24,7 +24,7 @@
         <label class="btn_nav-close" id="btn_nav-close" for="nav-input"><%= image_tag 'btn_nav-close', alt: 'メニューを閉じるボタン' %></label>
         <ul>
           <li>
-            <%= link_to '#', class: '', method: :get do%>
+            <%= link_to '#', class: '', method: :get do %>
             <%= image_tag 'icon_post-index_nav-drawer.svg', alt: '投稿一覧のアイコン' %>
             投稿一覧
             <% end %>
@@ -36,7 +36,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to '#', class: '', method: :get do %>
+            <%= link_to new_user_session_path, class: '', method: :get do %>
             <%= image_tag 'icon_login_nav-drawer.svg', alt: 'ログインのアイコン' %>
             ログイン
             <% end %>
