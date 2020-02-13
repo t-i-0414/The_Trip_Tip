@@ -51,6 +51,9 @@ RSpec.describe 'Model User', type: :model do
     user2 = FactoryBot.build(:user, email: "#{user1.email}")
     user2.valid?
     expect(user2.errors[:email]).to include("は既に使用されています。")
+    user3 = FactoryBot.build(:user, email: "#{user1.email.upcase}")
+    user3.valid?
+    expect(user3.errors[:email]).to include("は既に使用されています。")
   end
 
   it "Invalid with no email with no password" do
