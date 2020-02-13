@@ -2,10 +2,14 @@
 
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
+
+  before_save { self.email = email.downcase }
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :trackable, :confirmable, :lockable, :timeoutable,
          :omniauthable
+
   with_options if: proc { |a| a.uid.blank? } do
     validates :name, presence: true, length: { maximum: 32 }
     validates :email, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
