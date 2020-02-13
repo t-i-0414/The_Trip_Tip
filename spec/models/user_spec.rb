@@ -28,6 +28,22 @@ RSpec.describe 'Model User', type: :model do
     user = FactoryBot.build(:user, email: "notEmail")
     user.valid?
     expect(user.errors[:email]).to include("は有効でありません。")
+
+    user = FactoryBot.build(:user, email: "not@email")
+    user.valid?
+    expect(user.errors[:email]).to include("は有効でありません。")
+
+    user = FactoryBot.build(:user, email: "not@email..com")
+    user.valid?
+    expect(user.errors[:email]).to include("は有効でありません。")
+
+    user = FactoryBot.build(:user, email: "not@email.com.")
+    user.valid?
+    expect(user.errors[:email]).to include("は有効でありません。")
+
+    user = FactoryBot.build(:user, email: "not★@email.com")
+    user.valid?
+    expect(user.errors[:email]).to include("は有効でありません。")
   end
 
   it "Invalid with duplicated email" do
