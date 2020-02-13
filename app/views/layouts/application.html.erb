@@ -12,8 +12,10 @@
 <body>
   <%= render template: "layouts/loading" %>
   <%= render template: "layouts/header" %>
+  <%= render template: "layouts/notifications" %>
   <%= render template: "layouts/background" %>
   <%= yield %>
   <%= render template: "layouts/footer" %>
+  <%#= debug(params) if Rails.env.development? %>
 </body>
 </html>
