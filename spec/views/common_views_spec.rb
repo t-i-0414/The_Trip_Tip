@@ -1,4 +1,4 @@
-RSpec.describe 'Common Views', type: :request do
+RSpec.describe 'View Common Views', type: :request do
   describe 'Should render right templates' do
     it 'Layouts' do
       get root_path
