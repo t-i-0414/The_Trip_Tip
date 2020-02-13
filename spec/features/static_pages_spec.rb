@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.feature 'Static Pages', type: :feature do
+RSpec.feature 'Feature Static Pages', type: :feature do
   feature 'Should render right templates' do
     scenario 'Home' do
       visit root_path
