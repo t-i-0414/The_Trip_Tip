@@ -54,4 +54,9 @@ RSpec.describe 'Model User', type: :model do
     user.valid?
     expect(user.errors[:password]).to include("は16文字以下に設定して下さい。")
   end
+
+  it "Confirmation encrypted password" do
+    user = FactoryBot.create(:user)
+    expect(user.encrypted_password).to_not eq "password"
+  end
 end
