@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+  resources :user, only: [:show]
+
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
   get '/terms_of_use', to: 'static_pages#terms_of_use'
