@@ -490,6 +490,23 @@ body {
   background-color: #d47fa6;
 }
 
+.title_link {
+  font-size: 1.4rem;
+}
+
+.detail_link {
+  font-size: 1.4rem;
+}
+
+.links_user {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.wrapper_link + .wrapper_link {
+  margin-top: 20px;
+}
+
 @media screen and (max-width: 959px) {
   body {
     min-width: 100vw;

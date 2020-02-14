@@ -1,0 +1,78 @@
+.container.dynamic_pages {
+  .container_flex {
+    display: flex;
+    margin-top: 48px;
+
+    .side {
+      width: 203px;
+
+      .info_user {
+        width: 100%;
+        margin-bottom: 24px;
+        padding: 24px 10px;
+        background-color: #fff;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        border-radius: 10px;
+
+        .title_info {
+          margin: 0 auto 16px;
+        }
+
+        .image_user {
+          display: block;
+          width: 80px;
+          height: 80px;
+          margin: 0 auto 16px;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          -ms-border-radius: 50%;
+          -o-border-radius: 50%;
+          border-radius: 50%;
+          box-shadow: 0 3px 6px #00000029;
+        }
+
+        .name_user {
+          width: 100%;
+          margin-bottom: 32px;
+        }
+      }
+
+      .btn.post {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 102px;
+        font-size: 1.8rem;
+        background-color: #f26977;
+        cursor: pointer;
+
+        .wrapper {
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+
+          span {
+            display: block;
+            width: 106px;
+            margin-left: 4px;
+            line-height: 1.4;
+            text-align: left;
+          }
+        }
+      }
+
+      // .btn.post::before {
+      //   position: absolute;
+      //   top: 0;
+      //   display: block;
+      //   width: 24px;
+      //   height: 24px;
+      //   background-image: image-url('icon_post.svg');
+      //   content: '';
+      // }
+    }
+  }
+}
