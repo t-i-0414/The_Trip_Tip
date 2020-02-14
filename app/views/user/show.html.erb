@@ -1,6 +1,47 @@
 <% provide(:title, "#{@user.name}") %>
 <div class="container dynamic_pages">
-  <h1>User#show</h1>
-  <p>名前 : <%= @user.name %></p>
-  <p>メールアドレス : <%= @user.email %></p>
+  <div class="container_flex">
+    <aside class="side">
+      <div class="info_user">
+        <span class="title_info">
+          ログインユーザー
+        </span>
+        <%= image_tag @user.image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
+        <span class="name_user">
+          <%= @user.name %>
+        </span>
+        <dl class="links_user">
+          <div class="wrapper_link">
+            <dt class="title_link">フォロー </dt>
+            <dd class="detail_link">
+              <%= link_to '- 500 users', '#', method: :get %>
+            </dd>
+
+          </div>
+          <div class="wrapper_link">
+            <dt class="title_link">フォロワー</dt>
+            <dd class="detail_link">
+              <%= link_to '- 5,000 users', '#', method: :get %>
+            </dd>
+          </div>
+          <div class="wrapper_link">
+            <dt class="title_link">
+              <%= link_to '旅行記', '#', method: :get %>
+            </dt>
+          </div>
+        </dl>
+      </div>
+      <div class="btn post" id="btnPost">
+        <div class="wrapper">
+          <%= image_tag 'icon_post.svg', alt: 'ノートと鉛筆のアイコン' %>
+          <span>つぶやきを投稿する</span>
+        </div>
+      </div>
+    </aside>
+    <div class="container_posts">
+      <div class="post">
+        test
+      </div>
+    </div>
+  </div>
 </div>

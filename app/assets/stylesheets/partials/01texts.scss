@@ -18,6 +18,24 @@ h1 {
   text-indent: 1em;
 }
 
+.title_info {
+  display: block;
+  width: fit-content;
+  font-weight: bold;
+  font-size: 1.6rem;
+  letter-spacing: 0.1em;
+}
+
+.name_user {
+  display: block;
+  overflow: hidden;
+  font-weight: bold;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 @media screen and (max-width: 559px) {
   body {
     font-size: 1.4rem;
