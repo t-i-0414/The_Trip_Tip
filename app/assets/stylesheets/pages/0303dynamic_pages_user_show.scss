@@ -1,78 +1,67 @@
 .container.dynamic_pages {
-  .container_flex {
-    display: flex;
-    margin-top: 48px;
+  .side {
+    position: fixed;
+    top: 128px;
+    width: 203px;
 
-    .side {
-      width: 203px;
+    .info_user {
+      width: 100%;
+      margin-bottom: 24px;
+      padding: 24px 10px;
+      background-color: #fff;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+      border-radius: 10px;
+      box-shadow: 0 3px 6px #00000029;
 
-      .info_user {
-        width: 100%;
-        margin-bottom: 24px;
-        padding: 24px 10px;
-        background-color: #fff;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        -ms-border-radius: 10px;
-        -o-border-radius: 10px;
-        border-radius: 10px;
-
-        .title_info {
-          margin: 0 auto 16px;
-        }
-
-        .image_user {
-          display: block;
-          width: 80px;
-          height: 80px;
-          margin: 0 auto 16px;
-          -webkit-border-radius: 50%;
-          -moz-border-radius: 50%;
-          -ms-border-radius: 50%;
-          -o-border-radius: 50%;
-          border-radius: 50%;
-          box-shadow: 0 3px 6px #00000029;
-        }
-
-        .name_user {
-          width: 100%;
-          margin-bottom: 32px;
-        }
+      .title_info {
+        margin: 0 auto 16px;
       }
 
-      .btn.post {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 102px;
-        font-size: 1.8rem;
-        background-color: #f26977;
-        cursor: pointer;
+      .image_user {
+        margin: 0 auto 16px;
+      }
 
-        .wrapper {
-          display: flex;
-          align-items: flex-start;
-          justify-content: center;
+      .name_user {
+        width: 100%;
+        margin-bottom: 32px;
+      }
 
-          span {
-            display: block;
-            width: 106px;
-            margin-left: 4px;
-            line-height: 1.4;
-            text-align: left;
+      .links_user {
+        width: fit-content;
+        margin: 0 auto;
+
+        .wrapper_link {
+          .detail_link {
+            .follow {
+              // display: block;
+              width: fit-content;
+              margin: 0 4px;
+            }
           }
         }
-      }
 
-      // .btn.post::before {
-      //   position: absolute;
-      //   top: 0;
-      //   display: block;
-      //   width: 24px;
-      //   height: 24px;
-      //   background-image: image-url('icon_post.svg');
-      //   content: '';
-      // }
+        .wrapper_link + .wrapper_link {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+
+  .container_flex {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 48px;
+    margin-bottom: 48px;
+
+    .container_posts {
+      width: 538px;
+
+      .card_post + .card_post {
+        margin-top: 24px;
+      }
     }
   }
 }
