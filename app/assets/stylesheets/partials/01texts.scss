@@ -18,6 +18,12 @@ h1 {
   text-indent: 1em;
 }
 
+.paragraph {
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 3px 6px #00000029;
+}
+
 .title_info {
   display: block;
   width: fit-content;
@@ -34,6 +40,14 @@ h1 {
   letter-spacing: 0.1em;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.title_link {
+  font-size: 1.4rem;
+}
+
+.detail_link {
+  font-size: 1.4rem;
 }
 
 @media screen and (max-width: 559px) {
