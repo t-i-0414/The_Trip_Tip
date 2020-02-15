@@ -2,3 +2,14 @@
   min-height: 100vh;
   padding-top: 80px;
 }
+
+.image_user {
+  display: block;
+  width: 80px;
+  height: 80px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}

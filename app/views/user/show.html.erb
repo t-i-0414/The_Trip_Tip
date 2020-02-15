@@ -1,46 +1,280 @@
 <% provide(:title, "#{@user.name}") %>
 <div class="container dynamic_pages">
-  <div class="container_flex">
-    <aside class="side">
-      <div class="info_user">
-        <span class="title_info">
-          ログインユーザー
-        </span>
-        <%= image_tag @user.image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
-        <span class="name_user">
-          <%= @user.name %>
-        </span>
-        <dl class="links_user">
-          <div class="wrapper_link">
-            <dt class="title_link">フォロー </dt>
-            <dd class="detail_link">
-              <%= link_to '- 500 users', '#', method: :get %>
-            </dd>
+  <aside class="side">
+    <div class="info_user">
+      <span class="title_info">
+        ログインユーザー
+      </span>
+      <%= image_tag @user.image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
+      <span class="name_user">
+        <%= @user.name %>
+      </span>
+      <dl class="links_user">
+        <div class="wrapper_link">
+          <dt class="title_link">フォロー </dt>
+          <dd class="detail_link">
+            <%= link_to '#', method: :get do %>
+            -<span class="follow">500</span>users
+            <% end %>
+          </dd>
 
-          </div>
-          <div class="wrapper_link">
-            <dt class="title_link">フォロワー</dt>
-            <dd class="detail_link">
-              <%= link_to '- 5,000 users', '#', method: :get %>
-            </dd>
-          </div>
-          <div class="wrapper_link">
-            <dt class="title_link">
-              <%= link_to '旅行記', '#', method: :get %>
-            </dt>
-          </div>
-        </dl>
+        </div>
+        <div class="wrapper_link">
+          <dt class="title_link">フォロワー</dt>
+          <dd class="detail_link">
+            <%= link_to '#', method: :get do %>
+            -<span class="follow">5,000</span>users
+            <% end %>
+          </dd>
+        </div>
+        <div class="wrapper_link">
+          <dt class="title_link">
+            <%= link_to '旅行記', '#', method: :get %>
+          </dt>
+        </div>
+      </dl>
+    </div>
+    <div class="btn post" id="btnPost">
+      <div class="wrapper">
+        <%= image_tag 'icon_post.svg', alt: 'ノートと鉛筆のアイコン' %>
+        <span>つぶやきを投稿する</span>
       </div>
-      <div class="btn post" id="btnPost">
-        <div class="wrapper">
-          <%= image_tag 'icon_post.svg', alt: 'ノートと鉛筆のアイコン' %>
-          <span>つぶやきを投稿する</span>
+    </div>
+  </aside>
+  <div class="container_flex">
+
+    <div class="container_posts">
+      <div class="card_post">
+        <div class="wrapper_name">
+          <%= link_to '#', method: :get do %>
+          <%= image_tag @user.image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
+          <% end %>
+          <span class="name_user">
+            <%= link_to '#', method: :get do %>
+            <%= @user.name %>
+            <% end %>
+          </span>
+        </div>
+        <p class="text_post">
+          <%= link_to '#', method: :get do %>
+          ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投
+          <% end %>
+        </p>
+        <div class="wrapper_actions">
+          <span class="action">
+            <%= image_tag 'icon_clock.svg', alt: '時計のアイコン' %>
+            <p>1時間前</p>
+          </span>
+          <span class="action">
+            <%= link_to '#', method: :get do %>
+            <%= image_tag 'icon_heart.svg', alt: 'いいねのアイコン' %>
+            <% end %>
+            <p><span class="likes">500</span>いいね！</p>
+          </span>
         </div>
       </div>
-    </aside>
-    <div class="container_posts">
-      <div class="post">
-        test
+      <div class="card_post">
+        <div class="wrapper_name">
+          <%= link_to '#', method: :get do %>
+          <%= image_tag @user.image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
+          <% end %>
+          <span class="name_user">
+            <%= link_to '#', method: :get do %>
+            <%= @user.name %>
+            <% end %>
+          </span>
+        </div>
+        <p class="text_post">
+          <%= link_to '#', method: :get do %>
+          ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投
+          <% end %>
+        </p>
+        <div class="wrapper_actions">
+          <span class="action">
+            <%= image_tag 'icon_clock.svg', alt: '時計のアイコン' %>
+            <p>1時間前</p>
+          </span>
+          <span class="action">
+            <%= link_to '#', method: :get do %>
+            <%= image_tag 'icon_heart.svg', alt: 'いいねのアイコン' %>
+            <% end %>
+            <p><span class="likes">500</span>いいね！</p>
+          </span>
+        </div>
+      </div>
+      <div class="card_post">
+        <div class="wrapper_name">
+          <%= link_to '#', method: :get do %>
+          <%= image_tag @user.image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
+          <% end %>
+          <span class="name_user">
+            <%= link_to '#', method: :get do %>
+            <%= @user.name %>
+            <% end %>
+          </span>
+        </div>
+        <p class="text_post">
+          <%= link_to '#', method: :get do %>
+          ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投
+          <% end %>
+        </p>
+        <div class="wrapper_actions">
+          <span class="action">
+            <%= image_tag 'icon_clock.svg', alt: '時計のアイコン' %>
+            <p>1時間前</p>
+          </span>
+          <span class="action">
+            <%= link_to '#', method: :get do %>
+            <%= image_tag 'icon_heart.svg', alt: 'いいねのアイコン' %>
+            <% end %>
+            <p><span class="likes">500</span>いいね！</p>
+          </span>
+        </div>
+      </div>
+      <div class="card_post">
+        <div class="wrapper_name">
+          <%= link_to '#', method: :get do %>
+          <%= image_tag @user.image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
+          <% end %>
+          <span class="name_user">
+            <%= link_to '#', method: :get do %>
+            <%= @user.name %>
+            <% end %>
+          </span>
+        </div>
+        <p class="text_post">
+          <%= link_to '#', method: :get do %>
+          ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投
+          <% end %>
+        </p>
+        <div class="wrapper_actions">
+          <span class="action">
+            <%= image_tag 'icon_clock.svg', alt: '時計のアイコン' %>
+            <p>1時間前</p>
+          </span>
+          <span class="action">
+            <%= link_to '#', method: :get do %>
+            <%= image_tag 'icon_heart.svg', alt: 'いいねのアイコン' %>
+            <% end %>
+            <p><span class="likes">500</span>いいね！</p>
+          </span>
+        </div>
+      </div>
+      <div class="card_post">
+        <div class="wrapper_name">
+          <%= link_to '#', method: :get do %>
+          <%= image_tag @user.image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
+          <% end %>
+          <span class="name_user">
+            <%= link_to '#', method: :get do %>
+            <%= @user.name %>
+            <% end %>
+          </span>
+        </div>
+        <p class="text_post">
+          <%= link_to '#', method: :get do %>
+          ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投
+          <% end %>
+        </p>
+        <div class="wrapper_actions">
+          <span class="action">
+            <%= image_tag 'icon_clock.svg', alt: '時計のアイコン' %>
+            <p>1時間前</p>
+          </span>
+          <span class="action">
+            <%= link_to '#', method: :get do %>
+            <%= image_tag 'icon_heart.svg', alt: 'いいねのアイコン' %>
+            <% end %>
+            <p><span class="likes">500</span>いいね！</p>
+          </span>
+        </div>
+      </div>
+      <div class="card_post">
+        <div class="wrapper_name">
+          <%= link_to '#', method: :get do %>
+          <%= image_tag @user.image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
+          <% end %>
+          <span class="name_user">
+            <%= link_to '#', method: :get do %>
+            <%= @user.name %>
+            <% end %>
+          </span>
+        </div>
+        <p class="text_post">
+          <%= link_to '#', method: :get do %>
+          ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投
+          <% end %>
+        </p>
+        <div class="wrapper_actions">
+          <span class="action">
+            <%= image_tag 'icon_clock.svg', alt: '時計のアイコン' %>
+            <p>1時間前</p>
+          </span>
+          <span class="action">
+            <%= link_to '#', method: :get do %>
+            <%= image_tag 'icon_heart.svg', alt: 'いいねのアイコン' %>
+            <% end %>
+            <p><span class="likes">500</span>いいね！</p>
+          </span>
+        </div>
+      </div>
+      <div class="card_post">
+        <div class="wrapper_name">
+          <%= link_to '#', method: :get do %>
+          <%= image_tag @user.image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
+          <% end %>
+          <span class="name_user">
+            <%= link_to '#', method: :get do %>
+            <%= @user.name %>
+            <% end %>
+          </span>
+        </div>
+        <p class="text_post">
+          <%= link_to '#', method: :get do %>
+          ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投
+          <% end %>
+        </p>
+        <div class="wrapper_actions">
+          <span class="action">
+            <%= image_tag 'icon_clock.svg', alt: '時計のアイコン' %>
+            <p>1時間前</p>
+          </span>
+          <span class="action">
+            <%= link_to '#', method: :get do %>
+            <%= image_tag 'icon_heart.svg', alt: 'いいねのアイコン' %>
+            <% end %>
+            <p><span class="likes">500</span>いいね！</p>
+          </span>
+        </div>
+      </div>
+      <div class="card_post">
+        <div class="wrapper_name">
+          <%= link_to '#', method: :get do %>
+          <%= image_tag @user.image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
+          <% end %>
+          <span class="name_user">
+            <%= link_to '#', method: :get do %>
+            <%= @user.name %>
+            <% end %>
+          </span>
+        </div>
+        <p class="text_post">
+          <%= link_to '#', method: :get do %>
+          ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投
+          <% end %>
+        </p>
+        <div class="wrapper_actions">
+          <span class="action">
+            <%= image_tag 'icon_clock.svg', alt: '時計のアイコン' %>
+            <p>1時間前</p>
+          </span>
+          <span class="action">
+            <%= link_to '#', method: :get do %>
+            <%= image_tag 'icon_heart.svg', alt: 'いいねのアイコン' %>
+            <% end %>
+            <p><span class="likes">500</span>いいね！</p>
+          </span>
+        </div>
       </div>
     </div>
   </div>
