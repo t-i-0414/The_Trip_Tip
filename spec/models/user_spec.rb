@@ -23,7 +23,7 @@ RSpec.describe 'Model User', type: :model do
   end
 
   describe 'Invalidated User(email)' do
-    it "Invalid no email" do
+    it "No email" do
       user = FactoryBot.build(:user, email: nil)
       user.valid?
       expect(user.errors[:email]).to include("が入力されていません。")
