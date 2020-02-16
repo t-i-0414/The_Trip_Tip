@@ -61,3 +61,42 @@
     }
   }
 }
+
+@media screen and (max-width: 959px) {
+  .container.dynamic_pages {
+    .post_drawer {
+      .post-content {
+        .card_post {
+          position: relative;
+
+          .post-close {
+            position: absolute;
+            top: 4px;
+            right: 10px;
+            display: block;
+            width: fit-content;
+            height: fit-content;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 559px) {
+  .card_post {
+    .wrapper_name {
+      .name_user {
+        font-size: 1.4rem;
+      }
+    }
+
+    .text_post {
+      font-size: 1.4rem;
+    }
+
+    .wrapper_actions {
+      font-size: 1.2rem;
+    }
+  }
+}

@@ -12,4 +12,12 @@
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   border-radius: 50%;
+  box-shadow: 0 3px 6px #00000029;
+}
+
+@media screen and (max-width: 559px) {
+  .image_user {
+    width: 64px;
+    height: 64px;
+  }
 }
