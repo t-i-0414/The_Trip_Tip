@@ -1,5 +1,10 @@
 <header>
   <nav class="container">
+    <% if user_signed_in? %>
+    <label id="userDetailOpen" for="userDetailInput" class="user_detail_open">
+      <%= image_tag @user.image.url, alt: 'ユーザーのプロフィールアイコン', class: 'image_user' %>
+    </label>
+    <% end %>
     <%= link_to image_tag('logo_header.svg', alt: 'The Trip Tipのロゴ'),
                 root_path,
                 class: 'logo_header',
@@ -21,7 +26,9 @@
       <label id="nav-open" for="nav-input" class="nav-open"><span></span></label>
       <label class="nav-close" id="nav-close" for="nav-input"></label>
       <div id="nav-content" class="nav-content">
-        <label class="btn_nav-close" id="btn_nav-close" for="nav-input"><%= image_tag 'btn_nav-close', alt: 'メニューを閉じるボタン' %></label>
+        <label class="btn_nav-close" id="btn_nav-close" for="nav-input">
+          <%= image_tag 'btn_nav-close', alt: 'メニューを閉じるボタン' %>
+        </label>
         <ul>
           <li>
             <%= link_to '#', class: '', method: :get do %>

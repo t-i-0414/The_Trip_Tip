@@ -7,6 +7,10 @@ header {
   box-shadow: 0 3px 6px #00000029;
 
   nav.container {
+    .user_detail_open {
+      display: none;
+    }
+
     a.logo_header {
       height: 40px;
     }
@@ -32,6 +36,17 @@ header {
     nav.container {
       justify-content: center;
       overflow: hidden;
+
+      .user_detail_open {
+        position: fixed;
+        left: 24px;
+        display: block;
+
+        .image_user {
+          width: 64px;
+          height: 64px;
+        }
+      }
 
       a.logo_header {
         width: 224px;
@@ -181,6 +196,10 @@ header {
     border-radius: 0;
 
     nav.container {
+      .user_detail_open {
+        left: 10px;
+      }
+
       a.logo_header {
         width: 55vw;
         height: auto;
@@ -249,6 +268,19 @@ header {
           right: 20px;
           width: 16px;
           height: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 379px) {
+  header {
+    nav.container {
+      .user_detail_open {
+        .image_user {
+          width: 48px;
+          height: 48px;
         }
       }
     }
