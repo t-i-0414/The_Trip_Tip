@@ -73,7 +73,21 @@
   }
 }
 
+@media screen and (max-width: 959px) {
+  .btn.post {
+    .wrapper {
+      span {
+        width: fit-content;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 559px) {
+  .btn.post {
+    height: 64px;
+  }
+
   .sns-link {
     font-size: 1.6rem;
     line-height: 2.5;
