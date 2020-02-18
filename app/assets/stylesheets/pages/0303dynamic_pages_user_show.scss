@@ -77,6 +77,15 @@
 
         .card_post {
           height: 340px;
+          
+          .wrapper_title-post{
+            display:flex;
+            align-items: center;
+            
+            span{
+              margin-left: 8px;
+            }
+          }
         }
       }
 
@@ -212,6 +221,14 @@
             margin-left: 12px;
           }
         }
+      }
+      
+      .post_drawer {
+       .post-content {
+         width: 100%;
+         padding: 0 10px;
+         
+       }
       }
     }
   }
