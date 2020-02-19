@@ -88,6 +88,17 @@
         }
       }
 
+      .field.flex {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        margin-top: 56px;
+
+        label {
+          margin-left: 6px;
+        }
+      }
+
       #preview_user_image {
         .field {
           .fileup-btn {
@@ -148,7 +159,6 @@
           padding: 0 35px;
           line-height: 2.3;
           letter-spacing: 0.2em;
-          background-color: #6f86d6;
         }
       }
     }
