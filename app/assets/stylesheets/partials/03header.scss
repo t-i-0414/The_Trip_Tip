@@ -29,12 +29,21 @@ header {
     margin: 8px auto 0;
 
     .alert {
+      color: #e03643;
+      background-color: rgba(247, 222, 221, 0.7);
+    }
+
+    .notice {
+      color: #fff;
+      background-color: rgba(14, 61, 250, 0.6);
+    }
+
+    .alert,
+    .notice {
       margin-top: 8px;
       padding: 8px 16px;
-      color: #e03643;
       line-height: 1.5;
       text-align: center;
-      background-color: rgba(247, 222, 221, 0.7);
       -webkit-border-radius: 0 10px;
       -moz-border-radius: 0 10px;
       -ms-border-radius: 0 10px;
