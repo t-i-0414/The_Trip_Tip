@@ -77,6 +77,15 @@
 
         .card_post {
           height: 340px;
+
+          .wrapper_title-post {
+            display: flex;
+            align-items: center;
+
+            span {
+              margin-left: 8px;
+            }
+          }
         }
       }
 
@@ -213,15 +222,13 @@
           }
         }
       }
+
+      .post_drawer {
+        .post-content {
+          width: 100%;
+          padding: 0 10px;
+        }
+      }
     }
   }
 }
-
-// height: 72vh;
-// top: 20%;
-// overflow: scroll;
-// -webkit-transform: translate(-50%, 0%);
-// -moz-transform: translate(-50%, 0%);
-// -ms-transform: translate(-50%, 0%);
-// -o-transform: translate(-50%, 0%);
-// transform: translate(-50%, 0%);

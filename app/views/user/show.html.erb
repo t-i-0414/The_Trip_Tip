@@ -44,7 +44,7 @@
       </div>
       <div id="postDrawer" class="post_drawer">
         <input id="postInput" type="checkbox" class="unshown">
-        <label id="postOpen" for="postInput" class="btn post">
+        <label id="postOpen" for="postInput" class="btn post red-vivid">
           <span class="wrapper">
             <%= image_tag 'icon_post.svg', alt: 'ノートと鉛筆のアイコン' %>
             <span>つぶやきを投稿する</span>
@@ -57,9 +57,10 @@
             <label for="postInput" class="post-close">
               <%= image_tag 'btn_nav-close', alt: 'メニューを閉じるボタン' %>
             </label>
-
-            <%= image_tag 'icon_post-dark.svg', alt: 'ノートと鉛筆のアイコン' %>
-            <span>つぶやきを投稿する</span>
+            <div class="wrapper_title-post">
+              <%= image_tag 'icon_post-dark.svg', alt: 'ノートと鉛筆のアイコン' %>
+              <span>つぶやきを投稿する</span>
+            </div>
           </div>
         </div>
       </div>
