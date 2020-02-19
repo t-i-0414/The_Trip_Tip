@@ -1,26 +1,43 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
+<% provide(:title, 'ユーザーログイン') %>
+<div class="container dynamic_pages">
+  <div class="container_signs">
+    <h1>ログイン</h1>
+    <div class="container_sns">
+      <%= link_to user_twitter_omniauth_authorize_path, class: 'sns-link btn twitter' do %>
+      <%= image_tag 'icon_twitter-brands.svg', alt: 'twitterのアイコン' %>
+      twitterでログイン
+      <% end %>
+      <%= link_to user_facebook_omniauth_authorize_path, class: 'sns-link btn facebook' do %>
+      <%= image_tag 'icon_facebook-brands.svg', alt: 'facebookのアイコン' %>
+      Facebookでログイン
+      <% end %>
+    </div>
+    <div class="separator_wrapper">
+      <span class="separator">または</span>
+    </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
     <div class="field">
+      <%= f.label :email, :class => "form-label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-input" %>
+    </div>
+    <div class="field">
+      <%= f.label :password, :class => "form-label" %>
+      <%= f.password_field :password, autocomplete: "current-password", placeholder: "半角英数字6文字以上16文字以内", :class => "form-input" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+    <div class="field flex">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
-  <% end %>
+    <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="actions">
+      <%= f.submit "ログイン", class: "btn red-vivid" %>
+    </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
