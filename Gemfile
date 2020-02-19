@@ -8,6 +8,7 @@ ruby '2.6.4'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'carrierwave', '~> 1.2.2'
 gem 'carrierwave-base64', '~> 2.8.0'
+gem 'carrierwave-i18n', '~> 0.2.0'
 gem 'carrierwave-mongoid', '~> 1.3.0'
 gem 'devise', '~> 4.7.1'
 gem 'devise-i18n', '~> 1.9.0'

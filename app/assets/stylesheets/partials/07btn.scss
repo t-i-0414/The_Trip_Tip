@@ -1,0 +1,86 @@
+.btn {
+  display: block;
+  height: 46px;
+  color: #fff;
+  font-size: 2rem;
+  line-height: 2.3;
+  text-align: center;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px #00000029;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.sns-link {
+  height: 40px;
+  line-height: 2;
+}
+
+.twitter {
+  letter-spacing: 0.23em;
+  background-color: #1ea1f3;
+
+  img {
+    height: 18px;
+    margin-bottom: -2px;
+  }
+}
+
+.facebook {
+  background-color: #385795;
+
+  img {
+    height: 20px;
+    margin-bottom: -2px;
+  }
+}
+
+.btn.post {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 102px;
+  font-size: 1.8rem;
+  cursor: pointer;
+
+  .wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    span {
+      display: block;
+      width: 106px;
+      margin-left: 4px;
+      line-height: 1.4;
+      text-align: left;
+    }
+  }
+}
+
+@media screen and (max-width: 959px) {
+  .btn.post {
+    .wrapper {
+      span {
+        width: fit-content;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 559px) {
+  .btn.post {
+    height: 64px;
+  }
+
+  .sns-link {
+    font-size: 1.6rem;
+    line-height: 2.5;
+  }
+}
