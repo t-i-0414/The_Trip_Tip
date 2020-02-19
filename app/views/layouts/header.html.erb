@@ -52,4 +52,9 @@
       </div>
     </div>
   </nav>
+  <% flash.each do |key, value| %>
+  <div class="wrappr_flash" id="wrapperFlash">
+    <%= content_tag(:div, value, class: "#{key}") %>
+  </div>
+  <% end %>
 </header>
