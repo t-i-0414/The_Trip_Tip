@@ -91,8 +91,8 @@
       .field.flex {
         display: flex;
         align-items: center;
-        justify-content: left;
-        margin-top: 56px;
+        justify-content: center;
+        margin-top: 64px;
 
         label {
           margin-left: 6px;
@@ -150,10 +150,24 @@
         }
       }
 
-      .actions {
+      .actions.registration {
         margin-top: 48px;
 
         .btn {
+          height: 46px;
+          margin: 0 auto;
+          padding: 0 35px;
+          line-height: 2.3;
+          letter-spacing: 0.2em;
+        }
+      }
+
+      .actions.login {
+        margin-top: 32px;
+
+        .btn {
+          width: 312px;
+          max-width: 100%;
           height: 46px;
           margin: 0 auto;
           padding: 0 35px;

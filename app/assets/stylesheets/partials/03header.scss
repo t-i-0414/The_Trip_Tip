@@ -23,6 +23,25 @@ header {
       display: none;
     }
   }
+
+  .wrappr_flash {
+    width: fit-content;
+    margin: 8px auto 0;
+
+    .alert {
+      margin-top: 8px;
+      padding: 8px 16px;
+      color: #e03643;
+      line-height: 1.5;
+      text-align: center;
+      background-color: rgba(247, 222, 221, 0.7);
+      -webkit-border-radius: 0 10px;
+      -moz-border-radius: 0 10px;
+      -ms-border-radius: 0 10px;
+      -o-border-radius: 0 10px;
+      border-radius: 0 10px;
+    }
+  }
 }
 
 @media screen and (max-width: 959px) {
@@ -269,6 +288,13 @@ header {
           width: 16px;
           height: 16px;
         }
+      }
+    }
+
+    .wrappr_flash {
+      .alert {
+        padding: 8px;
+        line-height: 1.2;
       }
     }
   }
