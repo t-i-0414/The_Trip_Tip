@@ -16,7 +16,15 @@ header {
     }
 
     ul {
-      width: 362px;
+      width: fit-content;
+      
+      .not_sign_in + .not_sign_in {
+        margin-left: 40px;
+      }
+      
+      .sign_in + .sign_in {
+        margin-left: 28px;
+      }
     }
 
     .nav-drawer {
