@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.feature 'Feature Static Pages', type: :feature do
+RSpec.feature 'Feature Users Registrations', type: :feature do
   # フラッシュメッセージのテスト
   # リダイレクト先のテスト
 end
