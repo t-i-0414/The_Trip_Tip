@@ -5,21 +5,45 @@
       <%= image_tag @user.image.url, alt: 'ユーザーのプロフィールアイコン', class: 'image_user' %>
     </label>
     <% end %>
+    <% if user_signed_in? %>
+    <%= link_to image_tag('logo_header.svg', alt: 'The Trip Tipのロゴ'),
+            user_path,
+            class: 'logo_header',
+            method: :get
+    %>
+    
+    <% else %>
     <%= link_to image_tag('logo_header.svg', alt: 'The Trip Tipのロゴ'),
                 root_path,
                 class: 'logo_header',
                 method: :get
     %>
+    <% end %>
     <ul>
-      <li>
-        <%= link_to '投稿一覧', '#', class: '', method: :get %>
-      </li>
-      <li>
-        <%= link_to 'ユーザー登録', new_user_registration_path, class: '', method: :get %>
-      </li>
-      <li>
-        <%= link_to 'ログイン', new_user_session_path, class: '', method: :get %>
-      </li>
+      <% if user_signed_in? %>
+        <li class='sign_in'>
+          <%= link_to '投稿一覧', '#', method: :get %>
+        </li>
+        <li class='sign_in'>
+          <%= link_to 'ユーザー一覧', '#', class: 'sign_in', method: :get %>
+        </li>
+        <li class='sign_in'>
+          <%= link_to '設定', '#', method: :get %>
+        </li>
+        <li class='sign_in'>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        </li>
+      <% else %>
+        <li class='not_sign_in'>
+          <%= link_to '投稿一覧', '#', method: :get %>
+        </li>
+        <li class='not_sign_in'>
+          <%= link_to 'ユーザー登録', new_user_registration_path, method: :get %>
+        </li>
+        <li class='not_sign_in'>
+          <%= link_to 'ログイン', new_user_session_path, method: :get %>
+        </li>
+      <% end %>
     </ul>
     <div id="nav-drawer" class="nav-drawer">
       <input id="nav-input" type="checkbox" class="unshown">
