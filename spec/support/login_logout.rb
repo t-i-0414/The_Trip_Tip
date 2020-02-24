@@ -10,7 +10,7 @@ module LoginMacros
   end
 
   def logout
-    click_link 'ログアウト'
+    click_link 'ログアウト', match: :first
     expect(page).to have_content 'ログアウトしました。'
   end
 
