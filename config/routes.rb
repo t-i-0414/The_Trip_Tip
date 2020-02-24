@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
   resources :user, only: [:show]
 
+  authenticated :user do
+    root to: 'user#root', as: :user_root
+  end
+
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
   get '/terms_of_use', to: 'static_pages#terms_of_use'

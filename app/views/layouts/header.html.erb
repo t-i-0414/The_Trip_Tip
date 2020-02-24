@@ -4,46 +4,77 @@
     <label id="userDetailOpen" for="userDetailInput" class="user_detail_open">
       <%= image_tag @user.image.url, alt: 'ユーザーのプロフィールアイコン', class: 'image_user' %>
     </label>
-    <% end %>
-    <% if user_signed_in? %>
     <%= link_to image_tag('logo_header.svg', alt: 'The Trip Tipのロゴ'),
             user_path,
             class: 'logo_header',
             method: :get
     %>
-    
+    <ul>
+      <li class='sign_in'>
+        <%= link_to '投稿一覧', '#', method: :get %>
+      </li>
+      <li class='sign_in'>
+        <%= link_to 'ユーザー一覧', '#', class: 'sign_in', method: :get %>
+      </li>
+      <li class='sign_in'>
+        <%= link_to '設定', '#', method: :get %>
+      </li>
+      <li class='sign_in'>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+      </li>
+    </ul>
+    <div id="nav-drawer" class="nav-drawer">
+      <input id="nav-input" type="checkbox" class="unshown">
+      <label id="nav-open" for="nav-input" class="nav-open"><span></span></label>
+      <label class="nav-close" id="nav-close" for="nav-input"></label>
+      <div id="nav-content" class="nav-content">
+        <label class="btn_nav-close" id="btn_nav-close" for="nav-input">
+          <%= image_tag 'btn_nav-close', alt: 'メニューを閉じるボタン' %>
+        </label>
+        <ul>
+          <li>
+            <%= link_to '#', class: '', method: :get do %>
+            <%= image_tag 'icon_post-index_nav-drawer.svg', alt: '投稿一覧のアイコン' %>
+            投稿一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to '#', class: '', method: :get do %>
+            <%= image_tag 'icon_user_nav-drawer.svg', alt: 'ユーザーのアイコン' %>
+            ユーザー一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to '#', class: '', method: :get do %>
+            <%= image_tag 'icon_setting_nav-drawer.svg', alt: '歯車のアイコン' %>
+            設定
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, class: '', method: :delete do %>
+            <%= image_tag 'icon-back_nav-drawer.svg', alt: '歯車のアイコン' %>
+            ログアウト
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
     <% else %>
     <%= link_to image_tag('logo_header.svg', alt: 'The Trip Tipのロゴ'),
                 root_path,
                 class: 'logo_header',
                 method: :get
     %>
-    <% end %>
     <ul>
-      <% if user_signed_in? %>
-        <li class='sign_in'>
-          <%= link_to '投稿一覧', '#', method: :get %>
-        </li>
-        <li class='sign_in'>
-          <%= link_to 'ユーザー一覧', '#', class: 'sign_in', method: :get %>
-        </li>
-        <li class='sign_in'>
-          <%= link_to '設定', '#', method: :get %>
-        </li>
-        <li class='sign_in'>
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-        </li>
-      <% else %>
-        <li class='not_sign_in'>
-          <%= link_to '投稿一覧', '#', method: :get %>
-        </li>
-        <li class='not_sign_in'>
-          <%= link_to 'ユーザー登録', new_user_registration_path, method: :get %>
-        </li>
-        <li class='not_sign_in'>
-          <%= link_to 'ログイン', new_user_session_path, method: :get %>
-        </li>
-      <% end %>
+      <li class='not_sign_in'>
+        <%= link_to '投稿一覧', '#', method: :get %>
+      </li>
+      <li class='not_sign_in'>
+        <%= link_to 'ユーザー登録', new_user_registration_path, method: :get %>
+      </li>
+      <li class='not_sign_in'>
+        <%= link_to 'ログイン', new_user_session_path, method: :get %>
+      </li>
     </ul>
     <div id="nav-drawer" class="nav-drawer">
       <input id="nav-input" type="checkbox" class="unshown">
@@ -75,6 +106,7 @@
         </ul>
       </div>
     </div>
+    <% end %>
   </nav>
   <% flash.each do |key, value| %>
   <div class="wrappr_flash" id="wrapperFlash">

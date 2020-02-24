@@ -2,15 +2,15 @@
 
 module LoginMacros
   def login(user)
-    visit sign_in_path
-    fill_in 'email', with: user.email
-    fill_in 'password', with: '12345678'
+    new_user_session_path
+    fill_in 'user[email]', with: user.email
+    fill_in 'user[password]', with: 'password'
     click_button 'ログイン'
     expect(page).to have_content 'ログインしました。'
   end
 
   def logout
-    click_link 'ログアウト'
+    click_link 'ログアウト', match: :first
     expect(page).to have_content 'ログアウトしました。'
   end
 
