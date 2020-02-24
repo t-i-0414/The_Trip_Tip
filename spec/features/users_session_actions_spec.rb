@@ -136,9 +136,18 @@ RSpec.feature 'Feature Users Session Actions', type: :feature do
     end
 
     scenario 'Do not post as other user' do
-
+      login(@user)
+      visit user_path id: 2
+      user_drawer = page.find('.user_drawer')
+      expect(user_drawer).to have_no_content 'つぶやきを投稿する'
+      expect(user_drawer).to have_content 'フォローする'
     end
   end
 
-  # ログアウトは正常にできるか（リダイレクト先、フラッシュも要確認）
+  feature 'Destroy session' do
+    scenario 'Successful logout' do
+      login(@user)
+      logout
+    end
+  end
 end
