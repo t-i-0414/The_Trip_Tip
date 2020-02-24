@@ -8,9 +8,15 @@
         <label for="userDetailInput" class="user_detail_close">
           <%= image_tag 'btn_nav-close', alt: 'メニューを閉じるボタン' %>
         </label>
+        <% if current_user?(@user) %>
         <span class="title_info">
           ログインユーザー
         </span>
+        <% else %>
+        <span class="title_info">
+          表示中のユーザー
+        </span>
+        <% end %>
         <%= image_tag @user.image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
         <span class="name_user">
           <%= @user.name %>
@@ -42,6 +48,7 @@
           <%# </div>  %>
         </dl>
       </div>
+      <% if current_user?(@user) %>
       <div id="postDrawer" class="post_drawer">
         <input id="postInput" type="checkbox" class="unshown">
         <label id="postOpen" for="postInput" class="btn post red-vivid">
@@ -64,6 +71,11 @@
           </div>
         </div>
       </div>
+      <% else %>
+      <div class="btn navy follow">
+        フォローする
+      </div>
+      <% end %>
     </div>
   </aside>
   <div class="container_flex">
