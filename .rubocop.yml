@@ -31,3 +31,12 @@ Layout/LineLength:
 Style/ClassAndModuleChildren:
   Description: 'This cop checks the style of children definitions at classes and modules.'
   EnforcedStyle: compact
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
