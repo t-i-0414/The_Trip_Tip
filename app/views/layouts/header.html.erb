@@ -17,7 +17,7 @@
         <%= link_to 'ユーザー一覧', '#', class: 'sign_in', method: :get %>
       </li>
       <li class='sign_in'>
-        <%= link_to '設定', '#', method: :get %>
+        <%= link_to '設定', edit_user_registration_path, method: :get %>
       </li>
       <li class='sign_in'>
         <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
@@ -45,7 +45,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to '#', class: '', method: :get do %>
+            <%= link_to edit_user_registration_path, class: '', method: :get do %>
             <%= image_tag 'icon_setting_nav-drawer.svg', alt: '歯車のアイコン' %>
             設定
             <% end %>
