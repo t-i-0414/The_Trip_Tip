@@ -60,7 +60,7 @@ RSpec.feature 'Feature Static Pages', type: :feature do
       # 以下はまだ未実装
       # 投稿一覧のリンク
       # ユーザー一覧のリンク
-      # 設定のリンク
+      expect(page.find('header')).to have_link '設定', href: edit_user_registration_path, count: 2
       expect(page.find('header')).to have_link 'ログアウト', href: destroy_user_session_path, count: 2
 
       expect(page.find('input.unshown#nav-input')[:type]).to eq 'checkbox'

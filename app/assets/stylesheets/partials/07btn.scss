@@ -65,6 +65,19 @@
   }
 }
 
+.edit_user {
+  .btn.navy {
+    width: 180px;
+  }
+}
+
+.btn.delete-account {
+  display: flex;
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
 @media screen and (max-width: 959px) {
   .btn.post {
     .wrapper {
@@ -83,5 +96,15 @@
   .sns-link {
     font-size: 1.6rem;
     line-height: 2.5;
+  }
+
+  .btn.delete-account {
+    width: 180px;
+    margin-top: 32px;
+  }
+
+  .btn.delete-account * {
+    margin: auto;
+    font-size: 1.4rem;
   }
 }
