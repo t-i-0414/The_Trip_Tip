@@ -48,8 +48,7 @@ RSpec.feature 'Feature Static Pages', type: :feature do
     end
 
     scenario 'Header(after login)' do
-      users = FactoryBot.build_list(:user, 10, created_at: Time.current, updated_at: Time.current, confirmed_at: Time.current)
-      User.insert_all users.map(&:attributes)
+      FactoryBot.create_list(:user, 10, created_at: Time.current, updated_at: Time.current, confirmed_at: Time.current)
       @user = User.find_by(id: 1)
       login(@user)
 
