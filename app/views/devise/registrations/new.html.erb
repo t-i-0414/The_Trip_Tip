@@ -50,8 +50,8 @@
     <% end %>
 
     <div class="wrapper_notification">
-      <%= link_to "既にアカウントをお持ちの方はこちら", new_session_path(resource_name) %>
-      <%= link_to "ユーザー認証メールの再送", new_confirmation_path(resource_name) %>
+      <%= link_to "既にアカウントをお持ちの方はこちら", new_session_path(resource_name), method: :get %>
+      <%= link_to "ユーザー認証メールの再送", new_confirmation_path(resource_name), method: :get %>
     </div>
     <%#= debug(params) if Rails.env.development? %>
   </div>
