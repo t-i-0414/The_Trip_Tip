@@ -1,43 +1,139 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% provide(:title, "ユーザー情報編集") %>
+<div class="container dynamic_pages">
+  <input id="userDetailInput" type="checkbox" class="unshown">
+  <aside id="side" class="side">
+    <label id="userDetailClose" for="userDetailInput" class="user_detail_close"></label>
+    <div class="user_drawer">
+      <div class="info_user">
+        <label for="userDetailInput" class="user_detail_close">
+          <%= image_tag 'btn_nav-close', alt: 'メニューを閉じるボタン' %>
+        </label>
+        <% if current_user?(@user) %>
+        <span class="title_info">
+          ログインユーザー
+        </span>
+        <% else %>
+        <span class="title_info">
+          表示中のユーザー
+        </span>
+        <% end %>
+        <%= image_tag @user.image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
+        <span class="name_user">
+          <%= @user.name %>
+        </span>
+        <dl class="links_user">
+          <div class="wrapper_link">
+            <dt class="title_link">フォロー </dt>
+            <dd class="detail_link">
+              <%= link_to '#', method: :get do %>
+              -<span class="follow">500</span>users
+              <% end %>
+            </dd>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+          </div>
+          <div class="wrapper_link">
+            <dt class="title_link">フォロワー</dt>
+            <dd class="detail_link">
+              <%= link_to '#', method: :get do %>
+              -<span class="follow">5,000</span>users
+              <% end %>
+            </dd>
+          </div>
+          <%# 旅行記機能実装後 %>
+          <%# <div class="wrapper_link"> %>
+          <%# <dt class="title_link"> %>
+          <%# <%= link_to '旅行記', '#', method: :get %>
+          <%# </dt> %>
+          <%# <dd></dd> %>
+          <%# </div>  %>
+        </dl>
+      </div>
+      <% if current_user?(@user) %>
+      <div id="postDrawer" class="post_drawer">
+        <input id="postInput" type="checkbox" class="unshown">
+        <label id="postOpen" for="postInput" class="btn post red-vivid">
+          <span class="wrapper">
+            <%= image_tag 'icon_post.svg', alt: 'ノートと鉛筆のアイコン' %>
+            <span>つぶやきを投稿する</span>
+          </span>
+        </label>
+        <%# 投稿機能実装後拡充 %>
+        <label id="postClose" for="postInput" class="post-close"></label>
+        <div id="postContent" class="post-content">
+          <div class="card_post">
+            <label for="postInput" class="post-close">
+              <%= image_tag 'btn_nav-close', alt: 'メニューを閉じるボタン' %>
+            </label>
+            <div class="wrapper_title-post">
+              <%= image_tag 'icon_post-dark.svg', alt: 'ノートと鉛筆のアイコン' %>
+              <span>つぶやきを投稿する</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% else %>
+      <div class="btn navy follow">
+        フォローする
+      </div>
+      <% end %>
+    </div>
+  </aside>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="container_flex">
+    <div class="container_signs">
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>次のメールアドレスについて、認証メールによる認証が済んでおりません。: <%= resource.unconfirmed_email %></div>
+
+      <% else %>
+      <h1>ユーザー情報の設定</h1>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="field">
+        <%= f.label :name, "希望ユーザー名", :class => "form-label" %>
+        <%= f.text_field :name, autofocus: true, maxlength: "32", :class => "form-input" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email,"希望メールアドレス", :class => "form-label" %>
+        <%= f.email_field :email, autocomplete: "email", :class => "form-input" %>
+      </div>
+
+      <% if @user.provider == nil %>
+      <div class="field">
+        <%= f.label :password, "希望パスワード（任意）", :class => "form-label" %>
+        <%= f.password_field :password, autocomplete: "new-password", :class => "form-input" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, '希望パスワードをもう一度入力願います', :class => "form-label" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-input" %>
+      </div>
+      <% end %>
+
+      <%= f.text_field :image, :class => "hidden" %>
+      <div id="preview_user_image">
+        <%= javascript_pack_tag 'image_user-profile', 'data-turbolinks-track': 'reload',  defer: true %>
+      </div>
+
+      <% if @user.provider == nil %>
+      <div class="field">
+        <%= f.label :current_password, "現在のパスワード（必須）", :class => "form-label" %>
+        <%= f.password_field :current_password, autocomplete: "current-password", :class => "form-input" %>
+      </div>
+      <% end %>
+
+      <div class="actions registration">
+        <%= f.submit "更   新", class: "btn navy" %>
+      </div>
+      <% end %>
+
+      <div class="delete-account btn red-vivid">
+        <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "アカウントを削除すると、ご利用されていたデータは全て利用できなくなります。削除しても本当によろしいですか？" }, method: :delete %>
+      </div>
+      <% end %>
+    </div>
   </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>
+<%#= link_to "Back", :back %>

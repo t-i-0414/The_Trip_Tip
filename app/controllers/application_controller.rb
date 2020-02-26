@@ -30,6 +30,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[name image])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[name image])
   end
 
   def after_update_path_for(_resource)
@@ -37,7 +38,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_inactive_sign_up_path_for(_resource)
-    user_path(id: current_user.id)
+    user_path(id: resource.id)
   end
 
   def after_sign_in_path_for(_resource)
