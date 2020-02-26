@@ -5,13 +5,13 @@
       <%= image_tag @user.image.url, alt: 'ユーザーのプロフィールアイコン', class: 'image_user' %>
     </label>
     <%= link_to image_tag('logo_header.svg', alt: 'The Trip Tipのロゴ'),
-            user_path,
+            user_path(id: current_user.id),
             class: 'logo_header',
             method: :get
     %>
     <ul>
       <li class='sign_in'>
-        <%= link_to '投稿一覧', '#', method: :get %>
+        <%= link_to 'タイムライン', '#', method: :get %>
       </li>
       <li class='sign_in'>
         <%= link_to 'ユーザー一覧', '#', class: 'sign_in', method: :get %>
@@ -35,7 +35,7 @@
           <li>
             <%= link_to '#', class: '', method: :get do %>
             <%= image_tag 'icon_post-index_nav-drawer.svg', alt: '投稿一覧のアイコン' %>
-            投稿一覧
+            タイムライン
             <% end %>
           </li>
           <li>
