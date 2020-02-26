@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.feature 'Feature Users Session Actions', type: :feature do
+RSpec.feature 'Feature Users Sessions', type: :feature do
   before(:each) do
       FactoryBot.create_list(:user, 10, created_at: Time.current, updated_at: Time.current, confirmed_at: Time.current)
       @user = User.find_by(id: 1)
