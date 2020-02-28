@@ -7,7 +7,7 @@ RSpec.feature 'Feature Users Registrations', type: :feature do
     visit new_user_registration_path
   end
 
-  feature 'Should render right contents' do
+  feature 'Render right contents' do
     scenario 'Before register' do
       form = page.find('form#new_user')
       name_field = form.all('.field')[0]
@@ -88,6 +88,25 @@ RSpec.feature 'Feature Users Registrations', type: :feature do
       expect(page).to have_selector 'h1', text: 'ユーザー新規登録'
 
       expect(page.find('div#error_explanation')).to have_content /\d 件のエラーが発生したため ユーザ は保存されませんでした。/
+    end
+  end
+  
+  feature 'New Updating' do
+    before(:each) do
+      FactoryBot.create_list(:user, 10, created_at: Time.current, updated_at: Time.current, confirmed_at: Time.current)
+      @user = User.find_by(id: 1)
+      @user_auth = User.find_by(id: 2)
+      @user_auth.uid = '1111111111111111111'
+    end
+    
+    scenario 'Successful updating' do
+      act_as @user do
+        
+      end
+      
+      act_as @user_auth do
+        
+      end
     end
   end
 end

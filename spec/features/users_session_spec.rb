@@ -9,7 +9,7 @@ RSpec.feature 'Feature Users Sessions', type: :feature do
     visit new_user_session_path
   end
 
-  feature 'Should render right contents' do
+  feature 'Render right contents' do
     scenario 'Before login' do
       twitter = page.find('.sns-link.btn.twitter', text: 'twitterでログイン')
       facebook = page.find('.sns-link.btn.facebook', text: 'Facebookでログイン')
