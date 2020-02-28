@@ -100,7 +100,7 @@
         <%= f.email_field :email, autocomplete: "email", :class => "form-input" %>
       </div>
 
-      <% if @user.provider == nil %>
+      <% if @user.uid == nil %>
       <div class="field">
         <%= f.label :password, "希望パスワード（任意）", :class => "form-label" %>
         <%= f.password_field :password, autocomplete: "new-password", :class => "form-input" %>
@@ -117,7 +117,7 @@
         <%= javascript_pack_tag 'image_user-profile', 'data-turbolinks-track': 'reload',  defer: true %>
       </div>
 
-      <% if @user.provider == nil %>
+      <% if @user.uid == nil %>
       <div class="field">
         <%= f.label :current_password, "現在のパスワード（必須）", :class => "form-label" %>
         <%= f.password_field :current_password, autocomplete: "current-password", :class => "form-input" %>
