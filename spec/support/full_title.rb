@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-  def full_title(page_title)
-    base_title = 'The Trip Tip'
-    if page_title.empty?
-      base_title
-    else
-      "#{page_title} | #{base_title}"
-    end
+def confirmation_email(user)
+
+  mail = ActionMailer::Base.deliveries.last
+
+  def extract_confirmation_url(mail)
+    body = mail.body.encoded
+    # body[/http[^"]/+]
   end
+end

@@ -4,10 +4,19 @@ require 'rails_helper'
 
 RSpec.feature 'Feature Users Sessions', type: :feature do
   before(:each) do
-      FactoryBot.create_list(:user, 10, created_at: Time.current, updated_at: Time.current, confirmed_at: Time.current)
-      @user = User.find_by(id: 1)
+    users = FactoryBot.create_list(:user, 10, created_at: Time.current, updated_at: Time.current, confirmed_at: Time.current)
+    @user = users[0]
     visit new_user_session_path
   end
+  
+  before do
+    ActionMailer::Base.deliveries.clear
+  end
+
+  # def extract_confirmation_url(mail)
+  #   body = mail.body.encoded
+  #   body[%r{https?://[\w!?/\+\-_~=;\.,*&@#$%\(\)\'\[\]]+}]
+  # end
 
   feature 'Render right contents' do
     scenario 'Before login' do
@@ -108,12 +117,12 @@ RSpec.feature 'Feature Users Sessions', type: :feature do
   end
 
   feature 'New session' do
-    scenario 'Successful login' do
+    scenario 'Success' do
       login(@user)
       expect(page).to have_content 'ログインしました。'
     end
 
-    scenario 'Failed login' do
+    scenario 'Fail' do
       fill_in 'user[email]', with: 'failed@example.com'
       fill_in 'user[password]', with: 'password'
       click_button 'ログイン'
@@ -144,7 +153,7 @@ RSpec.feature 'Feature Users Sessions', type: :feature do
   end
 
   feature 'Destroy session' do
-    scenario 'Successful logout' do
+    scenario 'Success' do
       login(@user)
       logout
     end
