@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Feature Static Pages', type: :feature do
-  feature 'Should render right templates' do
+  feature 'Render right templates' do
     scenario 'Home' do
       visit root_path
       expect(page).to have_http_status 200
@@ -29,7 +29,7 @@ RSpec.feature 'Feature Static Pages', type: :feature do
     end
   end
 
-  feature 'Should have right links' do
+  feature 'Have right links' do
     background do
       visit root_path
     end
@@ -75,7 +75,7 @@ RSpec.feature 'Feature Static Pages', type: :feature do
     end
   end
 
-  feature 'Should render right error pages' do
+  feature 'Render right error pages' do
     scenario '404' do
       visit '/tasks/404test'
       expect(page).to have_title full_title('404 Not Found')

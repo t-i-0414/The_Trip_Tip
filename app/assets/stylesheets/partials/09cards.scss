@@ -16,6 +16,7 @@
 
     .image_user {
       margin-right: 12px;
+      font-size: 1.2rem;
     }
 
     .name_user {
@@ -75,6 +76,7 @@
           display: block;
           width: fit-content;
           height: fit-content;
+          cursor: pointer;
         }
       }
     }
