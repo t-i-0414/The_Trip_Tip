@@ -55,12 +55,16 @@ RSpec.feature 'Feature Users Registrations', type: :feature do
         password: 'password',
         password_confirmation: 'password'
       }
-
+      fill_in 'user[name]', with: user[:name]
       fill_in 'user[email]', with: user[:email]
       fill_in 'user[password]', with: user[:password]
       fill_in 'user[password_confirmation]', with: user[:password_confirmation]
       click_button 'ユーザー登録', match: :first
-      # ユーザー認証メールが遅れるようになったら続きを実装
+      expect(page).to have_content '本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。'
+
+      confirmation_email
+
+      expect(page).to have_content 'ログイン'
     end
 
     scenario 'Fail' do
@@ -85,33 +89,34 @@ RSpec.feature 'Feature Users Registrations', type: :feature do
     end
 
     scenario 'Success' do
-      act_as @user do
-        visit edit_user_registration_path
-        fill_in 'user[name]', with: @edit[:name]
-        fill_in 'user[password]', with: @edit[:password]
-        fill_in 'user[password_confirmation]', with: @edit[:password_confirmation]
-        fill_in 'user[current_password]', with: 'password'
-        click_button '更   新', match: :first
-        expect(page).to have_content 'アカウント情報を変更しました。'
-        expect(page).to have_title full_title( @edit[:name] )
+      login(@user)
+      visit edit_user_registration_path
+      fill_in 'user[name]', with: @edit[:name]
+      fill_in 'user[password]', with: @edit[:password]
+      fill_in 'user[password_confirmation]', with: @edit[:password_confirmation]
+      fill_in 'user[current_password]', with: 'password'
+      click_button '更   新', match: :first
+      expect(page).to have_content 'アカウント情報を変更しました。'
+      expect(page).to have_title full_title( @edit[:name] )
 
-        visit edit_user_registration_path
-        fill_in 'user[email]', with: @edit[:email]
-        fill_in 'user[current_password]', with: @edit[:password]
-        click_button '更   新', match: :first
-        expect(page).to have_content 'アカウント情報を変更しました。変更されたメールアドレスの本人確認のため、本人確認用メールより確認処理をおこなってください。'
-        expect(page).to have_title full_title( @edit[:name] )
-        # @user.confirmed_at = Time.current
+      visit edit_user_registration_path
+      fill_in 'user[email]', with: @edit[:email]
+      fill_in 'user[current_password]', with: @edit[:password]
+      click_button '更   新', match: :first
+      expect(page).to have_content 'アカウント情報を変更しました。変更されたメールアドレスの本人確認のため、本人確認用メールより確認処理をおこなってください。'
+      expect(page).to have_title full_title( @edit[:name] )
 
-        # logout
+      confirmation_email
 
-        # visit new_user_session_path
-        # fill_in 'user[email]', with: 'edit@example.com'
-        # fill_in 'user[password]', with: 'editpassword'
-        # click_button 'ログイン', match: :first
-        # expect(page).to have_content 'ログインしました。'
-      end
+      expect(page).to have_content 'メールアドレスが確認できました。'
+      expect(page).to have_title full_title( 'ユーザーログイン' )
+      fill_in 'user[email]', with: @edit[:email]
+      fill_in 'user[password]', with: @edit[:password]
+      click_button 'ログイン', match: :first
+      expect(page).to have_content 'ログインしました。'
+    end
 
+    scenario 'Success(uid)' do
       act_as @user_auth do
         visit edit_user_registration_path
         fill_in 'user[name]', with: @edit[:name]
