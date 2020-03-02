@@ -12,6 +12,8 @@ class StaticPagesController < ApplicationController
 
   def privacy; end
 
+  protected
+
   def logged_in_user
     @user = User.find(current_user.id) if user_signed_in?
   end
