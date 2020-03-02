@@ -8,11 +8,6 @@ RSpec.feature 'Feature Users Sessions', type: :feature do
     visit new_user_session_path
   end
 
-  # def extract_confirmation_url(mail)
-  #   body = mail.body.encoded
-  #   body[%r{https?://[\w!?/\+\-_~=;\.,*&@#$%\(\)\'\[\]]+}]
-  # end
-
   feature 'Render right contents' do
     scenario 'Before login' do
       remember_me_field = page.all('.field')[2]
