@@ -12,6 +12,7 @@ module LoginMacros
   def logout
     click_link 'ログアウト', match: :first
     expect(page).to have_content 'ログアウトしました。'
+    expect(page).to have_title full_title('')
   end
 
   def act_as(user)
