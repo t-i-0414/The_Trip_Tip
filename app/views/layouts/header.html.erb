@@ -14,7 +14,7 @@
         <%= link_to 'タイムライン', '#', method: :get %>
       </li>
       <li class='sign_in'>
-        <%= link_to 'ユーザー一覧', '#', class: 'sign_in', method: :get %>
+        <%= link_to 'ユーザー一覧', user_index_path, class: 'sign_in', method: :get %>
       </li>
       <li class='sign_in'>
         <%= link_to '設定', edit_user_registration_path, method: :get %>
@@ -39,7 +39,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to '#', class: '', method: :get do %>
+            <%= link_to user_index_path, class: '', method: :get do %>
             <%= image_tag 'icon_user_nav-drawer.svg', alt: 'ユーザーのアイコン' %>
             ユーザー一覧
             <% end %>
