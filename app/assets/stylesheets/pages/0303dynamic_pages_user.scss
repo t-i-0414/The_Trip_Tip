@@ -109,10 +109,12 @@
   .container_flex {
     display: flex;
     justify-content: flex-end;
+    min-height: 100vh;
     margin-top: 48px;
     margin-bottom: 48px;
 
     .container_signs {
+      height: fit-content;
       margin: 0;
     }
 
