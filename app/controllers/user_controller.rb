@@ -6,6 +6,7 @@ class UserController < ApplicationController
   def show; end
 
   def index
+    @user = User.find(current_user.id)
     @users = User.all
   end
 
@@ -17,7 +18,7 @@ class UserController < ApplicationController
 
   def logged_in_user
     if user_signed_in?
-      @user = User.find(current_user.id)
+      @user = User.find(params[:id])
     else
       flash[:alert] = 'アカウント登録もしくはログインしてください。'
       redirect_to new_user_session_path
