@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  resources :user, only: [:show]
+  resources :user, only: %i[index show]
 
   authenticated :user do
     root to: 'user#root', as: :user_root

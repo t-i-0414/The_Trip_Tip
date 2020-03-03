@@ -13,6 +13,7 @@ module TheTripTip
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    config.hosts << 'localhost'
     config.hosts << '.amazonaws.com'
     config.hosts << '.paiza-user.cloud'
     config.hosts << '.www.example.com'

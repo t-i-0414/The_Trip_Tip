@@ -61,6 +61,14 @@
       margin-left: 24px;
     }
   }
+
+  .links_user {
+    display: flex;
+
+    .wrapper_link + .wrapper_link {
+      margin-left: 24px;
+    }
+  }
 }
 
 .container.dynamic_pages {
