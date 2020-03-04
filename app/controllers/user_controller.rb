@@ -9,7 +9,7 @@ class UserController < ApplicationController
 
   def index
     @user = User.find(current_user.id)
-    @users = User.all
+    @users = User.all.page(params[:page]).per(20)
   end
 
   def root

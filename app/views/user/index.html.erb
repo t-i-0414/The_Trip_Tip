@@ -80,42 +80,44 @@
   </aside>
   <div class="container_flex">
     <div class="container_posts">
-      
+
+      <%= paginate @users %>
+
       <% @users.each do |user| %>
-      
-        <div class="card_post">
-          <div class="wrapper_name">
+
+      <div class="card_post">
+        <div class="wrapper_name">
+          <%= link_to user_path(id: user.id), method: :get do %>
+          <%= image_tag user.image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
+          <% end %>
+          <span class="name_user">
             <%= link_to user_path(id: user.id), method: :get do %>
-            <%= image_tag user.image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
+            <%= user.name %>
             <% end %>
-            <span class="name_user">
-              <%= link_to user_path(id: user.id), method: :get do %>
-              <%= user.name %>
-              <% end %>
-            </span>
-          </div>
-          <dl class="links_user">
-            <div class="wrapper_link">
-              <dt class="title_link">フォロー </dt>
-              <dd class="detail_link">
-                <%= link_to '#', method: :get do %>
-                -<span class="follow">500</span>users
-                <% end %>
-              </dd>
-            </div>
-            <div class="wrapper_link">
-              <dt class="title_link">フォロワー</dt>
-              <dd class="detail_link">
-                <%= link_to '#', method: :get do %>
-                -<span class="follow">5,000</span>users
-                <% end %>
-              </dd>
-            </div>
-          </dl>
+          </span>
         </div>
-      
+        <dl class="links_user">
+          <div class="wrapper_link">
+            <dt class="title_link">フォロー </dt>
+            <dd class="detail_link">
+              <%= link_to '#', method: :get do %>
+              -<span class="follow">500</span>users
+              <% end %>
+            </dd>
+          </div>
+          <div class="wrapper_link">
+            <dt class="title_link">フォロワー</dt>
+            <dd class="detail_link">
+              <%= link_to '#', method: :get do %>
+              -<span class="follow">5,000</span>users
+              <% end %>
+            </dd>
+          </div>
+        </dl>
+      </div>
+
       <% end %>
-      
+
     </div>
   </div>
 </div>
