@@ -1,3 +1,3 @@
 $(window).on('load', () => {
-  $('#loading').fadeOut();
+  $('#loading').delay(100).fadeOut();
 });
