@@ -13,6 +13,7 @@ gem 'carrierwave-mongoid', '~> 1.3.0'
 gem 'devise', '~> 4.7.1'
 gem 'devise-i18n', '~> 1.9.0'
 gem 'devise-i18n-views', '~> 0.3.7'
+gem 'faker', '~> 2.8.1'
 gem 'jbuilder', '~> 2.7'
 gem 'kaminari', '~> 1.2.0'
 gem 'mini_magick', '~> 4.7.0'
@@ -49,7 +50,6 @@ end
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'database_cleaner', '~> 1.7.0'
-  gem 'faker', '~> 2.8.1'
   gem 'guard', '~> 2.13.0'
   gem 'guard-minitest', '~> 2.4.4'
   gem 'guard-rspec', '~> 4.7.3', require: false
