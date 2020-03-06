@@ -80,8 +80,8 @@
   </aside>
   <div class="container_flex">
     <div class="container_posts">
-      
-      <div class="wrapper_pagenate">
+
+      <div class="wrapper_pagenate top">
         <%= paginate @users %>
       </div>
 
@@ -119,6 +119,10 @@
       </div>
 
       <% end %>
+
+      <div class="wrapper_pagenate bottom">
+        <%= paginate @users %>
+      </div>
 
     </div>
   </div>
