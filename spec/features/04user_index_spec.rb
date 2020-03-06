@@ -27,10 +27,13 @@ RSpec.feature 'Feature Users Sessions', type: :feature do
       expect(page).to have_css 'div.wrapper_pagenate.top'
       expect(page).to have_css 'div.wrapper_pagenate.bottom'
 
-      @users.each do |user|
-        expect(page).to have_link 'ユーザーのアイコン', href: user_path(id: user.id)
-        expect(page).to have_link user.name, href: user_path(id: user.id)
+      @pagenate_count.times do |num|
+        expect(page).to have_link 'ユーザーのアイコン', href: user_path(id: @users[num].id)
+        expect(page).to have_link @users[num].name, href: user_path(id: @users[num].id)
       end
+
+      expect(page).to have_no_link 'ユーザーのアイコン', href: user_path(id: @users[@pagenate_count].id)
+      expect(page).to have_no_link @users[@pagenate_count].name, href: user_path(id: @users[@pagenate_count].id)
     end
   end
 end
