@@ -80,8 +80,10 @@
   </aside>
   <div class="container_flex">
     <div class="container_posts">
-
-      <%= paginate @users %>
+      
+      <div class="wrapper_pagenate">
+        <%= paginate @users %>
+      </div>
 
       <% @users.each do |user| %>
 
