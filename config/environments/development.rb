@@ -68,6 +68,16 @@ Rails.application.configure do
 
   # VScode
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    user_name: Rails.application.credentials.gmail[:email],
+    password: Rails.application.credentials.gmail[:password],
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
   # aws
   # config.action_mailer.default_url_options = { protocol: 'https', host: 'https://840995c836e94bac99722844e752104f.vfs.cloud9.us-east-2.amazonaws.com/' }
 end
