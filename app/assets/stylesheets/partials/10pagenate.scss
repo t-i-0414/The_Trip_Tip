@@ -1,4 +1,66 @@
 .wrapper_pagenate {
-  background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 24px 0 0 24px;
+  display: flex;
+  justify-content: flex-end;
+
+  .pagination {
+    padding: 8px 12px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 24px 0 0 24px;
+
+    .page + .page {
+      margin-left: 14px;
+    }
+
+    .prev + .page {
+      margin-left: 16px;
+    }
+
+    .page + .next {
+      margin-left: 16px;
+    }
+
+    .page.current {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      color: #fff;
+      line-height: 1.666;
+      text-align: center;
+      background-color: #96aeff;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      border-radius: 50%;
+    }
+  }
+}
+
+.wrapper_pagenate.top {
+  margin-bottom: 24px;
+}
+
+.wrapper_pagenate.bottom {
+  margin-top: 24px;
+}
+
+@media screen and (max-width: 559px) {
+  .wrapper_pagenate {
+    .pagination {
+      .page.current {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        color: #fff;
+        line-height: 2.142;
+        text-align: center;
+        background-color: #96aeff;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        border-radius: 50%;
+      }
+    }
+  }
 }
