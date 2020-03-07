@@ -26,10 +26,11 @@ h1 {
 
 .title_info {
   display: block;
-  width: fit-content;
   font-weight: bold;
   font-size: 1.6rem;
   letter-spacing: 0.1em;
+  // width: fit-content;
+  text-align: center;
 }
 
 .name_user {
