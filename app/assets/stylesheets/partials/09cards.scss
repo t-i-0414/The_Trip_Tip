@@ -20,6 +20,7 @@
     }
 
     .name_user {
+      width: calc(100% - 92px);
       overflow: visible;
       font-size: 1.8rem;
       line-height: 1.5;
@@ -95,6 +96,7 @@
   .card_post {
     .wrapper_name {
       .name_user {
+        width: calc(100% - 76px);
         font-size: 1.4rem;
       }
     }
