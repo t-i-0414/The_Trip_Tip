@@ -135,5 +135,20 @@ RSpec.feature 'Feature Users Registrations', type: :feature do
         expect(page).to have_title full_title( 'ユーザー情報編集' )
       end
     end
+
+    scenario 'Delete user' do
+      login(@user)
+      visit edit_user_registration_path
+      click_on 'アカウント削除'
+      expect(page).to have_content 'アカウントを削除しました。またのご利用をお待ちしております。'
+      expect(page).to have_title 'The Trip Tip'
+
+      visit new_user_session_path
+      fill_in 'user[email]', with: @user.email
+      fill_in 'user[password]', with: 'password'
+      click_button 'ログイン', match: :first
+      expect(page).to have_content 'メールアドレスまたはパスワードが違います。'
+      expect(page).to have_title 'ユーザーログイン'
+    end
   end
 end
