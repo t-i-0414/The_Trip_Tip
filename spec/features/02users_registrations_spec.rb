@@ -11,6 +11,7 @@ RSpec.feature 'Feature Users Registrations', type: :feature do
     scenario 'Registration page' do
       visit new_user_registration_path
 
+
       form = page.find('form#new_user')
       image_input = form.find('input.hidden#user_image')
       notifications = page.find('.wrapper_notification')
@@ -49,6 +50,7 @@ RSpec.feature 'Feature Users Registrations', type: :feature do
     end
 
     scenario 'Success' do
+      records_count = User.count
       user = {
         name: 'test',
         email: 'test@example.com',
@@ -64,6 +66,7 @@ RSpec.feature 'Feature Users Registrations', type: :feature do
 
       confirmation_email
 
+      expect(User.count).to eq records_count+1
       expect(page).to have_content 'ログイン'
     end
 
