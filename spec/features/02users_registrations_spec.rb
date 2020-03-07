@@ -139,9 +139,11 @@ RSpec.feature 'Feature Users Registrations', type: :feature do
     scenario 'Delete user' do
       login(@user)
       visit edit_user_registration_path
+      records_count = User.count
       click_on 'アカウント削除'
       expect(page).to have_content 'アカウントを削除しました。またのご利用をお待ちしております。'
       expect(page).to have_title 'The Trip Tip'
+      expect(User.count).to eq records_count-1
 
       visit new_user_session_path
       fill_in 'user[email]', with: @user.email
