@@ -11,6 +11,7 @@ RSpec.feature 'Feature Users Registrations', type: :feature do
     scenario 'Registration page' do
       visit new_user_registration_path
 
+
       form = page.find('form#new_user')
       image_input = form.find('input.hidden#user_image')
       notifications = page.find('.wrapper_notification')
@@ -49,6 +50,7 @@ RSpec.feature 'Feature Users Registrations', type: :feature do
     end
 
     scenario 'Success' do
+      records_count = User.count
       user = {
         name: 'test',
         email: 'test@example.com',
@@ -64,6 +66,7 @@ RSpec.feature 'Feature Users Registrations', type: :feature do
 
       confirmation_email
 
+      expect(User.count).to eq records_count+1
       expect(page).to have_content 'ログイン'
     end
 
@@ -134,6 +137,23 @@ RSpec.feature 'Feature Users Registrations', type: :feature do
         expect(page).to have_content /\d 件のエラーが発生したため ユーザ は保存されませんでした。/
         expect(page).to have_title full_title( 'ユーザー情報編集' )
       end
+    end
+
+    scenario 'Delete user' do
+      login(@user)
+      visit edit_user_registration_path
+      records_count = User.count
+      click_on 'アカウント削除'
+      expect(page).to have_content 'アカウントを削除しました。またのご利用をお待ちしております。'
+      expect(page).to have_title 'The Trip Tip'
+      expect(User.count).to eq records_count-1
+
+      visit new_user_session_path
+      fill_in 'user[email]', with: @user.email
+      fill_in 'user[password]', with: 'password'
+      click_button 'ログイン', match: :first
+      expect(page).to have_content 'メールアドレスまたはパスワードが違います。'
+      expect(page).to have_title 'ユーザーログイン'
     end
   end
 end
