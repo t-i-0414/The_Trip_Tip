@@ -3,7 +3,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  unless Rails.env.production?
+  unless Rails.env.development?
     rescue_from Exception,                      with: :render_500
     rescue_from ActiveRecord::RecordNotFound,   with: :render_404
     rescue_from ActionController::RoutingError, with: :render_404
