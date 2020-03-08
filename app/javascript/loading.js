@@ -18,6 +18,7 @@ $(window).on('load', () => {
 
 window.onpageshow = function (event) {
   if (event.persisted) {
+    $('#loading').delay(100).fadeIn(100);
     window.location.reload();
   }
 };
