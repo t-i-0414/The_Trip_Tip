@@ -112,7 +112,7 @@ export default {
         buffer[i] = bin.charCodeAt(i);
       }
       return new Blob([buffer.buffer], {
-        type: 'image/png'
+        type: 'image/jpg'
       });
     }
   }
