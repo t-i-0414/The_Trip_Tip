@@ -25,5 +25,6 @@ $(window).on('load', () => {
 
 history.replaceState(null, document.getElementsByTagName('title')[0].innerHTML, null);
 window.addEventListener('popstate', function (e) {
+  $('#loading').fadeIn();
   window.location.reload();
 });
