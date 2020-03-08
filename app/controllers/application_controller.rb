@@ -1,12 +1,9 @@
 # frozen_string_literal: true
 
-# default class
 class ApplicationController < ActionController::Base
-  # protect_from_forgery with: :exception
-
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  unless Rails.env.development?
+  unless Rails.env.production?
     rescue_from Exception,                      with: :render_500
     rescue_from ActiveRecord::RecordNotFound,   with: :render_404
     rescue_from ActionController::RoutingError, with: :render_404
@@ -19,10 +16,12 @@ class ApplicationController < ActionController::Base
   private
 
   def render_404
+    @user = User.find(current_user.id) if user_signed_in?
     render 'error/404', status: :not_found
   end
 
   def render_500
+    @user = User.find(current_user.id) if user_signed_in?
     render 'error/500', status: :internal_server_error
   end
 
