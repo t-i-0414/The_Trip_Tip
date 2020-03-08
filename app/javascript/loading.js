@@ -16,9 +16,14 @@ $(window).on('load', () => {
 //   }
 // });
 
-window.onpageshow = function (event) {
-  if (event.persisted) {
-    $('#loading').delay(100).fadeIn(100);
-    window.location.reload();
-  }
-};
+// window.onpageshow = function (event) {
+//   if (event.persisted) {
+//     $('#loading').delay(100).fadeIn(100);
+//     window.location.reload();
+//   }
+// };
+
+history.replaceState(null, document.getElementsByTagName('title')[0].innerHTML, null);
+window.addEventListener('popstate', function (e) {
+  window.location.reload();
+});
