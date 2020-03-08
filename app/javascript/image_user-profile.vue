@@ -33,6 +33,7 @@
         ></vue-cropper>
         <div class="cropper_actions">
           <div class="trimming" @click="cropImage" v-if="imgSrc != ''">画像を切り抜く</div>
+          <div class="trimming" @click="rotate(-90)" v-if="imgSrc != ''">画像を回転させる</div>
           <div class="trimming" @click="removeImage" v-if="imgSrc != ''">画像選択を解除する</div>
           <a
             class="downloader"
@@ -90,6 +91,10 @@ export default {
       this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL();
       this.userBase64 = this.$refs.cropper.getCroppedCanvas().toDataURL();
       this.resizedBlob = this.base64ToBlob(this.cropImg);
+    },
+
+    rotate(deg) {
+      this.$refs.cropper.rotate(deg);
     },
 
     removeImage() {
