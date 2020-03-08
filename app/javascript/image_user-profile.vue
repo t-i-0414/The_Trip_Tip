@@ -28,7 +28,7 @@
           :background="true"
           :rotatable="true"
           :src="imgSrc"
-          :img-style="{ width: '200px', height: '200px' }"
+          :img-style="{ width: '400px', height: '400px' }"
           :aspect-ratio="yoko / tate"
         ></vue-cropper>
         <div class="cropper_actions">
