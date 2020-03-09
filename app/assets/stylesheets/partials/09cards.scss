@@ -83,7 +83,9 @@
           top: 4px;
           right: 10px;
           display: block;
+          width: -moz-fit-content;
           width: fit-content;
+          height: -moz-fit-content;
           height: fit-content;
           cursor: pointer;
         }

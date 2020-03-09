@@ -23,16 +23,17 @@
           :view-mode="2"
           drag-mode="crop"
           :auto-crop-area="0.5"
-          :min-container-width="200"
-          :min-container-height="200"
+          :min-container-width="250"
+          :min-container-height="250"
           :background="true"
           :rotatable="true"
           :src="imgSrc"
-          :img-style="{ width: '200px', height: '200px' }"
+          :img-style="{ width: '400px', height: '400px' }"
           :aspect-ratio="yoko / tate"
         ></vue-cropper>
         <div class="cropper_actions">
           <div class="trimming" @click="cropImage" v-if="imgSrc != ''">画像を切り抜く</div>
+          <div class="trimming" @click="rotate(-90)" v-if="imgSrc != ''">画像を回転させる</div>
           <div class="trimming" @click="removeImage" v-if="imgSrc != ''">画像選択を解除する</div>
           <a
             class="downloader"
@@ -41,7 +42,7 @@
             :download="filename"
           >切り抜いた画像を保存する（任意）</a>
         </div>
-        <input class="hidden" id="user_image" name="user[image]" type="text" :value="userBase64" />
+        <input class="hidden" id="user_image" name="user[image]" type="text" :value="cropImg" />
       </div>
     </div>
   </div>
@@ -61,7 +62,6 @@ export default {
       tate: 1,
       imgSrc: '',
       cropImg: '/assets/icon_plus.svg',
-      userBase64: '',
       filename: '',
       resizedBlob: ''
     };
@@ -87,15 +87,17 @@ export default {
     },
 
     cropImage() {
-      this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL();
-      this.userBase64 = this.$refs.cropper.getCroppedCanvas().toDataURL();
+      this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL('image/jpeg');
       this.resizedBlob = this.base64ToBlob(this.cropImg);
+    },
+
+    rotate(deg) {
+      this.$refs.cropper.rotate(deg);
     },
 
     removeImage() {
       this.imgSrc = '';
       this.cropImg = '/assets/icon_plus.svg';
-      this.userBase64 = '';
       this.filename = '';
       this.resizedBlob = '';
     },
@@ -107,7 +109,7 @@ export default {
         buffer[i] = bin.charCodeAt(i);
       }
       return new Blob([buffer.buffer], {
-        type: 'image/png'
+        type: 'image/jpeg'
       });
     }
   }

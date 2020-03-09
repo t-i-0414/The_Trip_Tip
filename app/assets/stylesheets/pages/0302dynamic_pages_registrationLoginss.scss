@@ -34,6 +34,7 @@
 
     .separator {
       display: block;
+      width: -moz-fit-content;
       width: fit-content;
       margin: 0 auto;
       font-size: 2rem;
@@ -265,6 +266,7 @@
     }
 
     .wrapper_notification {
+      width: -moz-fit-content;
       width: fit-content;
       margin: 0 auto;
       padding: 0;
