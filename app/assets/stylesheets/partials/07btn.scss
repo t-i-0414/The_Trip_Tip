@@ -73,6 +73,7 @@
 
 .btn.delete-account {
   display: flex;
+  width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto;
   margin-top: 40px;
@@ -82,6 +83,7 @@
   .btn.post {
     .wrapper {
       span {
+        width: -moz-fit-content;
         width: fit-content;
       }
     }
