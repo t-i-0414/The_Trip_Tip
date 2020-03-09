@@ -42,7 +42,7 @@
             :download="filename"
           >切り抜いた画像を保存する（任意）</a>
         </div>
-        <input class="hidden" id="user_image" name="user[image]" type="text" :value="resizedBlob" />
+        <input class="hidden" id="user_image" name="user[image]" type="text" :value="cropImg" />
       </div>
     </div>
   </div>
@@ -62,7 +62,6 @@ export default {
       tate: 1,
       imgSrc: '',
       cropImg: '/assets/icon_plus.svg',
-      userBase64: '',
       filename: '',
       resizedBlob: ''
     };
@@ -89,8 +88,9 @@ export default {
 
     cropImage() {
       this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL();
-      this.userBase64 = this.$refs.cropper.getCroppedCanvas().toDataURL();
       this.resizedBlob = this.base64ToBlob(this.cropImg);
+      console.log(this.resizedBlob);
+      console.log(this.cropImg);
     },
 
     rotate(deg) {
@@ -100,7 +100,6 @@ export default {
     removeImage() {
       this.imgSrc = '';
       this.cropImg = '/assets/icon_plus.svg';
-      this.userBase64 = '';
       this.filename = '';
       this.resizedBlob = '';
     },
