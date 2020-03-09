@@ -23,8 +23,8 @@
           :view-mode="2"
           drag-mode="crop"
           :auto-crop-area="0.5"
-          :min-container-width="400"
-          :min-container-height="400"
+          :min-container-width="250"
+          :min-container-height="250"
           :background="true"
           :rotatable="true"
           :src="imgSrc"
@@ -87,10 +87,8 @@ export default {
     },
 
     cropImage() {
-      this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL();
+      this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL('image/jpeg');
       this.resizedBlob = this.base64ToBlob(this.cropImg);
-      console.log(this.resizedBlob);
-      console.log(this.cropImg);
     },
 
     rotate(deg) {
@@ -111,7 +109,7 @@ export default {
         buffer[i] = bin.charCodeAt(i);
       }
       return new Blob([buffer.buffer], {
-        type: 'image/png'
+        type: 'image/jpeg'
       });
     }
   }
