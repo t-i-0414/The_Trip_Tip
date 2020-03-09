@@ -23,8 +23,8 @@
           :view-mode="2"
           drag-mode="crop"
           :auto-crop-area="0.5"
-          :min-container-width="200"
-          :min-container-height="200"
+          :min-container-width="400"
+          :min-container-height="400"
           :background="true"
           :rotatable="true"
           :src="imgSrc"
@@ -42,7 +42,7 @@
             :download="filename"
           >切り抜いた画像を保存する（任意）</a>
         </div>
-        <input class="hidden" id="user_image" name="user[image]" type="text" :value="userBase64" />
+        <input class="hidden" id="user_image" name="user[image]" type="text" :value="resizedBlob" />
       </div>
     </div>
   </div>
