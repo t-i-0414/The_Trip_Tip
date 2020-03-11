@@ -40,8 +40,8 @@
     <% end %>
 
     <div class="wrapper_notification">
-      <%= link_to "パスワードをお忘れですか？", new_password_path(resource_name) %>
-      <%= link_to "ロックされたアカウントの解除", new_unlock_path(resource_name) %>
+      <%= link_to "パスワードをお忘れですか？", new_password_path(resource_name), method: :get %>
+      <%= link_to "ロックされたアカウントの解除", new_unlock_path(resource_name), method: :get %>
     </div>
   </div>
   <%#= debug(params) if Rails.env.development? %>
