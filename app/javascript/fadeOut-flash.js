@@ -1,3 +1,3 @@
 $(window).on('load', () => {
-  $("#wrapperFlash").fadeOut(2500);
+  $("#wrapperFlash").fadeOut(5000);
 });
