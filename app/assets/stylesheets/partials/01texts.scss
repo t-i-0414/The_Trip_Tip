@@ -50,6 +50,19 @@ h1 {
   font-size: 1.4rem;
 }
 
+.instruction {
+  padding: 0 24px;
+  text-indent: 1em;
+}
+
+.instruction + .instruction {
+  margin-top: 16px;
+}
+
+.instruction:last-of-type {
+  margin-bottom: 48px;
+}
+
 @media screen and (max-width: 559px) {
   body {
     font-size: 1.4rem;
