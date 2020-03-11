@@ -2,7 +2,17 @@
 <div class="container dynamic_pages">
   <div class="container_signs">
     <h1>ユーザー認証メールの再送信</h1>
-    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+    
+    <p class="instruction">
+      本サービスでは、ユーザー登録の際に、ご本人確認のためご登録いただいたEメールアドレスに「メールアドレス確認メール」を送信させていただいております。
+    </p>
+    <p class="instruction">
+      メールが見つからない場合は、お手数ですが下記フォームにメールアドレスをご記入の上「送信」ボタンをクリックしてください。
+    </p>
+    <p class="instruction">
+      再度「メールアドレス確認メール」が送信されます。
+    </p>
+    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: "form-short" }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field">
