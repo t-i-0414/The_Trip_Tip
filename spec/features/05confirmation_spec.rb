@@ -17,6 +17,7 @@ RSpec.feature 'Feature Confirmations', type: :feature do
     end
 
     scenario 'Resend confirmation' do
+      records_count = User.count
       user = {
         name: 'test',
         email: 'test@example.com',
@@ -36,6 +37,11 @@ RSpec.feature 'Feature Confirmations', type: :feature do
       fill_in 'user[email]', with: user[:email]
       click_button '送    信', match: :first
       expect(page).to have_content 'アカウントの有効化について数分以内にメールでご連絡します。'
+
+      confirmation_email
+
+      expect(User.count).to eq records_count+1
+      expect(page).to have_content 'ログイン'
     end
   end
 end
