@@ -50,16 +50,16 @@ h1 {
   font-size: 1.4rem;
 }
 
-.instruction{
+.instruction {
   padding: 0 24px;
   text-indent: 1em;
 }
 
-.instruction + .instruction{
+.instruction + .instruction {
   margin-top: 16px;
 }
 
-.instruction:last-of-type{
+.instruction:last-of-type {
   margin-bottom: 48px;
 }
 
