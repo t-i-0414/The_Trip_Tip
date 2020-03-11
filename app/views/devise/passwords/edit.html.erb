@@ -1,25 +1,31 @@
-<h2>Change your password</h2>
+<% provide(:title, 'パスワード再設定') %>
+<div class="container dynamic_pages">
+  <div class="container_signs">
+    <h1>パスワード再設定</h1>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+    <p class="instruction">
+      このページでは、パスワードの再設定を行います。
+    </p>
+    <p class="instruction">
+      下記フォームに希望するパスワードをご記入の上「パスワードを変更」ボタンをクリックしてください。
+    </p>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "form-short" }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+    <div class="field">
+      <%= f.label :password, "新しいパスワード", :class => "form-label" %>
+      <%= f.password_field :password, autofocus: true, autocomplete: "new-password", placeholder: "半角英数字6文字以上16文字以内", :class => "form-input" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation, "パスワードをもう一度入力してください", :class => "form-label" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password",  :class => "form-input" %>
+    </div>
+
+    <div class="actions registration">
+      <%= f.submit "パスワードを変更", class: "btn red-vivid" %>
+    </div>
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
