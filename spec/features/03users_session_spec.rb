@@ -70,6 +70,26 @@ RSpec.feature 'Feature Users Sessions', type: :feature do
       login(@user)
       expect(page).to have_title full_title("#{@user.name}")
     end
+    
+    scenario 'User index' do
+      visit new_user_session_path
+      login(@user)
+
+      visit user_index_path
+      expect(page).to have_http_status 200
+      expect(page).to have_title full_title('ユーザー一覧')
+      expect(page).to have_css 'div.wrapper_pagenate.top'
+      expect(page).to have_css 'div.wrapper_pagenate.bottom'
+      expect(page).to have_css '.page', count: (User.count / @pagenate_count.to_i + 1) * 2
+
+      @pagenate_count.times do |num|
+        expect(page).to have_link 'ユーザーのアイコン', href: user_path(id: @users[num].id)
+        expect(page).to have_link @users[num].name, href: user_path(id: @users[num].id)
+      end
+
+      expect(page).to have_no_link 'ユーザーのアイコン', href: user_path(id: @users[@pagenate_count].id)
+      expect(page).to have_no_link @users[@pagenate_count].name, href: user_path(id: @users[@pagenate_count].id)
+    end
 
     scenario 'Fail' do
       fill_in 'user[email]', with: 'failed@example.com'
