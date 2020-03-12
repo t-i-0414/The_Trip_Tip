@@ -80,7 +80,10 @@
         color: #777;
         line-height: 1.8;
         letter-spacing: 0.15em;
-        border-bottom: solid 1px #666;
+        box-shadow: 0 1px 5px #00000029;
+        border-radius: 5px;
+        margin-top: 8px;
+        padding: 0 8px;
       }
 
       .hidden {
