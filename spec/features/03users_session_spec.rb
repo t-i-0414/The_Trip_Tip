@@ -70,7 +70,7 @@ RSpec.feature 'Feature Users Sessions', type: :feature do
       login(@user)
       expect(page).to have_title full_title("#{@user.name}")
     end
-    
+
     scenario 'User index' do
       visit new_user_session_path
       login(@user)
@@ -103,6 +103,16 @@ RSpec.feature 'Feature Users Sessions', type: :feature do
       click_button 'ログイン'
       expect(page).to have_title full_title('ユーザーログイン')
       expect(page).to have_content 'メールアドレスまたはパスワードが違います。'
+    end
+
+    scenario 'Timeout' do
+      login(@user)
+      expect(page).to have_title full_title("#{@user.name}")
+
+      travel_to(1.month.after + 1.second.after)
+      visit user_path @user
+      expect(page).to have_title full_title('ユーザーログイン')
+      expect(page).to have_content 'アカウント登録もしくはログインしてください。'
     end
   end
 
