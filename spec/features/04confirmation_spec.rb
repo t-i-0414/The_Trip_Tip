@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.feature 'Feature Confirmations', type: :feature do
   before do
     init_db_test
-    
+
     @test_user = {
       name: 'test',
       email: 'test@example.com',
@@ -24,7 +24,7 @@ RSpec.feature 'Feature Confirmations', type: :feature do
       expect(page).to have_selector 'h1', text: 'ユーザー認証メールの再送信'
     end
   end
-  
+
   feature 'Resend confirmation' do
     scenario 'Success' do
       records_count = User.count
@@ -48,10 +48,10 @@ RSpec.feature 'Feature Confirmations', type: :feature do
       expect(page).to have_title full_title('ユーザーログイン')
       expect(page).to have_content 'ログイン'
     end
-    
+
     scenario 'Fail' do
       records_count = User.count
-      
+
       visit new_user_registration_path
       fill_in 'user[name]', with: @test_user[:name]
       fill_in 'user[email]', with: @test_user[:email]
@@ -66,6 +66,23 @@ RSpec.feature 'Feature Confirmations', type: :feature do
       expect(page).to have_content 'メールアドレスは見つかりませんでした。'
 
       expect(User.count).to eq records_count+1
+      expect(page).to have_title full_title('ユーザー認証メールの再送信')
+      expect(page).to have_content 'ユーザー認証メールの再送'
+    end
+
+    scenario 'Timeout' do
+      visit new_user_registration_path
+      fill_in 'user[name]', with: @test_user[:name]
+      fill_in 'user[email]', with: @test_user[:email]
+      fill_in 'user[password]', with: @test_user[:password]
+      fill_in 'user[password_confirmation]', with: @test_user[:password_confirmation]
+      click_button 'ユーザー登録', match: :first
+      expect(page).to have_content '本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。'
+
+      travel_to(1.day.after + 1.second.after)
+      confirmation_email
+
+      expect(page).to have_content 'メールアドレスの期限が切れました。1日 までに確認する必要があります。 新しくリクエストしてください。'
       expect(page).to have_title full_title('ユーザー認証メールの再送信')
       expect(page).to have_content 'ユーザー認証メールの再送'
     end
