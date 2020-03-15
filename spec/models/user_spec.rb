@@ -92,4 +92,22 @@ RSpec.describe 'Model User', type: :model do
       expect(user.encrypted_password).to_not eq "password"
     end
   end
+
+  describe 'Alignment Sequence' do
+    it "In descending order" do
+      count = -1
+      20.times do
+        count += 1
+        FactoryBot.create(:user, created_at: Time.current + count.days, updated_at: Time.current + count.days, confirmed_at: Time.current + count.days)
+      end
+
+      users_all = User.all
+      count = users_all.length
+
+      users_all.each do |user|
+        count -= 1
+        expect(user.id).to be > count
+      end
+    end
+  end
 end
