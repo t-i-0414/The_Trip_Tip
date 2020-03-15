@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :micropost do
-    content { 'comment' }
+    content { "#{'a' * 140}" }
     user
   end
 end
