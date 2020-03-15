@@ -15,7 +15,7 @@ RSpec.describe 'Model User', type: :model do
       expect(user.errors[:name]).to include("を入力してください")
     end
 
-    it "More than 32 characters " do
+    it "More than 32 characters" do
       user = FactoryBot.build(:user, name: "#{'a' * 33}")
       user.valid?
       expect(user.errors[:name]).to include("は32文字以内で入力してください")
