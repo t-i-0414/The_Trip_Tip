@@ -11,7 +11,11 @@ FactoryBot.define do
     password {'password'}
 
     after(:create) do |user|
-      create_list(:micropost, 5, user: user)
+      count = -1
+      5.times do
+        count += 1
+        create(:micropost,user: user, created_at: Time.current + count.days, updated_at: Time.current + count.days)
+      end
     end
   end
 
@@ -22,7 +26,11 @@ FactoryBot.define do
     uid { generate :uid}
 
     after(:create) do |user|
-      create_list(:micropost, 5, user: user)
+      count = -1
+      5.times do
+        count += 1
+        create(:micropost,user: user, created_at: Time.current + count.days, updated_at: Time.current + count.days)
+      end
     end
   end
 end
