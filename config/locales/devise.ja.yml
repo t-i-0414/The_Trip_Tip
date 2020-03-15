@@ -17,6 +17,13 @@ ja:
               too_long: 'は%{count}文字以下に設定して下さい。'
               invalid: 'は有効でありません。'
               confirmation: 'が内容とあっていません。'
+        micropost:
+          attributes:
+            user_id:
+              blank: '作成者のユーザーIDが空欄です。'
+            content:
+              too_long: '投稿文は%{count}文字以内で入力してください。'
+              blank: '投稿文が入力されていません。'
     attributes:
       user:
         current_password: '現在のパスワード'
@@ -25,8 +32,12 @@ ja:
         password: 'パスワード'
         password_confirmation: '確認用パスワード'
         remember_me: '次回から自動的にログイン'
+      micropost:
+        content: '本文'
+        user_id: '投稿者'
     models:
       user: 'ユーザ'
+      micropost: '投稿'
   devise:
     confirmations:
       new:
