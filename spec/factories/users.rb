@@ -9,6 +9,10 @@ FactoryBot.define do
     name { generate :name }
     email { generate :email }
     password {'password'}
+
+    after(:create) do |user|
+      create_list(:micropost, 5, user: user)
+    end
   end
 
   factory :user_auth, class: User do
@@ -16,5 +20,9 @@ FactoryBot.define do
     email { generate :email_auth }
     password {'password'}
     uid { generate :uid}
+
+    after(:create) do |user|
+      create_list(:micropost, 5, user: user)
+    end
   end
 end
