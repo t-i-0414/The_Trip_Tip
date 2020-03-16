@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'microposts/new'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     confirmations: 'users/confirmations',
@@ -16,6 +15,10 @@ Rails.application.routes.draw do
   authenticated :user do
     root to: 'user#root', as: :user_root
   end
+
+  resources :micropost, only: %i[index create new show destroy]
+
+  get '/user/:id/follows_posts', to: 'microposts#timeline', as: :user_timeline
 
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
