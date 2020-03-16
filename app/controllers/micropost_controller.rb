@@ -13,7 +13,10 @@ class MicropostController < ApplicationController
 
   def new; end
 
-  def show; end
+  def show
+    @user = User.find(Micropost.find(params[:id]).user_id)
+    @micropost = Micropost.find(params[:id])
+  end
 
   def destroy; end
 end
