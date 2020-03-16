@@ -23,9 +23,7 @@
           </span>
         </div>
         <p class="text_post">
-          <%= link_to micropost_path(id: @micropost.id), method: :get do %>
           <%= @micropost.content %>
-          <% end %>
         </p>
         <div class="wrapper_actions">
           <span class="action">
