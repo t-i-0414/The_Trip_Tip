@@ -67,7 +67,7 @@
     %>
     <ul>
       <li class='not_sign_in'>
-        <%= link_to '投稿一覧', '#', method: :get %>
+        <%= link_to '投稿一覧', micropost_index_path, method: :get %>
       </li>
       <li class='not_sign_in'>
         <%= link_to 'ユーザー登録', new_user_registration_path, method: :get %>
@@ -86,7 +86,7 @@
         </label>
         <ul>
           <li>
-            <%= link_to '#', class: '', method: :get do %>
+            <%= link_to micropost_index_path, class: '', method: :get do %>
             <%= image_tag 'icon_post-index_nav-drawer.svg', alt: '投稿一覧のアイコン' %>
             投稿一覧
             <% end %>
