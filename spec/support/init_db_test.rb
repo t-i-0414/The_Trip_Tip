@@ -13,4 +13,5 @@ def init_db_test
   @user_auth = @users_auth[0]
 
   @pagenate_count = 20
+  @pagenate_maximum = 6
 end
