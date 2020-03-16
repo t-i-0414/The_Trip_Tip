@@ -9,6 +9,14 @@ FactoryBot.define do
     name { generate :name }
     email { generate :email }
     password {'password'}
+
+    after(:create) do |user|
+      count = -1
+      5.times do
+        count += 1
+        create(:micropost,user: user, created_at: Time.current + count.days, updated_at: Time.current + count.days)
+      end
+    end
   end
 
   factory :user_auth, class: User do
@@ -16,5 +24,13 @@ FactoryBot.define do
     email { generate :email_auth }
     password {'password'}
     uid { generate :uid}
+
+    after(:create) do |user|
+      count = -1
+      5.times do
+        count += 1
+        create(:micropost,user: user, created_at: Time.current + count.days, updated_at: Time.current + count.days)
+      end
+    end
   end
 end

@@ -61,7 +61,16 @@ RSpec.feature 'Feature Users Sessions', type: :feature do
       expect(post_content).to have_selector 'span', text: 'つぶやきを投稿する'
       # つぶやき投稿用のtextareaについては未実装
 
-      # 投稿一覧の取得については未実装
+      if Micropost.where(user_id: @user.id).count <= @pagenate_count
+        expect(page).not_to have_css '.page'
+        expect(page).to have_link 'ユーザーのアイコン', href: user_path(id:@user.id), count: Micropost.where(user_id: @user.id).count
+      elsif Micropost.where(user_id: @user.id).count <= @pagenate_count * @pagenate_maximum
+        expect(page).to have_css '.page', count: (Micropost.where(user_id: @user.id).count.to_f / @pagenate_count).ceil * 2
+        expect(page).to have_link 'ユーザーのアイコン', href: user_path(id:@user.id), count: @pagenate_count
+      else
+        expect(page).to have_css '.page', count: @pagenate_maximum * 2
+        expect(page).to have_link 'ユーザーのアイコン', href: user_path(id:@user.id), count: @pagenate_count
+      end
     end
   end
 
@@ -80,15 +89,14 @@ RSpec.feature 'Feature Users Sessions', type: :feature do
       expect(page).to have_title full_title('ユーザー一覧')
       expect(page).to have_css 'div.wrapper_pagenate.top'
       expect(page).to have_css 'div.wrapper_pagenate.bottom'
-      expect(page).to have_css '.page', count: (User.count / @pagenate_count.to_i + 1) * 2
 
-      @pagenate_count.times do |num|
-        expect(page).to have_link 'ユーザーのアイコン', href: user_path(id: @users[num].id)
-        expect(page).to have_link @users[num].name, href: user_path(id: @users[num].id)
+      if User.count <= @pagenate_count
+        expect(page).to have_css '.page', count: User.count
+      elsif User.count <= @pagenate_count * @pagenate_maximum
+        expect(page).to have_css '.page', count: (User.count.to_f / @pagenate_count).ceil * 2
+      else
+        expect(page).to have_css '.page', count: @pagenate_maximum * 2
       end
-
-      expect(page).to have_no_link 'ユーザーのアイコン', href: user_path(id: @users[@pagenate_count].id)
-      expect(page).to have_no_link @users[@pagenate_count].name, href: user_path(id: @users[@pagenate_count].id)
     end
 
     scenario 'Fail' do

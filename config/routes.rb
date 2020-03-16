@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     root to: 'user#root', as: :user_root
   end
 
+  resources :micropost, only: %i[index create new show destroy]
+
+  get '/user/:id/follows_posts', to: 'microposts#timeline', as: :user_timeline
+
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
   get '/terms_of_use', to: 'static_pages#terms_of_use'
