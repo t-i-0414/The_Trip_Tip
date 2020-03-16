@@ -1,29 +1,32 @@
-      <div class="card_post">
-        <div class="wrapper_name">
-          <%= link_to '#', method: :get do %>
-          <%= image_tag @user.image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
-          <% end %>
-          <span class="name_user">
-            <%= link_to '#', method: :get do %>
-            <%= @user.name %>
-            <% end %>
-          </span>
-        </div>
-        <p class="text_post">
-          <%= link_to '#', method: :get do %>
-          ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投稿した文章が表示されます。ここに投
-          <% end %>
-        </p>
-        <div class="wrapper_actions">
-          <span class="action">
-            <%= image_tag 'icon_clock.svg', alt: '時計のアイコン' %>
-            <span>1時間前</span>
-          </span>
-          <span class="action">
-            <%= link_to '#', method: :get do %>
-            <%= image_tag 'icon_heart.svg', alt: 'いいねのアイコン' %>
-            <% end %>
-            <span class="likes">500</span>いいね！
-          </span>
-        </div>
-      </div>
+<% @microposts.each do |micropost| %>
+<% user = User.find(micropost.user_id)%>
+<div class="card_post">
+  <div class="wrapper_name">
+    <%= link_to user_path(id: user.id), method: :get do %>
+    <%= image_tag User.find(micropost.user_id).image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
+    <% end %>
+    <span class="name_user">
+      <%= link_to user_path(id: user.id), method: :get do %>
+      <%= User.find(micropost.user_id).name %>
+      <% end %>
+    </span>
+  </div>
+  <p class="text_post">
+    <%= link_to micropost_path(id: micropost.id), method: :get do %>
+    <%= micropost.content %>
+    <% end %>
+  </p>
+  <div class="wrapper_actions">
+    <span class="action">
+      <%= image_tag 'icon_clock.svg', alt: '時計のアイコン' %>
+      <span>1時間前</span>
+    </span>
+    <span class="action">
+      <%= link_to '#', method: :get do %>
+      <%= image_tag 'icon_heart.svg', alt: 'いいねのアイコン' %>
+      <% end %>
+      <span class="likes">500</span>いいね！
+    </span>
+  </div>
+</div>
+<% end %>

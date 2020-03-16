@@ -15,7 +15,7 @@ RSpec.describe 'Model User', type: :model do
       expect(user.errors[:name]).to include("を入力してください")
     end
 
-    it "More than 32 characters " do
+    it "More than 32 characters" do
       user = FactoryBot.build(:user, name: "#{'a' * 33}")
       user.valid?
       expect(user.errors[:name]).to include("は32文字以内で入力してください")
@@ -90,6 +90,34 @@ RSpec.describe 'Model User', type: :model do
     it "Confirmation encrypted password" do
       user = FactoryBot.create(:user)
       expect(user.encrypted_password).to_not eq "password"
+    end
+  end
+
+  describe 'Destroy User' do
+    it 'Destroy with its microposts' do
+      user = FactoryBot.create(:user)
+      expect(Micropost.where(user_id: user.id).length).to be >= 1
+
+      User.find(user.id).destroy
+      expect(Micropost.where(user_id: user.id).length).to be == 0
+    end
+  end
+
+  describe 'Alignment Sequence' do
+    it "In descending order" do
+      count = -1
+      20.times do
+        count += 1
+        FactoryBot.create(:user, created_at: Time.current + count.days, updated_at: Time.current + count.days, confirmed_at: Time.current + count.days)
+      end
+
+      users_all = User.all
+      count = users_all.length
+
+      users_all.each do |user|
+        count -= 1
+        expect(user.id).to be > count
+      end
     end
   end
 end
