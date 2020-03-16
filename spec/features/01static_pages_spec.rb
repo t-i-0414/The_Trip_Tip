@@ -41,8 +41,7 @@ RSpec.feature 'Feature Static Pages', type: :feature do
     scenario 'Header(bofore login)' do
       expect(page.find('header')).to have_link 'The Trip Tipのロゴ', href: root_path
 
-      # 以下はまだ未実装
-      # 投稿一覧のリンク
+      expect(page.find('header')).to have_link '投稿一覧', href: micropost_index_path, count: 2
       expect(page.find('header')).to have_link 'ユーザー登録', href: new_user_registration_path, count: 2
       expect(page.find('header')).to have_link 'ログイン', href: new_user_session_path, count: 2
 

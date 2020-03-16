@@ -5,6 +5,7 @@ class UserController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @microposts = Micropost.where(user_id: @user.id).page(params[:page]).per(20)
   end
 
   def index
