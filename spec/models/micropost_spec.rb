@@ -3,8 +3,6 @@ require 'rails_helper'
 RSpec.describe 'Model Micropost', type: :model do
   before do
     init_db_test
-    @micropost = FactoryBot.build(:micropost, user_id: @user.id)
-    @microposts = Micropost.where(user_id: @user.id)
   end
 
   describe 'Validated Micropost' do
@@ -30,6 +28,25 @@ RSpec.describe 'Model Micropost', type: :model do
       @micropost.content = "#{'a' * 141}"
       expect(@micropost).not_to be_valid
       expect(@micropost.errors[:content]).to include("投稿文は140文字以内で入力してください。")
+    end
+  end
+
+  describe 'Destroy Micropost' do
+    it 'Success' do
+      user = FactoryBot.create(:user)
+      expect(Micropost.where(user_id: user.id).length).to be >= 1
+      micropost_count = Micropost.where(user_id: user.id).length
+
+      Micropost.find_by(user_id: user.id).destroy
+      expect(Micropost.where(user_id: user.id).length).to eq micropost_count - 1
+    end
+
+    it 'Depends its user' do
+      user = FactoryBot.create(:user)
+      expect(Micropost.where(user_id: user.id).length).to be >= 1
+
+      User.find(user.id).destroy
+      expect(Micropost.where(user_id: user.id).length).to be == 0
     end
   end
 
