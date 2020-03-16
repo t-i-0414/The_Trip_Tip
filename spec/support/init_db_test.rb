@@ -6,6 +6,9 @@ def init_db_test
   @users = FactoryBot.create_list(:user, 21, created_at: Time.current, updated_at: Time.current, confirmed_at: Time.current)
   @user = @users[0]
 
+  @microposts = Micropost.where(user_id: @user.id)
+  @micropost = FactoryBot.build(:micropost, user_id: @user.id)
+
   @users_auth = FactoryBot.create_list(:user_auth, 15, created_at: Time.current, updated_at: Time.current, confirmed_at: Time.current)
   @user_auth = @users_auth[0]
 

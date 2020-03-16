@@ -93,6 +93,16 @@ RSpec.describe 'Model User', type: :model do
     end
   end
 
+  describe 'Destroy User' do
+    it 'Destroy with its microposts' do
+      user = FactoryBot.create(:user)
+      expect(Micropost.where(user_id: user.id).length).to be >= 1
+
+      User.find(user.id).destroy
+      expect(Micropost.where(user_id: user.id).length).to be == 0
+    end
+  end
+
   describe 'Alignment Sequence' do
     it "In descending order" do
       count = -1
