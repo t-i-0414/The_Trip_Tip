@@ -1,3 +1,9 @@
+<% if @microposts.nil? %>
+<div class="card_post">
+  まだ投稿がありません
+</div>
+
+<% else %>
 <% @microposts.each do |micropost| %>
 <% user = User.find(micropost.user_id)%>
 <div class="card_post">
@@ -19,7 +25,7 @@
   <div class="wrapper_actions">
     <span class="action">
       <%= image_tag 'icon_clock.svg', alt: '時計のアイコン' %>
-      <span>1時間前</span>
+      <span><%= time_ago_in_words(micropost.created_at) %>前</span>
     </span>
     <span class="action">
       <%= link_to '#', method: :get do %>
@@ -29,4 +35,5 @@
     </span>
   </div>
 </div>
+<% end %>
 <% end %>
