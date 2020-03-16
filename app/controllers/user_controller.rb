@@ -15,15 +15,4 @@ class UserController < ApplicationController
   def root
     redirect_to user_path(id: current_user.id)
   end
-
-  protected
-
-  def logged_in_user
-    if user_signed_in?
-      @user = User.find(current_user.id)
-    else
-      flash[:alert] = 'アカウント登録もしくはログインしてください。'
-      redirect_to new_user_session_path
-    end
-  end
 end
