@@ -135,7 +135,7 @@
   }
 }
 
-@media screen and (max-width: 959px) {
+@media screen and (max-width: 959px), (max-height: 594px) {
   #userDetailInput:checked ~ #side {
     display: block;
   }
