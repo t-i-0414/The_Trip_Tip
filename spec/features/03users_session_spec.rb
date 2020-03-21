@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Feature Users Sessions', type: :feature do
-  before(:each) do
+  before :each do
     init_db_test
     visit new_user_session_path
   end

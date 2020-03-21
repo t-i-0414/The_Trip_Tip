@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Feature Micropost', type: :feature do
-  before do
+  before :each do
     init_db_test
   end
 
