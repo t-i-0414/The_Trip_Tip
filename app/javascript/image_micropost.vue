@@ -1,15 +1,15 @@
 <template>
-  <div id="preview_user_image">
+  <div id="preview_micropost_image">
     <div class="field">
-      <label for="user_image-before">プロフィール画像（任意）</label>
+      <label for="micropost_image-before">投稿に添付する画像（任意）</label>
       <label
         class="fileup-btn"
-        for="user_image-before"
+        for="micropost_image-before"
         :style="{ backgroundImage: 'url(' + cropImg + ')' }"
       ></label>
       <input
         class="hidden"
-        id="user_image-before"
+        id="micropost_image-before"
         ref="input"
         type="file"
         name
@@ -22,10 +22,10 @@
           :guides="true"
           :view-mode="2"
           drag-mode="move"
-          :auto-crop-area="0.5"
+          :auto-crop-area="0.8"
           :min-container-width="250"
           :min-container-height="250"
-          :minCropBoxWidth="50"
+          :minCropBoxWidth="80"
           :minCropBoxHeight="50"
           :background="true"
           :rotatable="true"
@@ -43,7 +43,13 @@
             :download="filename"
           >切り抜いた画像を保存する（任意）</a>
         </div>
-        <input class="hidden" id="user_image" name="user[image]" type="text" :value="cropImg" />
+        <input
+          class="hidden"
+          id="micropost_image"
+          name="micropost[image]"
+          type="text"
+          :value="cropImg"
+        />
       </div>
     </div>
   </div>
@@ -59,8 +65,8 @@ export default {
   },
   data() {
     return {
-      yoko: 1,
-      tate: 1,
+      yoko: 16,
+      tate: 10,
       imgSrc: '',
       cropImg: '/assets/icon_plus.svg',
       filename: '',
@@ -88,7 +94,7 @@ export default {
     },
 
     cropImage() {
-      this.cropImg = this.$refs.cropper.getCroppedCanvas({ maxWidth: 500, maxHeight: 500 }).toDataURL('image/jpeg');
+      this.cropImg = this.$refs.cropper.getCroppedCanvas({ maxWidth: 800, maxHeight: 800 }).toDataURL('image/jpeg');
       this.resizedBlob = this.base64ToBlob(this.cropImg);
     },
 
@@ -116,6 +122,6 @@ export default {
   }
 };
 $(document).ready(function() {
-  $('#user_image').val(null);
+  $('#micropost_image').val(null);
 });
 </script>
