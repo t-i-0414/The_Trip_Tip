@@ -423,6 +423,16 @@ body {
   display: none;
 }
 
+.over_flow-scroll {
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.over_flow-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 @media screen and (max-width: 959px) {
   body {
     min-width: 100vw;
