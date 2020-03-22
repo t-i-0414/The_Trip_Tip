@@ -80,11 +80,12 @@
         transform: translate(-50%, -50%);
 
         .card_post {
-          height: 340px;
+          max-height: 64vh;
 
           .wrapper_title-post {
             display: flex;
             align-items: center;
+            margin-bottom: 16px;
 
             span {
               margin-left: 8px;
@@ -135,7 +136,7 @@
   }
 }
 
-@media screen and (max-width: 959px) {
+@media screen and (max-width: 959px), (max-height: 594px) {
   #userDetailInput:checked ~ #side {
     display: block;
   }

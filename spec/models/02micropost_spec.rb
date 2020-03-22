@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Model Micropost', type: :model do
-  before do
+  before :each do
     init_db_test
   end
 

@@ -48,6 +48,11 @@ header {
       background-color: rgba(14, 61, 250, 0.6);
     }
 
+    .success {
+      color: #fff;
+      background-color: rgba(14, 61, 250, 0.6);
+    }
+
     .alert,
     .notice {
       margin-top: 8px;
@@ -63,7 +68,7 @@ header {
   }
 }
 
-@media screen and (max-width: 959px) {
+@media screen and (max-width: 959px), (max-height: 594px) {
   header {
     -webkit-border-radius: 0 0 0 64px;
     -moz-border-radius: 0 0 0 64px;
