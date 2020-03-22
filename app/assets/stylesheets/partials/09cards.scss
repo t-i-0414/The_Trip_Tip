@@ -35,6 +35,18 @@
     font-size: 1.6rem;
   }
 
+  .image_micropost {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 24px;
+
+    img {
+      width: 92%;
+    }
+  }
+
   .wrapper_actions {
     display: flex;
     font-size: 1.4rem;
@@ -71,6 +83,117 @@
       margin-left: 24px;
     }
   }
+
+  form {
+    .field {
+      margin-bottom: 56px;
+
+      .form-input {
+        width: 100%;
+        height: 36px;
+        margin-top: 8px;
+        padding: 0 8px;
+        color: #777;
+        line-height: 1.8;
+        letter-spacing: 0.15em;
+        border-radius: 5px;
+        box-shadow: 0 1px 5px #00000029;
+      }
+
+      .form-text_area {
+        display: block;
+        width: 100%;
+        height: 208px;
+        margin-bottom: 56px;
+        padding: 8px;
+        color: #666;
+        font-size: 1.8rem;
+        font-family: Noto sans JP, Arial, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Osaka, 'メイリオ', Meiryo,
+          'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+        line-height: 1.5;
+        letter-spacing: 0.15em;
+        text-align: justify;
+        border-radius: 5px;
+        box-shadow: 0 1px 5px #00000029;
+      }
+
+      .hidden {
+        display: none;
+      }
+    }
+
+    #preview_micropost_image {
+      .field {
+        .fileup-btn {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          width: 162px;
+          height: 100px;
+          margin-top: 16px;
+          color: #fff;
+          text-align: center;
+          background-color: #9599b3;
+          background-image: url(icon_plus.svg);
+          background-position: center;
+          background-size: cover;
+          box-shadow: 0 3px 6px #00000029;
+          cursor: pointer;
+        }
+
+        .fileup-btn:hover {
+          opacity: 0.8;
+        }
+      }
+
+      .view-trimming {
+        display: inline-block;
+        width: 80%;
+        margin-top: 32px;
+      }
+
+      .cropper-drag-box {
+        border: 1px solid gray;
+      }
+
+      .trimming,
+      .downloader {
+        margin-top: 8px;
+        font-size: 1.6rem;
+        cursor: pointer;
+      }
+
+      .trimming:hover,
+      .downloader:hover {
+        opacity: 0.8;
+      }
+    }
+
+    .actions.micropost {
+      .btn {
+        width: 72%;
+        height: 46px;
+        margin: 0 auto 16px;
+        padding: 0 35px;
+        line-height: 2.3;
+        letter-spacing: 0.2em;
+      }
+    }
+
+    .actions.login {
+      margin-top: 32px;
+
+      .btn {
+        width: 312px;
+        max-width: 100%;
+        height: 46px;
+        margin: 0 auto;
+        padding: 0 35px;
+        line-height: 2.3;
+        letter-spacing: 0.2em;
+      }
+    }
+  }
 }
 
 .container.dynamic_pages {
@@ -97,7 +220,15 @@
 
 @media screen and (max-width: 559px) {
   .card_post {
+    -webkit-border-radius: 5px 5px 64px 5px;
+    -moz-border-radius: 5px 5px 64px 5px;
+    -ms-border-radius: 5px 5px 64px 5px;
+    -o-border-radius: 5px 5px 64px 5px;
+    border-radius: 5px 5px 64px 5px;
+
     .wrapper_name {
+      margin-bottom: 12px;
+
       .name_user {
         width: calc(100% - 76px);
         font-size: 1.4rem;
@@ -105,11 +236,45 @@
     }
 
     .text_post {
+      margin-bottom: 16px;
       font-size: 1.4rem;
+    }
+
+    .image_micropost {
+      margin-bottom: 16px;
+
+      img {
+        width: 100%;
+      }
     }
 
     .wrapper_actions {
       font-size: 1.2rem;
+    }
+
+    form {
+      .field {
+        .form-text_area {
+          font-size: 1.4rem;
+        }
+      }
+
+      #preview_micropost_image {
+        .field {
+          .trimming,
+          .downloader {
+            font-size: 1.4rem;
+          }
+        }
+      }
+
+      .actions.micropost {
+        .btn {
+          font-size: 1.4rem;
+          line-height: 2.3;
+          letter-spacing: 0.2em;
+        }
+      }
     }
   }
 
