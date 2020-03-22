@@ -70,6 +70,7 @@
             <div class="field">
               <%= f.text_area :content, autofocus: true, maxlength: "140", :class => "form-text_area" %>
             </div>
+            <%= f.text_field :image, :class => "hidden" %>
             <div id="preview_micropost_image">
               <%= javascript_pack_tag 'image_micropost', 'data-turbolinks-track': 'reload',  defer: true %>
             </div>
