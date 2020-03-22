@@ -1,0 +1,45 @@
+<% provide(:title, "投稿の詳細") %>
+<div class="container dynamic_pages">
+  <%= render template: "layouts/side" %>
+  <div class="container_flex">
+    <div class="container_posts">
+
+      <% if @micropost.nil? %>
+      <div class="card_post">
+        まだ投稿がありません
+      </div>
+
+      <% else %>
+      <% user = User.find(@micropost.user_id)%>
+      <div class="card_post">
+        <div class="wrapper_name">
+          <%= link_to user_path(id: user.id), method: :get do %>
+          <%= image_tag User.find(@micropost.user_id).image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
+          <% end %>
+          <span class="name_user">
+            <%= link_to user_path(id: user.id), method: :get do %>
+            <%= User.find(@micropost.user_id).name %>
+            <% end %>
+          </span>
+        </div>
+        <p class="text_post">
+          <%= @micropost.content %>
+        </p>
+        <div class="wrapper_actions">
+          <span class="action">
+            <%= image_tag 'icon_clock.svg', alt: '時計のアイコン' %>
+            <span><%= time_ago_in_words(@micropost.created_at) %>前</span>
+          </span>
+          <span class="action">
+            <%= link_to '#', method: :get do %>
+            <%= image_tag 'icon_heart.svg', alt: 'いいねのアイコン' %>
+            <% end %>
+            <span class="likes">500</span>いいね！
+          </span>
+        </div>
+      </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
