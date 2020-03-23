@@ -3,12 +3,10 @@
   <%= render template: "layouts/side" %>
   <div class="container_flex">
     <div class="container_posts">
-
       <% if @micropost.nil? %>
       <div class="card_post">
         まだ投稿がありません
       </div>
-
       <% else %>
       <% user = User.find(@micropost.user_id)%>
       <div class="card_post">
@@ -25,6 +23,11 @@
         <p class="text_post">
           <%= @micropost.content %>
         </p>
+        <% unless @micropost.image.url == '/images/default.png' %>
+        <div class="image_micropost">
+          <%= image_tag @micropost.image.url, alt: '投稿に関する写真', class: '' %>
+        </div>
+        <% end %>
         <div class="wrapper_actions">
           <span class="action">
             <%= image_tag 'icon_clock.svg', alt: '時計のアイコン' %>
@@ -36,9 +39,15 @@
             <% end %>
             <span class="likes">500</span>いいね！
           </span>
+          <% if user_signed_in? && @user == current_user %>
+          <span class="action">
+            <%= link_to micropost_path(id: @micropost.id), method: :delete, data: { confirm: "投稿を削除しても本当によろしいですが？" } do %>
+            <%= image_tag 'icon_trash.svg', alt: 'ゴミ箱のアイコン' %>
+            <% end %>
+          </span>
+          <% end %>
         </div>
       </div>
-
       <% end %>
     </div>
   </div>

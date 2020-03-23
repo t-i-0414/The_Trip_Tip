@@ -50,7 +50,11 @@ class MicropostController < ApplicationController
   end
 
   def correct_user
-    @micropost = current_user.microposts.find_by(id: params[:id])
-    redirect_to root_url if @micropost.nil?
+    @micropost = Micropost.find(params[:id])
+
+    return if @micropost.user_id == current_user.id
+
+    flash[:alert] = 'ログインユーザーではない投稿は削除できません'
+    redirect_to root_url
   end
 end
