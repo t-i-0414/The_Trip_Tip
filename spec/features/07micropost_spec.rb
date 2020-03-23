@@ -7,6 +7,47 @@ RSpec.feature 'Feature Micropost', type: :feature do
     init_db_test
   end
 
+  feature 'Render right contents' do
+    scenario 'Micropost show (login user)' do
+      login(@user)
+      post_user = @user
+      micropost = Micropost.where(user_id: @user.id)[0]
+
+      visit micropost_path micropost
+
+      expect(page).to have_http_status 200
+      expect(page).to have_title full_title('投稿の詳細')
+
+      expect(page.find('.info_user')).to have_content post_user.name
+      expect(page.find('.container_posts').find('.card_post')).to have_link post_user.name, href: user_path(id: post_user.id)
+      expect(page.find('.info_user').find('.image_user')[:src]).to eq post_user.image.url
+      expect(page.find('.container_posts').find('.card_post')).to have_link 'ユーザーのアイコン', href: user_path(id: post_user.id)
+
+      expect(page.find('.container_posts').find('.card_post')).to have_link 'ゴミ箱のアイコン', href: micropost_path(id: micropost.id)
+
+      # いいねボタンについては未実装
+    end
+    scenario 'Micropost show (other user)' do
+      login(@users[10])
+      micropost = Micropost.where(user_id: @user.id)[0]
+      post_user = User.find(micropost.user_id)
+
+      visit micropost_path micropost
+
+      expect(page).to have_http_status 200
+      expect(page).to have_title full_title('投稿の詳細')
+
+      expect(page.find('.info_user')).to have_content post_user.name
+      expect(page.find('.container_posts').find('.card_post')).to have_link post_user.name, href: user_path(id: post_user.id)
+      expect(page.find('.info_user').find('.image_user')[:src]).to eq post_user.image.url
+      expect(page.find('.container_posts').find('.card_post')).to have_link 'ユーザーのアイコン', href: user_path(id: post_user.id)
+
+      expect(page.find('.container_posts').find('.card_post')).not_to have_link 'ゴミ箱のアイコン', href: micropost_path(id: micropost.id)
+
+      # いいねボタンについては未実装
+    end
+  end
+
   feature 'Microposts Index(Before Login)' do
     scenario 'Success' do
       visit micropost_index_path
@@ -85,25 +126,33 @@ RSpec.feature 'Feature Micropost', type: :feature do
     end
   end
 
-  feature 'Render right contents' do
-    scenario 'Micropost show' do
+  feature 'New Micropost' do
+    scenario 'Success' do
       login(@user)
-      micropost = Micropost.find(1)
-      post_user = User.find(micropost.user_id)
-
-      visit micropost_path micropost
-
+      fill_in 'micropost[content]', with: 'test'
+      expect{ click_button '投稿する', match: :first }.to change{ Micropost.count }.by(1)
+      expect(page).to have_content '投稿に成功しました'
       expect(page).to have_http_status 200
-      expect(page).to have_title full_title('投稿の詳細')
+      expect(page).to have_title full_title("#{@user.name}")
+    end
 
-      expect(page.find('.info_user')).to have_content post_user.name
-      expect(page.find('.info_user').find('.image_user')[:src]).to eq post_user.image.url
+    scenario 'Fail (no content)' do
+      login(@user)
+      fill_in 'micropost[content]', with: ''
+      expect{ click_button '投稿する', match: :first }.to change{ Micropost.count }.by(0)
+      expect(page).to have_content '投稿に失敗しました。投稿文が入力されているかご確認ください。'
+      expect(page).to have_http_status 200
+      expect(page).to have_title full_title("#{@user.name}")
+    end
+  end
 
-      expect(page.find('.container_posts').find('.card_post')).to have_link post_user.name, href: user_path(id: post_user.id)
-      expect(page.find('.container_posts').find('.card_post')).to have_link 'ユーザーのアイコン', href: user_path(id: post_user.id)
-
-      expect(page).to have_content micropost.content
-      # いいねリンクは未実装
+  feature 'Delete Micropost' do
+    scenario 'Success' do
+      login(@user)
+      expect{ click_on 'ゴミ箱のアイコン', match: :first }.to change{ Micropost.count }.by(-1)
+      expect(page).to have_content '投稿を削除しました'
+      expect(page).to have_http_status 200
+      expect(page).to have_title full_title("#{@user.name}")
     end
   end
 end
