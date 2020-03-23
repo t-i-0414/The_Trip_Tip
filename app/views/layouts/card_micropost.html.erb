@@ -40,7 +40,7 @@
       <% end %>
       <span class="likes">500</span>いいね！
     </span>
-    <% if user_signed_in? && micropost.user_id = current_user.id %>
+    <% if user_signed_in? && micropost.user_id == current_user.id %>
     <span class="action">
       <%= link_to micropost_path(id: micropost.id), method: :delete, data: { confirm: "投稿を削除しても本当によろしいですが？" } do %>
       <%= image_tag 'icon_trash.svg', alt: 'ゴミ箱のアイコン' %>
