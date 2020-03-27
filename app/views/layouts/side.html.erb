@@ -23,8 +23,16 @@
           <div class="wrapper_link">
             <dt class="title_link">フォロー </dt>
             <dd class="detail_link">
-              <%= link_to '#', method: :get do %>
-              -<span class="follow">500</span>users
+              <%= link_to "#{following_user_path(@user)}", method: :get do %>
+              -
+              <span class="follow">
+                <% if @user.following.count == 0 %>
+                0
+                <% else %>
+                <%= @user.following.count.to_s(:delimited) %>
+                <% end %>
+              </span>
+              users
               <% end %>
             </dd>
 
@@ -32,8 +40,16 @@
           <div class="wrapper_link">
             <dt class="title_link">フォロワー</dt>
             <dd class="detail_link">
-              <%= link_to '#', method: :get do %>
-              -<span class="follow">5,000</span>users
+              <%= link_to "#{followers_user_path(@user)}", method: :get do %>
+              -
+              <span class="follow">
+                <% if @user.followers.count == 0 %>
+                0
+                <% else %>
+                <%= @user.followers.count.to_s(:delimited) %>
+                <% end %>
+              </span>
+              users
               <% end %>
             </dd>
           </div>
@@ -82,9 +98,22 @@
         </div>
       </div>
       <% else %>
-      <div class="btn navy follow">
-        フォローする
+      <% if current_user.following?(@user) %>
+      <div class="btn red-vivid follow">
+        <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id), html: {method: :delete}) do |f| %>
+        <%= hidden_field_tag :followed_id, @user.id %>
+        <%= f.submit 'フォローしない' %>
+        <% end %>
       </div>
+
+      <% else %>
+      <div class="btn navy follow">
+        <%= form_for(current_user.active_relationships.build) do |f| %>
+        <%= hidden_field_tag :followed_id, @user.id %>
+        <%= f.submit 'フォローする' %>
+        <% end %>
+      </div>
+      <% end %>
       <% end %>
     </div>
   </aside>

@@ -16,7 +16,15 @@ Rails.application.routes.draw do
     root to: 'user#root', as: :user_root
   end
 
-  resources :micropost, only: %i[index create new show destroy]
+  resources :user do
+    member do
+      get :following, :followers
+    end
+  end
+
+  resources :micropost, only: %i[index create show destroy]
+
+  resources :relationships, only: %i[create destroy]
 
   get '/user/:id/follows_posts', to: 'microposts#timeline', as: :user_timeline
 
