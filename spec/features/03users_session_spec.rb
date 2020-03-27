@@ -136,7 +136,7 @@ RSpec.feature 'Feature Users Sessions', type: :feature do
       visit user_path id: @user.id += 1
       user_drawer = page.find('.user_drawer')
       expect(user_drawer).to have_no_content 'つぶやきを投稿する'
-      expect(user_drawer).to have_content 'フォローする'
+      expect(page.find("#new_relationship").find('input')[:value]).to eq 'フォローする' 
     end
   end
 
