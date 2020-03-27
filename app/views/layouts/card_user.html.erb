@@ -23,11 +23,11 @@
         <%= link_to "#{following_user_path(user)}", method: :get do %>
         -
         <span class="follow">
-        <% if user.following.count == 0 %>
-        0
-        <% else %>
-        <%= user.following.count.to_s(:delimited) %>
-        <% end %>
+          <% if user.following.count == 0 %>
+          0
+          <% else %>
+          <%= user.following.count.to_s(:delimited) %>
+          <% end %>
         </span>
         users
         <% end %>
@@ -39,11 +39,11 @@
         <%= link_to "#{followers_user_path(user)}", method: :get do %>
         -
         <span class="follow">
-        <% if user.followers.count == 0 %>
-        0
-        <% else %>
-        <%= user.followers.count.to_s(:delimited) %>
-        <% end %>
+          <% if user.followers.count == 0 %>
+          0
+          <% else %>
+          <%= user.followers.count.to_s(:delimited) %>
+          <% end %>
         </span>
         users
         <% end %>

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   authenticated :user do
     root to: 'user#root', as: :user_root
   end
-  
+
   resources :user do
     member do
       get :following, :followers
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   resources :micropost, only: %i[index create show destroy]
-  
+
   resources :relationships, only: %i[create destroy]
 
   get '/user/:id/follows_posts', to: 'microposts#timeline', as: :user_timeline

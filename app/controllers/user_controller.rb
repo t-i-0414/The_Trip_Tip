@@ -18,13 +18,13 @@ class UserController < ApplicationController
   def root
     redirect_to user_path(id: current_user.id)
   end
-  
+
   def following
     @user = User.find(params[:id])
     @users = @user.following.page(params[:page]).per(20)
     @micropost = current_user.microposts.build
   end
-  
+
   def followers
     @user = User.find(params[:id])
     @users = @user.followers.page(params[:page]).per(20)
