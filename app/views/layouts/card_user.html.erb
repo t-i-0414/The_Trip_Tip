@@ -1,3 +1,9 @@
+<% if @users.length == 0 %>
+<div class="card_post">
+  対象となるユーザーがいません
+</div>
+
+<% else %>
 <% @users.each do |user| %>
 <div class="card_post">
   <div class="wrapper_name">
@@ -14,19 +20,36 @@
     <div class="wrapper_link">
       <dt class="title_link">フォロー </dt>
       <dd class="detail_link">
-        <%= link_to '#', method: :get do %>
-        -<span class="follow">500</span>users
+        <%= link_to "#{following_user_path(user)}", method: :get do %>
+        -
+        <span class="follow">
+        <% if user.following.count == 0 %>
+        0
+        <% else %>
+        <%= user.following.count.to_s(:delimited) %>
+        <% end %>
+        </span>
+        users
         <% end %>
       </dd>
     </div>
     <div class="wrapper_link">
       <dt class="title_link">フォロワー</dt>
       <dd class="detail_link">
-        <%= link_to '#', method: :get do %>
-        -<span class="follow">5,000</span>users
+        <%= link_to "#{followers_user_path(user)}", method: :get do %>
+        -
+        <span class="follow">
+        <% if user.followers.count == 0 %>
+        0
+        <% else %>
+        <%= user.followers.count.to_s(:delimited) %>
+        <% end %>
+        </span>
+        users
         <% end %>
       </dd>
     </div>
   </dl>
 </div>
+<% end %>
 <% end %>
