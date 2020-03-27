@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class MicropostController < ApplicationController
-  before_action :logged_in_user, only: %i[timeline create new show destroy]
+  before_action :logged_in_user, only: %i[timeline create show destroy]
   before_action :correct_user,   only: :destroy
 
   def index
@@ -20,8 +20,6 @@ class MicropostController < ApplicationController
       redirect_to user_url current_user
     end
   end
-
-  def new; end
 
   def show
     @user = User.find(Micropost.find(params[:id]).user_id)
