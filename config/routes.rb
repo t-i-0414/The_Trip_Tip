@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   resources :relationships, only: %i[create destroy]
 
-  get '/user/:id/follows_posts', to: 'microposts#timeline', as: :user_timeline
+  get '/user/:id/follows_posts', to: 'micropost#timeline', as: :user_timeline
 
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
