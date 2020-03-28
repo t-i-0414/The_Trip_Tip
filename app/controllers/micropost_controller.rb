@@ -8,7 +8,26 @@ class MicropostController < ApplicationController
     @microposts = Micropost.all.page(params[:page]).per(20)
   end
 
-  def timeline; end
+  def timeline
+    @user = User.find(params[:id])
+
+    relationships = Relationship.where(follower_id: params[:id])
+    users = relationships.map do |relationship|
+      User.find(relationship.followed_id)
+    end
+    users << @user
+
+    microposts_id = []
+    users.each do |user|
+      user_microposts = Micropost.where(user_id: user.id)
+      user_microposts.each do |micropost|
+        microposts_id << micropost.id
+      end
+    end
+
+    @microposts = Micropost.where(id: microposts_id).page(params[:page]).per(20)
+    @micropost = current_user.microposts.build
+  end
 
   def create
     @micropost = current_user.microposts.build(micropost_params)
