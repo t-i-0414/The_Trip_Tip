@@ -120,33 +120,33 @@ RSpec.describe 'Model User', type: :model do
       end
     end
   end
-  
+
   describe 'Follow Actions' do
     it "Follow" do
       init_db_test
       follower = @users[0]
       followed = @users[1]
-      
+
       expect(follower.following?(followed)).to be false
       expect(followed.followers.include?(follower)).to be false
-      
+
       follower.follow(followed)
       expect(follower.following?(followed)).to be true
       expect(followed.followers.include?(follower)).to be true
     end
-    
+
     it "Unfollow" do
       init_db_test
       follower = @users[0]
       followed = @users[1]
-      
+
       expect(follower.following?(followed)).to be false
       expect(followed.followers.include?(follower)).to be false
-      
+
       follower.follow(followed)
       expect(follower.following?(followed)).to be true
       expect(followed.followers.include?(follower)).to be true
-      
+
       follower.unfollow(followed)
       expect(follower.following?(followed)).to be false
       expect(followed.followers.include?(follower)).to be false

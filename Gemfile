@@ -49,7 +49,6 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'database_cleaner', '~> 1.7.0'
   gem 'guard', '~> 2.13.0'
   gem 'guard-minitest', '~> 2.4.4'
   gem 'guard-rspec', '~> 4.7.3', require: false
