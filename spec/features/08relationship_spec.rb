@@ -31,12 +31,14 @@ RSpec.feature 'Feature Relationship', type: :feature do
       expect(page).to have_http_status 200
       expect(page).to have_title full_title('フォロワー一覧')
       expect(page).to have_content @users[1].name
+      expect(page).not_to have_content @users[2].name
 
       visit following_user_path(@user)
 
       expect(page).to have_http_status 200
       expect(page).to have_title full_title('フォロー一覧')
       expect(page).to have_content @users[1].name
+      expect(page).not_to have_content @users[2].name
     end
   end
 
