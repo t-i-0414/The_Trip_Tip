@@ -11,7 +11,7 @@
     %>
     <ul>
       <li class='sign_in'>
-        <%= link_to 'タイムライン', '#', method: :get %>
+        <%= link_to 'タイムライン', user_timeline_path(id: current_user.id), method: :get %>
       </li>
       <li class='sign_in'>
         <%= link_to 'ユーザー一覧', user_index_path, class: 'sign_in', method: :get %>
@@ -33,7 +33,7 @@
         </label>
         <ul>
           <li>
-            <%= link_to '#', class: '', method: :get do %>
+            <%= link_to user_timeline_path(id: current_user.id), class: '', method: :get do %>
             <%= image_tag 'icon_post-index_nav-drawer.svg', alt: '投稿一覧のアイコン' %>
             タイムライン
             <% end %>
