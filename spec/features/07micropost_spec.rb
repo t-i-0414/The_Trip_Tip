@@ -126,6 +126,30 @@ RSpec.feature 'Feature Micropost', type: :feature do
     end
   end
 
+  feature 'Timeline' do
+    scenario 'Before login' do
+      visit user_timeline_path(id: @user)
+
+      expect(page).to have_http_status 200
+      expect(page).to have_title full_title('ユーザーログイン')
+      expect(page).to have_content 'アカウント登録もしくはログインしてください。'
+    end
+
+    scenario 'After login' do
+      login(@user)
+      active_relationship = Relationship.create(follower_id: @user.id, followed_id: @users[1].id)
+      passive_relationship = Relationship.create(follower_id: @users[1].id, followed_id: @user.id)
+
+      visit user_timeline_path(id: @user)
+      expect(page).to have_http_status 200
+      expect(page).to have_title full_title('タイムライン')
+
+      expect(page).to have_content @user.name, count: 5 + 1
+      expect(page).to have_content @users[1].name, count: 5
+      expect(page).not_to have_content @users[2].name
+    end
+  end
+
   feature 'New Micropost' do
     scenario 'Success' do
       login(@user)
