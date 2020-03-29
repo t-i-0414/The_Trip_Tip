@@ -44,6 +44,14 @@ class User < ApplicationRecord
     user
   end
 
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.name = 'テストユーザー'
+      user.password = SecureRandom.urlsafe_base64[6, 16]
+      user.confirmed_at = Time.zone.now
+    end
+  end
+
   def follow(other_user)
     following << other_user
   end

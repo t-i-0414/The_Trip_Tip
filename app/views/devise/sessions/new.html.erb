@@ -15,6 +15,11 @@
     <div class="separator_wrapper">
       <span class="separator">または</span>
     </div>
+    <div class="container_guest">
+      <%= link_to '簡単ログイン', users_guest_sign_in_path, class: 'btn red-deeply', method: :post %>
+      <p class="indent-1">
+        簡単ログインはポートフォリオ閲覧用のテストユーザーとして、パスワード等の入力を省略してログイン出来るボタンです。</p>
+    </div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
     <div class="field">
