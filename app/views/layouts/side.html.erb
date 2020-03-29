@@ -15,7 +15,9 @@
           表示中のユーザー
         </span>
         <% end %>
+        <%= link_to user_path(id: @user.id), class: 'wrapper_image_user', method: :get do%>
         <%= image_tag @user.image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
+        <% end %>
         <span class="name_user">
           <%= @user.name %>
         </span>
