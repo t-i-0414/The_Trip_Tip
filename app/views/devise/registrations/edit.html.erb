@@ -17,39 +17,19 @@
           表示中のユーザー
         </span>
         <% end %>
+        <%= link_to user_path(id: @user.id), class: 'wrapper_image_user', method: :get do%>
         <%= image_tag @user.image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
+        <% end %>
         <span class="name_user">
           <%= @user.name %>
         </span>
-        <dl class="links_user">
-          <div class="wrapper_link">
-            <dt class="title_link">フォロー </dt>
-            <dd class="detail_link">
-              <%= link_to '#', method: :get do %>
-              -<span class="follow">500</span>users
-              <% end %>
-            </dd>
-
-          </div>
-          <div class="wrapper_link">
-            <dt class="title_link">フォロワー</dt>
-            <dd class="detail_link">
-              <%= link_to '#', method: :get do %>
-              -<span class="follow">5,000</span>users
-              <% end %>
-            </dd>
-          </div>
-          <%# 旅行記機能実装後 %>
-          <%# <div class="wrapper_link"> %>
-          <%# <dt class="title_link"> %>
-          <%# <%= link_to '旅行記', '#', method: :get %>
-          <%# </dt> %>
-          <%# <dd></dd> %>
-          <%# </div>  %>
+        <dl class="links_user" id="links-user">
+          <%= render partial: 'layouts/links_user', locals: { user: @user } %>
         </dl>
       </div>
     </div>
   </aside>
+
 
   <div class="container_flex">
     <div class="container_signs">
