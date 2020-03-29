@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :check_guest, only: %i[update destroy]
 
   # GET /resource/sign_up
   # def new
@@ -20,14 +21,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+  end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    super
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -61,5 +62,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
   def update_resource(resource, params)
     resource.uid.nil? ? super : resource.update_without_password(params)
+  end
+
+  def check_guest
+    redirect_to edit_user_registration_path, alert: 'テストユーザーの変更・削除はできません。' if resource.email == 'guest@example.com'
   end
 end
