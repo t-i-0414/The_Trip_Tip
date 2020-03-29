@@ -21,7 +21,8 @@
 
     .page.current {
       display: inline-block;
-      width: 30px;
+      width: fit-content;
+      min-width: 30px;
       height: 30px;
       color: #fff;
       line-height: 1.666;
@@ -49,7 +50,8 @@
     .pagination {
       .page.current {
         display: inline-block;
-        width: 30px;
+        width: fit-content;
+        min-width: 30px;
         height: 30px;
         color: #fff;
         line-height: 2.142;
