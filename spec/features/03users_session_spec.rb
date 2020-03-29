@@ -63,13 +63,13 @@ RSpec.feature 'Feature Users Sessions', type: :feature do
 
       if Micropost.where(user_id: @user.id).count <= @pagenate_count
         expect(page).not_to have_css '.page'
-        expect(page).to have_link 'ユーザーのアイコン', href: user_path(id:@user.id), count: Micropost.where(user_id: @user.id).count
+        expect(page).to have_link 'ユーザーのアイコン', href: user_path(id:@user.id), count: Micropost.where(user_id: @user.id).count + 1
       elsif Micropost.where(user_id: @user.id).count <= @pagenate_count * @pagenate_maximum
-        expect(page).to have_css '.page', count: (Micropost.where(user_id: @user.id).count.to_f / @pagenate_count).ceil * 2
+        expect(page).to have_css '.page', count: (Micropost.where(user_id: @user.id).count.to_f / @pagenate_count).ceil * 2 + 1
         expect(page).to have_link 'ユーザーのアイコン', href: user_path(id:@user.id), count: @pagenate_count
       else
         expect(page).to have_css '.page', count: @pagenate_maximum * 2
-        expect(page).to have_link 'ユーザーのアイコン', href: user_path(id:@user.id), count: @pagenate_count
+        expect(page).to have_link 'ユーザーのアイコン', href: user_path(id:@user.id), count: @pagenate_count + 1
       end
     end
   end
@@ -136,7 +136,7 @@ RSpec.feature 'Feature Users Sessions', type: :feature do
       visit user_path id: @user.id += 1
       user_drawer = page.find('.user_drawer')
       expect(user_drawer).to have_no_content 'つぶやきを投稿する'
-      expect(page.find("#new_relationship").find('input')[:value]).to eq 'フォローする' 
+      expect(page.find("#new_relationship").find('input')[:value]).to eq 'フォローする'
     end
   end
 
