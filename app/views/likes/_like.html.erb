@@ -1,0 +1,24 @@
+      <% if user_signed_in? %>
+      <% if current_user.like?(micropost) %>
+      <%= link_to likes_delete_path(micropost_id: micropost.id), {method: "post", remote: true} do %>
+      <%= image_tag 'icon_heart-liked.svg', alt: 'いいねのアイコン' %>
+      <% end %>
+      <span class="likes">
+        <%= Like.where(micropost_id: micropost.id).count %> いいね！
+      </span>
+      <% else %>
+      <%= link_to likes_create_path(micropost_id: micropost.id), {method: "post", remote: true} do %>
+      <%= image_tag 'icon_heart.svg', alt: 'いいねのアイコン' %>
+      <% end %>
+      <span class="likes">
+        <%= Like.where(micropost_id: micropost.id).count %> いいね！
+      </span>
+      <% end %>
+      <% else %>
+      <%= link_to new_user_session_path, method: :get do %>
+      <%= image_tag 'icon_heart.svg', alt: 'いいねのアイコン' %>
+      <% end %>
+      <span class="likes">
+        <%= Like.where(micropost_id: micropost.id).count %> いいね！
+      </span>
+      <% end %>

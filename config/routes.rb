@@ -21,12 +21,14 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
+  get '/user/:id/follows_posts', to: 'micropost#timeline', as: :user_timeline
 
   resources :micropost, only: %i[index create show destroy]
 
   resources :relationships, only: %i[create destroy]
 
-  get '/user/:id/follows_posts', to: 'micropost#timeline', as: :user_timeline
+  post 'likes/:micropost_id/create', to: 'likes#create', constraints: { micropost_id: /\d+/ }, as: :likes_create
+  post 'likes/:micropost_id/delete', to: 'likes#destroy', constraints: { micropost_id: /\d+/ }, as: :likes_delete
 
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
