@@ -33,11 +33,8 @@
             <%= image_tag 'icon_clock.svg', alt: '時計のアイコン' %>
             <span><%= time_ago_in_words(@micropost.created_at) %>前</span>
           </span>
-          <span class="action">
-            <%= link_to '#', method: :get do %>
-            <%= image_tag 'icon_heart.svg', alt: 'いいねのアイコン' %>
-            <% end %>
-            <span class="likes">500</span>いいね！
+          <span class="action" id="like_action-<%= @micropost.id %>">
+            <%= render partial: 'likes/like', locals: { micropost: @micropost } %>
           </span>
           <% if user_signed_in? && @user == current_user %>
           <span class="action">
