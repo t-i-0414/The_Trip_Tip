@@ -35,7 +35,13 @@ class MicropostController < ApplicationController
       flash[:notice] = '投稿に成功しました'
       redirect_to root_url
     else
-      flash[:alert] = '投稿に失敗しました。投稿文が入力されているかご確認ください。'
+      flash[:alert] = if @micropost.content.empty?
+                        '投稿に失敗しました。投稿文が入力されていません。'
+                      elsif @micropost.content.length > 140
+                        '投稿に失敗しました。投稿文は140文字以内で入力してください。'
+                      else
+                        '投稿に失敗しました。'
+                      end
       redirect_to user_url current_user
     end
   end
