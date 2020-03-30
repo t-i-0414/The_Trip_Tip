@@ -22,11 +22,11 @@ RSpec.feature 'Feature Micropost', type: :feature do
       expect(page.find('.container_posts').find('.card_post')).to have_link post_user.name, href: user_path(id: post_user.id)
       expect(page.find('.info_user').find('.image_user')[:src]).to eq post_user.image.url
       expect(page.find('.container_posts').find('.card_post')).to have_link 'ユーザーのアイコン', href: user_path(id: post_user.id)
-
+      expect(page.find('.container_posts').find('.card_post')).to have_content micropost.content
+      expect(page.find('.container_posts').find('.card_post')).to have_link 'いいねのアイコン', href: likes_create_path(micropost_id: micropost.id)
       expect(page.find('.container_posts').find('.card_post')).to have_link 'ゴミ箱のアイコン', href: micropost_path(id: micropost.id)
-
-      # いいねボタンについては未実装
     end
+
     scenario 'Micropost show (other user)' do
       login(@users[10])
       micropost = Micropost.where(user_id: @user.id)[0]
@@ -41,10 +41,9 @@ RSpec.feature 'Feature Micropost', type: :feature do
       expect(page.find('.container_posts').find('.card_post')).to have_link post_user.name, href: user_path(id: post_user.id)
       expect(page.find('.info_user').find('.image_user')[:src]).to eq post_user.image.url
       expect(page.find('.container_posts').find('.card_post')).to have_link 'ユーザーのアイコン', href: user_path(id: post_user.id)
-
+      expect(page.find('.container_posts').find('.card_post')).to have_content micropost.content
+      expect(page.find('.container_posts').find('.card_post')).to have_link 'いいねのアイコン', href: likes_create_path(micropost_id: micropost.id)
       expect(page.find('.container_posts').find('.card_post')).not_to have_link 'ゴミ箱のアイコン', href: micropost_path(id: micropost.id)
-
-      # いいねボタンについては未実装
     end
   end
 
@@ -164,7 +163,16 @@ RSpec.feature 'Feature Micropost', type: :feature do
       login(@user)
       fill_in 'micropost[content]', with: ''
       expect{ click_button '投稿する', match: :first }.to change{ Micropost.count }.by(0)
-      expect(page).to have_content '投稿に失敗しました。投稿文が入力されているかご確認ください。'
+      expect(page).to have_content '投稿に失敗しました。投稿文が入力されていません。'
+      expect(page).to have_http_status 200
+      expect(page).to have_title full_title("#{@user.name}")
+    end
+
+    scenario 'Fail (more than 140 characters content)' do
+      login(@user)
+      fill_in 'micropost[content]', with: "#{'a' * 141}"
+      expect{ click_button '投稿する', match: :first }.to change{ Micropost.count }.by(0)
+      expect(page).to have_content '投稿に失敗しました。投稿文は140文字以内で入力してください。'
       expect(page).to have_http_status 200
       expect(page).to have_title full_title("#{@user.name}")
     end

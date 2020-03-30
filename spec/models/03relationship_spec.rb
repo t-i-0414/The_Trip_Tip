@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Model Micropost', type: :model do
   before :each do
     init_db_test
-    @relationship = Relationship.new(follower_id: @users[0].id, followed_id: @users[1].id)
+    @relationship = Relationship.create(follower_id: @users[0].id, followed_id: @users[1].id)
   end
 
   describe 'Validated Relationship' do
