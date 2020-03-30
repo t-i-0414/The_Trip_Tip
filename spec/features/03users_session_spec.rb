@@ -48,9 +48,9 @@ RSpec.feature 'Feature Users Sessions', type: :feature do
       expect(info_user_image[:src]).to eq @user.image.url
       expect(info_user.find('.name_user')).to have_content @user.name
       expect(follow_user.find('.title_link')).to have_content 'フォロー'
-      # フォローリンク未実装
+      expect(follow_user).to have_link "#{@user.following.count}", href: following_user_path(id: @user.id)
       expect(follower_user.find('.title_link')).to have_content 'フォロワー'
-      # フォロワーリンク未実装
+      expect(follower_user).to have_link "#{@user.followers.count}", href: followers_user_path(id: @user.id)
 
       expect(post_input[:type]).to eq 'checkbox'
       expect(post_open[:for]).to eq 'postInput'
@@ -59,7 +59,7 @@ RSpec.feature 'Feature Users Sessions', type: :feature do
 
       expect(post_content.find('.post-close')[:for]).to eq 'postInput'
       expect(post_content).to have_selector 'span', text: 'つぶやきを投稿する'
-      # つぶやき投稿用のtextareaについては未実装
+      expect(post_content).to have_css 'textarea.form-text_area'
 
       if Micropost.where(user_id: @user.id).count <= @pagenate_count
         expect(page).not_to have_css '.page'
