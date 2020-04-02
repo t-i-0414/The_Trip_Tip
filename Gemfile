@@ -24,6 +24,7 @@ gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.1'
 gem 'rails-i18n', '~> 6.0.0'
 gem 'sass-rails', '>= 6'
+gem 'sqlite3', '~> 1.4'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
 
@@ -35,7 +36,6 @@ group :development, :test do
   ]
   gem 'factory_bot_rails', '~> 5.1.1'
   gem 'spring-commands-rspec', '~> 1.0.4'
-  gem 'sqlite3', '~> 1.4'
 end
 
 group :development do
@@ -62,7 +62,6 @@ end
 
 group :production do
   gem 'fog', '>= 2.0.0'
-  gem 'pg', '>= 1.1.4'
 end
 
 gem 'tzinfo-data', platforms: %i[
