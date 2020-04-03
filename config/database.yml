@@ -22,4 +22,6 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+    database: The_Trip_tip_production
+    username: root
+    password:
