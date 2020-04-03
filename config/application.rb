@@ -17,6 +17,7 @@ module TheTripTip
     config.hosts << '.amazonaws.com'
     config.hosts << '.paiza-user.cloud'
     config.hosts << '.www.example.com'
+    config.hosts << '.the-trip-tip.com'
     config.i18n.default_locale = :ja
     # Settings in config/environments/* take precedence over those specified
     # here.
