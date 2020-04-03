@@ -49,13 +49,13 @@ end
 
 group :test do
   gem 'capybara', '~> 2.15'
-  gem 'guard', '~> 2.13.0'
+  gem 'guard', '~> 2.16.2'
   gem 'guard-minitest', '~> 2.4.4'
   gem 'guard-rspec', '~> 4.7.3', require: false
   gem 'launchy', '~> 2.4.3'
   gem 'minitest-reporters', '~> 1.1.14'
   gem 'rails-controller-testing', '~> 1.0.4'
-  gem 'rspec-rails', '~> 3.9.0'
+  gem 'rspec-rails', '~> 3.9.1'
   gem 'selenium-webdriver', '~> 3.142.6'
   gem 'webdrivers', '~> 4.1.3'
 end
