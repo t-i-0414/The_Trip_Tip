@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Model Like', type: :model do
   before :each do
     init_db_test
-    @like = Like.create(micropost_id: 1, user_id: 1)
+    @like = Like.new(micropost_id: @microposts[0].id, user_id: @user.id)
   end
 
   describe 'Validated Like' do
