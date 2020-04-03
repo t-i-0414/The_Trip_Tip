@@ -126,8 +126,6 @@ Rails.application.configure do
   # permitted domain
   config.hosts << 'the-trip-tip.herokuapp.com'
   config.hosts << 'the-trip-tip.com'
-  config.hosts << 'ec2-54-238-99-35.ap-northeast-1.compute.amazonaws.com'
-  config.hosts << '54.238.99.35'
 
   config.action_mailer.default_url_options = { host: 'the-trip-tip.com' }
   config.action_mailer.raise_delivery_errors = true
