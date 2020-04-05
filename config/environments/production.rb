@@ -124,7 +124,6 @@ Rails.application.configure do
   # ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   # permitted domain
-  config.hosts << 'the-trip-tip.herokuapp.com'
   config.hosts << 'the-trip-tip.com'
 
   config.action_mailer.default_url_options = { host: 'the-trip-tip.com' }
