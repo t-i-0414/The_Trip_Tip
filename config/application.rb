@@ -18,6 +18,8 @@ module TheTripTip
     config.hosts << '.paiza-user.cloud'
     config.hosts << '.www.example.com'
     config.hosts << 'the-trip-tip.com'
+    config.hosts << Rails.application.credentials.public_ip[:ipv4]
+
     config.i18n.default_locale = :ja
     # Settings in config/environments/* take precedence over those specified
     # here.
