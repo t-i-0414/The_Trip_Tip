@@ -125,6 +125,8 @@ Rails.application.configure do
 
   # permitted domain
   config.hosts << 'the-trip-tip.com'
+  config.hosts << Rails.application.credentials.publicip[:ipv4]
+  config.hosts << Rails.application.credentials.publicip[:dns]
 
   config.action_mailer.default_url_options = { host: 'the-trip-tip.com' }
   config.action_mailer.raise_delivery_errors = true
