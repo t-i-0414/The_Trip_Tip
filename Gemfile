@@ -35,6 +35,10 @@ group :development, :test do
     mingw
     x64_mingw
   ]
+  gem 'capistrano', '~> 3.12.1'
+  gem 'capistrano-bundler', '~> 1.6.0'
+  gem 'capistrano-rails', '~> 1.4.0'
+  gem 'capistrano-rbenv', '~> 2.1.6'
   gem 'factory_bot_rails', '~> 5.1.1'
   gem 'spring-commands-rspec', '~> 1.0.4'
 end
