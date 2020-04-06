@@ -126,7 +126,7 @@ Rails.application.configure do
   # permitted domain
   config.hosts << 'the-trip-tip.com'
 
-  config.action_mailer.default_url_options = { host: 'the-trip-tip.com' }
+  config.action_mailer.default_url_options = { host: 'the-trip-tip.com', protocol: 'https' }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
