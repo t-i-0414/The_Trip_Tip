@@ -12,14 +12,13 @@ development:
 
 test:
   <<: *default
-  database: The_Trip_Tipsample_test
+  database: The_Trip_Tip_test
   socket: /tmp/mysql.sock
 
 production:
   <<: *default
-  database: <%= ENV['DB_NAME'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  host: <%= ENV['DB_HOSTNAME'] %>
   pool: 5
+  database: The_Trip_Tip_production
+  username: root
+  password:
   socket: /var/lib/mysql/mysql.sock
