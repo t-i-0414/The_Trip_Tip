@@ -21,7 +21,7 @@ Rails.application.configure do
   # ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials
   # (and other encrypted files).
-  # config.require_master_key = true
+  config.require_master_key = true
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
@@ -52,7 +52,7 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use
   # secure cookies.
-  config.force_ssl = true
+  # config.force_ssl = true
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -123,10 +123,10 @@ Rails.application.configure do
   # config.active_record.database_resolver_context =
   # ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
-  # permitted heroku's domain
-  config.hosts << 'the-trip-tip.herokuapp.com'
+  # permitted domain
+  config.hosts << 'the-trip-tip.com'
 
-  config.action_mailer.default_url_options = { host: 'the-trip-tip.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'the-trip-tip.com', protocol: 'https' }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
