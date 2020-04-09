@@ -1,0 +1,28 @@
+<% provide(:title, 'パスワード再発行') %>
+<div class="container dynamic_pages">
+  <div class="container_signs">
+    <h1>パスワードの再発行</h1>
+
+    <p class="instruction">
+      このページでは、パスワードをお忘れのユーザー様に向けて、パスワードの再発行用メールを送信いたします。
+    </p>
+    <p class="instruction">
+      お手数ですが下記フォームにメールアドレスをご記入の上「送信」ボタンをクリックしてください。
+    </p>
+    <p class="instruction">
+      パスワードを再設定するページへのリンクを記載した「パスワードの再設定について」メールを送信します。
+    </p>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "form-short" }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <%= f.label :email, :class => "form-label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-input" %>
+    </div>
+
+    <div class="actions registration">
+      <%= f.submit "送    信", class: "btn red-vivid" %>
+    </div>
+    <% end %>
+  </div>
+</div>

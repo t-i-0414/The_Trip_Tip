@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="24" height="24" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="icons_dark_edit" data-name="icons/dark/edit" clip-path="url(#clip-path)">
+    <rect id="長方形_568" data-name="長方形 568" width="24" height="24" fill="#fff" opacity="0"/>
+    <g id="edit" transform="translate(3 1)">
+      <path id="パス_799" data-name="パス 799" d="M20,14.66V20a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V6A2,2,0,0,1,4,4H9.34" transform="translate(-2 -2)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="パス_800" data-name="パス 800" d="M18,2l4,4L12,16H8V12Z" transform="translate(-2 -2)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

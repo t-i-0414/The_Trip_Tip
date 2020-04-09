@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1366" height="768" viewBox="0 0 1366 768">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="長方形_24" data-name="長方形 24" width="1366" height="768" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="img" clip-path="url(#clip-path)">
+    <g id="楕円形_10" data-name="楕円形 10" transform="translate(83 137.373)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2" opacity="0.8">
+      <circle cx="359.079" cy="359.079" r="359.079" stroke="none"/>
+      <circle cx="359.079" cy="359.079" r="358.079" fill="none"/>
+    </g>
+    <circle id="楕円形_11" data-name="楕円形 11" cx="274.08" cy="274.08" r="274.08" transform="translate(587.452 -27.51)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="1.527" opacity="0.55"/>
+    <circle id="楕円形_12" data-name="楕円形 12" cx="274.08" cy="274.08" r="274.08" transform="translate(735.6 355.596)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="1.527" opacity="0.3"/>
+  </g>
+</svg>

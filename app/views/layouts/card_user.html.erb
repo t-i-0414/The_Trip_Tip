@@ -1,0 +1,55 @@
+<% if @users.length == 0 %>
+<div class="card_post">
+  対象となるユーザーがいません
+</div>
+
+<% else %>
+<% @users.each do |user| %>
+<div class="card_post">
+  <div class="wrapper_name">
+    <%= link_to user_path(id: user.id), method: :get do %>
+    <%= image_tag user.image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
+    <% end %>
+    <span class="name_user">
+      <%= link_to user_path(id: user.id), method: :get do %>
+      <%= user.name %>
+      <% end %>
+    </span>
+  </div>
+  <dl class="links_user">
+    <div class="wrapper_link">
+      <dt class="title_link">フォロー </dt>
+      <dd class="detail_link">
+        <%= link_to "#{following_user_path(user)}", method: :get do %>
+        -
+        <span class="follow">
+          <% if user.following.count == 0 %>
+          0
+          <% else %>
+          <%= user.following.count.to_s(:delimited) %>
+          <% end %>
+        </span>
+        users
+        <% end %>
+      </dd>
+    </div>
+    <div class="wrapper_link">
+      <dt class="title_link">フォロワー</dt>
+      <dd class="detail_link">
+        <%= link_to "#{followers_user_path(user)}", method: :get do %>
+        -
+        <span class="follow">
+          <% if user.followers.count == 0 %>
+          0
+          <% else %>
+          <%= user.followers.count.to_s(:delimited) %>
+          <% end %>
+        </span>
+        users
+        <% end %>
+      </dd>
+    </div>
+  </dl>
+</div>
+<% end %>
+<% end %>

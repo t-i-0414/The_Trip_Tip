@@ -1,0 +1,2 @@
+$('#relationship-<%= @user.id %>').html("<%= j(render partial: 'relationships/relationship', locals: { user: @user } ) %>");
+$('#links-user').html("<%= j(render partial: 'layouts/links_user', locals: { user: @user } ) %>");

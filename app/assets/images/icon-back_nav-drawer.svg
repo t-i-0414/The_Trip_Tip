@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29">
+  <g id="icons_back" data-name="icons/back" transform="translate(-0.194)">
+    <rect id="bg" width="29" height="29" transform="translate(0.194)" fill="none"/>
+    <g id="ico" transform="translate(6.082 6.222)">
+      <path id="union" d="M7.592,15.809.452,8.828a.892.892,0,0,1-.28-1.3A.9.9,0,0,1,.28,7.4a.914.914,0,0,1,.1-.083L7.592.261a.927.927,0,0,1,1.29,0,.878.878,0,0,1,0,1.262L3.117,7.16H18.571a.892.892,0,0,1,0,1.785H3.152l5.73,5.6a.877.877,0,0,1,0,1.261.927.927,0,0,1-1.29,0Z" fill="#666"/>
+    </g>
+  </g>
+</svg>

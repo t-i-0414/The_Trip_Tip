@@ -1,0 +1,23 @@
+.container.dynamic_pages {
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+.image_user {
+  display: block;
+  width: 80px;
+  height: 80px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px #00000029;
+}
+
+@media screen and (max-width: 559px) {
+  .image_user {
+    width: 64px;
+    height: 64px;
+  }
+}
