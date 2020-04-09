@@ -45,7 +45,7 @@ yarn-debug.log*
 /public/uploads/*
 
 
-/babel.config.js
-/.ruby-version
-/.swp
-/Procfile
+babel.config.js
+.ruby-version
+.swp
+Procfile
