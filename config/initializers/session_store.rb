@@ -1,3 +1,0 @@
-# frozen_string_literal: true
-
-Rails.application.config.session_store :cookie_store, key: "_#{Rails.application.class.module_parent_name.downcase}_session", expire_after: 1.month
