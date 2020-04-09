@@ -1,15 +1,24 @@
 default: &default
-  adapter: postgresql
-  encoding: unicode
-  host: db
-  username: postgres
+  adapter: mysql2
+  encoding: utf8
+  username: root
   password:
-  pool: 5
-
+  host: 127.0.0.1
 development:
   <<: *default
-  database: myapp_development
+  database: The_Trip_Tip_development
+  socket: /tmp/mysql.sock
 
 test:
   <<: *default
-  database: myapp_test
+  database: The_Trip_Tip_test
+  socket: /tmp/mysql.sock
+
+production:
+  <<: *default
+  pool: 5
+  database: The_Trip_Tip_production
+  username: root
+  password:
+  host: 127.0.0.1
+  socket: /var/lib/mysql/mysql.sock
