@@ -1,0 +1,50 @@
+<% if @microposts.length == 0 %>
+<div class="card_post">
+  まだ投稿がありません
+</div>
+
+<% else %>
+<% @microposts.each do |micropost| %>
+<% user = User.find(micropost.user_id)%>
+<div class="card_post">
+  <div class="wrapper_name">
+    <%= link_to user_path(id: user.id), method: :get do %>
+    <%= image_tag User.find(micropost.user_id).image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
+    <% end %>
+    <span class="name_user">
+      <%= link_to user_path(id: user.id), method: :get do %>
+      <%= User.find(micropost.user_id).name %>
+      <% end %>
+    </span>
+  </div>
+  <p class="text_post">
+    <%= link_to micropost_path(id: micropost.id), method: :get do %>
+    <%= micropost.content %>
+    <% end %>
+  </p>
+  <% unless micropost.image.url == '/images/default.png' %>
+  <div class="image_micropost">
+    <%= link_to micropost_path(id: micropost.id), method: :get do %>
+    <%= image_tag micropost.image.url, alt: '投稿に関する写真', class: '' %>
+    <% end %>
+  </div>
+  <% end %>
+  <div class="wrapper_actions">
+    <span class="action">
+      <%= image_tag 'icon_clock.svg', alt: '時計のアイコン' %>
+      <span><%= time_ago_in_words(micropost.created_at) %>前</span>
+    </span>
+    <span class="action" id="like_action-<%= micropost.id %>">
+      <%= render partial: 'likes/like', locals: { micropost: micropost } %>
+    </span>
+    <% if user_signed_in? && micropost.user_id == current_user.id %>
+    <span class="action">
+      <%= link_to micropost_path(id: micropost.id), method: :delete, data: { confirm: "投稿を削除しても本当によろしいですが？" } do %>
+      <%= image_tag 'icon_trash.svg', alt: 'ゴミ箱のアイコン' %>
+      <% end %>
+    </span>
+    <% end %>
+  </div>
+</div>
+<% end %>
+<% end %>

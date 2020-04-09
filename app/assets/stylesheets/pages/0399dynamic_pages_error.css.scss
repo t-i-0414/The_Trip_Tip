@@ -1,0 +1,44 @@
+#error_explanation {
+  width: 384px;
+  margin: 0 auto 30px;
+
+  h2 {
+    margin-bottom: 12px;
+    color: #f26977;
+    font-size: 1.8rem;
+  }
+
+  ul {
+    li + li {
+      margin-top: 6px;
+    }
+
+    li::before {
+      margin-right: 4px;
+      content: '! ';
+    }
+
+    li {
+      color: #f26977;
+      font-size: 1.6rem;
+    }
+  }
+}
+
+@media screen and (max-width: 559px) {
+  #error_explanation {
+    width: 100%;
+
+    h2 {
+      margin-bottom: 12px;
+      color: #f26977;
+      font-size: 1.4rem;
+    }
+
+    ul {
+      li {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

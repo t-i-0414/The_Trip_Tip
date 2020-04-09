@@ -1,0 +1,9 @@
+<svg id="icons_light_share" data-name="icons/light/share" xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29">
+  <g id="長方形_518" data-name="長方形 518" fill="#666" stroke="#666" stroke-width="1" opacity="0">
+    <rect width="29" height="29" stroke="none"/>
+    <rect x="0.5" y="0.5" width="28" height="28" fill="none"/>
+  </g>
+  <path id="パス_200" data-name="パス 200" d="M4,12v9.63a2.279,2.279,0,0,0,2.125,2.407H18.873A2.279,2.279,0,0,0,21,21.63V12" transform="translate(2.071 1.241)" fill="none" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <path id="パス_201" data-name="パス 201" d="M17.227,6.815,12.614,2,8,6.815" transform="translate(1.956 1.611)" fill="none" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <line id="線_209" data-name="線 209" y2="15" transform="translate(15 4)" fill="none" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+</svg>

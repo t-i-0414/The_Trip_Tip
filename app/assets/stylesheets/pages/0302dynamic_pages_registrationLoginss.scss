@@ -1,0 +1,341 @@
+.container_signs {
+  width: 514px;
+  margin: 48px auto;
+  padding: 40px 20px;
+  background-color: #fff;
+  -webkit-border-radius: 80px 0;
+  -moz-border-radius: 80px 0;
+  -ms-border-radius: 80px 0;
+  -o-border-radius: 80px 0;
+  border-radius: 80px 0;
+  box-shadow: 3px 3px 6px #00000029;
+
+  h1 {
+    margin-bottom: 48px;
+  }
+
+  a {
+    display: block;
+  }
+
+  .container_sns {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 313px;
+    height: 110px;
+    margin: 0 auto 30px;
+  }
+
+  .container_guest {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto 48px;
+    padding: 0 20px;
+
+    .btn {
+      width: 313px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .separator_wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+
+    .separator {
+      display: block;
+      width: -moz-fit-content;
+      width: fit-content;
+      margin: 0 auto;
+      font-size: 2rem;
+    }
+
+    .separator::before {
+      position: absolute;
+      left: 22px;
+      display: block;
+      width: 140px;
+      height: 1px;
+      margin-top: 15px;
+      background-color: #666;
+      content: '';
+    }
+
+    .separator::after {
+      position: absolute;
+      right: 22px;
+      display: block;
+      width: 140px;
+      height: 1px;
+      margin-top: -15px;
+      background-color: #666;
+      content: '';
+    }
+  }
+
+  form {
+    margin-bottom: 24px;
+    padding: 0 20px 0;
+
+    .field > * {
+      display: block;
+    }
+
+    .field {
+      margin-bottom: 48px;
+
+      .form-input {
+        width: 100%;
+        height: 36px;
+        margin-top: 8px;
+        padding: 0 8px;
+        color: #777;
+        line-height: 1.8;
+        letter-spacing: 0.15em;
+        border-radius: 5px;
+        box-shadow: 0 1px 5px #00000029;
+      }
+
+      .form-text_area {
+        display: block;
+        width: 100%;
+        letter-spacing: 0.15em;
+        border-radius: 5px;
+        box-shadow: 0 1px 5px #00000029;
+      }
+
+      .hidden {
+        display: none;
+      }
+    }
+
+    .field.flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 64px;
+
+      label {
+        margin-left: 6px;
+      }
+    }
+
+    #preview_user_image {
+      .field {
+        .fileup-btn {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          width: 80px;
+          height: 80px;
+          margin-top: 16px;
+          color: #fff;
+          text-align: center;
+          background-color: #9599b3;
+          background-image: url(icon_plus.svg);
+          background-size: cover;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          -ms-border-radius: 50%;
+          -o-border-radius: 50%;
+          border-radius: 50%;
+          box-shadow: 0 3px 6px #00000029;
+          cursor: pointer;
+        }
+
+        .fileup-btn:hover {
+          opacity: 0.8;
+        }
+      }
+
+      .view-trimming {
+        display: inline-block;
+        width: 100%;
+        margin-top: 32px;
+      }
+
+      .cropper-drag-box {
+        border: 1px solid gray;
+      }
+
+      .trimming,
+      .downloader {
+        margin-top: 8px;
+        font-size: 1.6rem;
+        cursor: pointer;
+      }
+
+      .trimming:hover,
+      .downloader:hover {
+        opacity: 0.8;
+      }
+    }
+
+    .actions.registration {
+      margin-top: 48px;
+
+      .btn {
+        height: 46px;
+        margin: 0 auto;
+        padding: 0 35px;
+        line-height: 2.3;
+        letter-spacing: 0.2em;
+      }
+    }
+
+    .actions.login {
+      margin-top: 32px;
+
+      .btn {
+        width: 312px;
+        max-width: 100%;
+        height: 46px;
+        margin: 0 auto;
+        padding: 0 35px;
+        line-height: 2.3;
+        letter-spacing: 0.2em;
+      }
+    }
+  }
+
+  .form-short {
+    margin-bottom: 0;
+  }
+
+  .wrapper_notification {
+    padding: 0 64px;
+
+    a {
+      font-size: 1.6rem;
+    }
+
+    a + a {
+      margin-top: 12px;
+    }
+  }
+}
+
+@media screen and (max-width: 559px) {
+  .container_signs {
+    width: 100%;
+    margin-top: 32px;
+
+    h1 {
+      margin-bottom: 40px;
+    }
+
+    .container_sns {
+      width: 293px;
+      max-width: 100%;
+      margin: 0 auto 40px;
+    }
+
+    .container_guest {
+      padding: 0;
+
+      .btn {
+        width: 293px;
+        max-width: 100%;
+        height: 40px;
+        margin-bottom: 10px;
+        font-size: 1.6rem;
+        line-height: 2.5;
+      }
+    }
+
+    .separator_wrapper {
+      margin-bottom: 40px;
+
+      .separator {
+        font-size: 1.6rem;
+      }
+
+      .separator::before {
+        left: 0;
+        width: 120px;
+        margin-top: 12px;
+      }
+
+      .separator::after {
+        right: 0;
+        width: 120px;
+        margin-top: -12px;
+      }
+    }
+
+    form {
+      margin-bottom: 24px;
+      padding: 0;
+
+      .field {
+        margin-bottom: 48px;
+      }
+
+      #preview_user_image {
+        margin-top: 48px;
+
+        .field {
+          text-align: center;
+
+          .fileup-btn {
+            margin: 16px auto 0;
+          }
+
+          .cropper_actions {
+            width: 260px;
+            margin: 8px auto 0;
+            text-align: left;
+
+            .trimming,
+            .downloader {
+              font-size: 1.4rem;
+            }
+          }
+        }
+      }
+
+      .actions {
+        .btn {
+          padding: 0 50px;
+          font-size: 1.4rem;
+          line-height: 3.29;
+        }
+      }
+    }
+
+    .wrapper_notification {
+      width: -moz-fit-content;
+      width: fit-content;
+      margin: 0 auto;
+      padding: 0;
+      white-space: nowrap;
+
+      a {
+        font-size: 1.4rem;
+      }
+
+      a + a {
+        margin-top: 12px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .container_signs {
+    .separator_wrapper {
+      .separator::before {
+        width: 100px;
+      }
+
+      .separator::after {
+        width: 100px;
+      }
+    }
+  }
+}

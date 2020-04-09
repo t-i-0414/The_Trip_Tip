@@ -1,0 +1,8 @@
+ja:
+  views:
+    pagination:
+      first: <i class="fas fa-angle-double-left gray-pale"></i>
+      last: <i class="fas fa-angle-double-right gray-pale"></i>
+      previous: <i class="fas fa-angle-left gray-pale"></i>
+      next: <i class="fas fa-angle-right gray-pale"></i>
+      truncate: '...'

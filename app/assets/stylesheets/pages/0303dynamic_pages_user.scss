@@ -1,0 +1,255 @@
+.container.dynamic_pages {
+  .side {
+    position: fixed;
+    top: 128px;
+    width: 203px;
+
+    .info_user {
+      position: relative;
+      width: 100%;
+      margin-bottom: 24px;
+      padding: 24px 10px;
+      background-color: #fff;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+      border-radius: 10px;
+      box-shadow: 0 3px 6px #00000029;
+
+      .user_detail_close {
+        display: none;
+      }
+
+      .title_info {
+        margin: 0 auto 16px;
+      }
+
+      .image_user {
+        margin: 0 auto 16px;
+        font-size: 1.2rem;
+      }
+
+      .image_user:hover {
+        opacity: 0.8;
+      }
+
+      .name_user {
+        width: 100%;
+        margin-bottom: 32px;
+        text-align: center;
+      }
+
+      .links_user {
+        width: -moz-fit-content;
+        width: fit-content;
+        margin: 0 auto;
+
+        .wrapper_link {
+          .detail_link {
+            .follow {
+              width: -moz-fit-content;
+              width: fit-content;
+              margin: 0 4px;
+            }
+          }
+        }
+
+        .wrapper_link + .wrapper_link {
+          margin-top: 20px;
+        }
+      }
+    }
+
+    .post_drawer {
+      .post-close {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 800;
+        display: none;
+      }
+
+      .post-content {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        z-index: 801;
+        display: none;
+        width: 538px;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+
+        .card_post {
+          max-height: 64vh;
+
+          .wrapper_title-post {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+
+            span {
+              margin-left: 8px;
+            }
+          }
+        }
+      }
+
+      #postInput:checked ~ #postClose {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        background: transparent 0% 0% no-repeat padding-box;
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+      }
+
+      #postInput:checked ~ #postContent {
+        display: block;
+      }
+    }
+  }
+
+  .container_flex {
+    display: flex;
+    justify-content: flex-end;
+    min-height: 100vh;
+    margin-top: 48px;
+    margin-bottom: 48px;
+
+    .container_signs {
+      height: -moz-fit-content;
+      height: fit-content;
+      margin: 0;
+    }
+
+    .container_posts {
+      width: 538px;
+
+      .card_post + .card_post {
+        margin-top: 24px;
+      }
+    }
+  }
+
+  .container_flex.center {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 959px), (max-height: 594px) {
+  #userDetailInput:checked ~ #side {
+    display: block;
+  }
+
+  .container.dynamic_pages {
+    .side {
+      top: 0;
+      left: 0;
+      display: none;
+      width: 100vw;
+      height: 100vh;
+
+      .user_detail_close {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: transparent 0% 0% no-repeat padding-box;
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+      }
+
+      .user_drawer {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 538px;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+
+      .info_user {
+        .user_detail_close {
+          position: absolute;
+          top: 4px;
+          right: 10px;
+          display: block;
+          width: -moz-fit-content;
+          width: fit-content;
+          height: -moz-fit-content;
+          height: fit-content;
+        }
+
+        .name_user {
+          width: 40%;
+          margin: 0 auto 32px;
+          line-height: 1.5;
+          white-space: normal;
+          text-overflow: initial;
+        }
+      }
+
+      .post_drawer {
+        #postInput:checked ~ #postClose {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          -moz-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+
+    .container_flex {
+      justify-content: center;
+    }
+  }
+}
+
+@media screen and (max-width: 559px) {
+  .container.dynamic_pages {
+    .side {
+      .user_drawer {
+        width: 100%;
+        padding: 0 10px;
+      }
+
+      .info_user {
+        .user_detail_close {
+          top: 10px;
+        }
+
+        .name_user {
+          width: 80%;
+          margin-bottom: 16px;
+        }
+
+        .links_user {
+          display: flex;
+          align-items: center;
+
+          .wrapper_link + .wrapper_link {
+            margin-top: 0;
+            margin-left: 12px;
+          }
+        }
+      }
+
+      .post_drawer {
+        .post-content {
+          width: 100%;
+          padding: 0 10px;
+        }
+      }
+    }
+  }
+}
