@@ -6,9 +6,9 @@ COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 RUN gem install bundler
 RUN bundle install
-RUN chmod -R 755 /usr
 COPY . /myapp
 COPY entrypoint.sh /usr/bin/
+RUN chmod -R 755 /myapp
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
