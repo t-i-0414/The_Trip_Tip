@@ -4,7 +4,6 @@ default: &default
   username: root
   password:
   host: 127.0.0.1
-
 development:
   <<: *default
   database: The_Trip_Tip_development
@@ -21,4 +20,5 @@ production:
   database: The_Trip_Tip_production
   username: root
   password:
+  host: 127.0.0.1
   socket: /var/lib/mysql/mysql.sock
