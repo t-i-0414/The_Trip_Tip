@@ -45,6 +45,9 @@ yarn-debug.log*
 /public/uploads/*
 
 
+.eslintrc.js
+.prettierrc.js
+.stylelintrc.js
 babel.config.js
 .ruby-version
 .swp
