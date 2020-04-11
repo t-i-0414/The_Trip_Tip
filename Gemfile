@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.4'
+ruby '2.6.5'
 
 gem 'bootsnap', '~> 1.4.2', require: false
 gem 'carrierwave', '~> 1.2.2'
@@ -50,8 +50,6 @@ group :development do
   gem 'spring', '~> 2.1.0'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '~> 3.3.0'
-  gem 'ed25519', '~> 1.2.4'
-  gem 'bcrypt_pbkdf', '~> 1.0.1'
 end
 
 group :test do
@@ -72,7 +70,7 @@ group :production, :staging do
 end
 
 group :production do
-  gem 'fog', '~> 2.0.0'
+  gem 'fog-aws', '~> 2.0.0'
 end
 
 gem 'tzinfo-data', platforms: %i[
