@@ -1,4 +1,4 @@
-version: 2.1
+version: 2
 jobs:
   build:
     docker:
@@ -14,6 +14,7 @@ jobs:
       - image: circleci/mysql:5.7
         environment:
           MYSQL_DATABASE: The_Trip_Tip_test
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
           MYSQL_ROOT_HOST: '%'
 
     working_directory: ~/The_Trip_Tip
@@ -66,9 +67,10 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
-  # deproy:
-  #   - add_ssh_keys:
-  #       fingerprints: '54:a5:fa:1d:c5:01:11:0d:65:f8:3b:85:7c:c3:06:26'
-  #   - deploy:
-  #       name: Capistrano deploy
-  #       command: bundle exec cap production deploy
+
+      - add_ssh_keys:
+          fingerprints:
+            - '54:a5:fa:1d:c5:01:11:0d:65:f8:3b:85:7c:c3:06:26'
+      - deploy:
+          name: Capistrano deploy
+          command: bundle exec cap production deploy
