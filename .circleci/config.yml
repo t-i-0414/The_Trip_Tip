@@ -38,8 +38,8 @@ jobs:
           key: app-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
 
       - run:
-        name: MySQL version
-        command: bundle exec ruby mysql_version.rb
+          name: MySQL version
+          command: bundle exec ruby mysql_version.rb
 
       - run:
           name: install dockerize
