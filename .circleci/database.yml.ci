@@ -3,7 +3,6 @@ test:
   encoding: utf8
   pool: 5
   database: The_Trip_Tip_test
-  timeout: 10000
   username: 'root'
   password: ''
   port: 3306
