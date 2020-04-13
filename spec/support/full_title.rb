@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+  # frozen_string_literal: true
 
   def full_title(page_title)
     base_title = 'The Trip Tip'

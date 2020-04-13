@@ -20,8 +20,8 @@ RSpec.feature 'Feature Users Registrations', type: :feature do
       expect(page).to have_title full_title('ユーザー新規登録')
       expect(page).to have_selector 'h1', text: 'ユーザー新規登録'
 
-      expect(page).to have_link 'twitterでログイン', href:user_twitter_omniauth_authorize_path
-      expect(page).to have_link 'Facebookでログイン', href:user_facebook_omniauth_authorize_path
+      expect(page).to have_link 'twitterでログイン', href: user_twitter_omniauth_authorize_path
+      expect(page).to have_link 'Facebookでログイン', href: user_facebook_omniauth_authorize_path
 
       expect(form).to have_css 'input.hidden#user_image'
       expect(image_input[:type]).to eq 'text'
@@ -36,7 +36,7 @@ RSpec.feature 'Feature Users Registrations', type: :feature do
       act_as @user do
         visit edit_user_registration_path
         expect(page).to have_http_status 200
-        expect(page).to have_title full_title( 'ユーザー情報編集' )
+        expect(page).to have_title full_title('ユーザー情報編集')
         expect(page).to have_selector 'h1', text: 'ユーザー情報の設定'
         image_user = page.find('.info_user').find('.image_user')
         expect(image_user[:src]).to eq @user.image.url
@@ -77,7 +77,7 @@ RSpec.feature 'Feature Users Registrations', type: :feature do
       expect(page).to have_title full_title('ユーザー新規登録')
       expect(page).to have_selector 'h1', text: 'ユーザー新規登録'
 
-      expect(page.find('div#error_explanation')).to have_content /\d 件のエラーが発生したため ユーザ は保存されませんでした。/
+      expect(page.find('div#error_explanation')).to have_content (/\d 件のエラーが発生したため ユーザ は保存されませんでした。/)
     end
   end
 
@@ -100,19 +100,19 @@ RSpec.feature 'Feature Users Registrations', type: :feature do
       fill_in 'user[current_password]', with: 'password'
       click_button '更   新', match: :first
       expect(page).to have_content 'アカウント情報を変更しました。'
-      expect(page).to have_title full_title( @edit[:name] )
+      expect(page).to have_title full_title(@edit[:name])
 
       visit edit_user_registration_path
       fill_in 'user[email]', with: @edit[:email]
       fill_in 'user[current_password]', with: @edit[:password]
       click_button '更   新', match: :first
       expect(page).to have_content 'アカウント情報を変更しました。変更されたメールアドレスの本人確認のため、本人確認用メールより確認処理をおこなってください。'
-      expect(page).to have_title full_title( @edit[:name] )
+      expect(page).to have_title full_title(@edit[:name])
 
       confirmation_email
 
       expect(page).to have_content 'メールアドレスが確認できました。'
-      expect(page).to have_title full_title( 'ユーザーログイン' )
+      expect(page).to have_title full_title('ユーザーログイン')
       fill_in 'user[email]', with: @edit[:email]
       fill_in 'user[password]', with: @edit[:password]
       click_button 'ログイン', match: :first
@@ -125,7 +125,7 @@ RSpec.feature 'Feature Users Registrations', type: :feature do
         fill_in 'user[name]', with: @edit[:name]
         click_button '更   新', match: :first
         expect(page).to have_content 'アカウント情報を変更しました。'
-        expect(page).to have_title full_title( @edit[:name] )
+        expect(page).to have_title full_title(@edit[:name])
       end
     end
 
@@ -134,8 +134,8 @@ RSpec.feature 'Feature Users Registrations', type: :feature do
         visit edit_user_registration_path
         fill_in 'user[current_password]', with: 'passward'
         click_button '更   新', match: :first
-        expect(page).to have_content /\d 件のエラーが発生したため ユーザ は保存されませんでした。/
-        expect(page).to have_title full_title( 'ユーザー情報編集' )
+        expect(page).to have_content (/\d 件のエラーが発生したため ユーザ は保存されませんでした。/)
+        expect(page).to have_title full_title('ユーザー情報編集')
       end
     end
 

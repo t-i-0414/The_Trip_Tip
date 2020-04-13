@@ -43,7 +43,7 @@ set :linked_files, fetch(:linked_files, []).push('config/master.key')
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
-set :rbenv_ruby, '2.6.4'
+set :rbenv_ruby, '2.6.5'
 set :log_level, :debug
 
 namespace :deploy do
