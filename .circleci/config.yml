@@ -38,9 +38,12 @@ jobs:
             - node_modules
           key: app-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
 
-      - run: mv ./config/database.yml.ci ./config/database.yml
+      - run:
+          name: 'wait for db'
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
       - run: bundle exec rake db:create --trace
       - run: bundle exec rake db:schema:load
+
       - run: bundle exec bin/webpack
 
       - run:
