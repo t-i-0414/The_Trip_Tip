@@ -55,8 +55,8 @@ jobs:
       - run: rm ./config/database.yml
       - run: mv ./config/database.yml.ci ./config/database.yml
 
-      - run: bundle exec rake db:create RAILS_ENV=test
-      - run: bundle exec rake db:schema:load RAILS_ENV=test
+      - run: rails db:create
+      - run: rails db:schema:load
 
       - run: bundle exec bin/webpack
 
