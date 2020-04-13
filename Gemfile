@@ -47,7 +47,6 @@ group :development, :test do
   gem "rubocop-performance"
   gem "spring", "~> 2.1.0"
   gem "spring-watcher-listen", "~> 2.0.0"
-  gem "web-console", "~> 3.3.0"
 end
 
 group :test do
@@ -61,6 +60,7 @@ group :test do
   gem "rspec-rails", "~> 3.9.1"
   gem "selenium-webdriver", "~> 3.142.6"
   gem "webdrivers", "~> 4.1.3"
+  gem "web-console", "~> 3.3.0"
 end
 
 group :production, :staging do
