@@ -33,7 +33,7 @@ jobs:
             - node_modules
           key: app-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
 
-      - run: bundle exec rake db:create
+      - run: bundle exec rake db:create --trace
       - run: bundle exec rake db:schema:load
       - run: bundle exec bin/webpack
 
