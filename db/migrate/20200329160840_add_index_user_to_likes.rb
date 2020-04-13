@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddIndexUserToLikes < ActiveRecord::Migration[6.0]
   def change
     add_index :likes, :user_id

@@ -17,8 +17,8 @@ RSpec.feature 'Feature Users Sessions', type: :feature do
       expect(page).to have_title full_title('ユーザーログイン')
       expect(page).to have_selector 'h1', text: 'ログイン'
 
-      expect(page).to have_link 'twitterでログイン', href:user_twitter_omniauth_authorize_path
-      expect(page).to have_link 'Facebookでログイン', href:user_facebook_omniauth_authorize_path
+      expect(page).to have_link 'twitterでログイン', href: user_twitter_omniauth_authorize_path
+      expect(page).to have_link 'Facebookでログイン', href: user_facebook_omniauth_authorize_path
 
       expect(remember_me_field).to have_field('次回から自動的にログイン')
 
@@ -63,13 +63,13 @@ RSpec.feature 'Feature Users Sessions', type: :feature do
 
       if Micropost.where(user_id: @user.id).count <= @pagenate_count
         expect(page).not_to have_css '.page'
-        expect(page).to have_link 'ユーザーのアイコン', href: user_path(id:@user.id), count: Micropost.where(user_id: @user.id).count + 1
+        expect(page).to have_link 'ユーザーのアイコン', href: user_path(id: @user.id), count: Micropost.where(user_id: @user.id).count + 1
       elsif Micropost.where(user_id: @user.id).count <= @pagenate_count * @pagenate_maximum
         expect(page).to have_css '.page', count: (Micropost.where(user_id: @user.id).count.to_f / @pagenate_count).ceil * 2 + 1
-        expect(page).to have_link 'ユーザーのアイコン', href: user_path(id:@user.id), count: @pagenate_count
+        expect(page).to have_link 'ユーザーのアイコン', href: user_path(id: @user.id), count: @pagenate_count
       else
         expect(page).to have_css '.page', count: @pagenate_maximum * 2
-        expect(page).to have_link 'ユーザーのアイコン', href: user_path(id:@user.id), count: @pagenate_count + 1
+        expect(page).to have_link 'ユーザーのアイコン', href: user_path(id: @user.id), count: @pagenate_count + 1
       end
     end
   end
