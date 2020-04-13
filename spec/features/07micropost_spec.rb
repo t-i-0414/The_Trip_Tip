@@ -68,8 +68,6 @@ RSpec.feature 'Feature Micropost', type: :feature do
     scenario 'Redirect to login form' do
       visit micropost_index_path
 
-      user_link = page.first('.name_user').first(:link)
-
       click_on 'ユーザーのアイコン', match: :first
 
       expect(page).to have_http_status 200
@@ -136,8 +134,8 @@ RSpec.feature 'Feature Micropost', type: :feature do
 
     scenario 'After login' do
       login(@user)
-      active_relationship = Relationship.create(follower_id: @user.id, followed_id: @users[1].id)
-      passive_relationship = Relationship.create(follower_id: @users[1].id, followed_id: @user.id)
+      Relationship.create(follower_id: @user.id, followed_id: @users[1].id)
+      Relationship.create(follower_id: @users[1].id, followed_id: @user.id)
 
       visit user_timeline_path(id: @user)
       expect(page).to have_http_status 200
@@ -153,7 +151,7 @@ RSpec.feature 'Feature Micropost', type: :feature do
     scenario 'Success' do
       login(@user)
       fill_in 'micropost[content]', with: 'test'
-      expect{ click_button '投稿する', match: :first }.to change{ Micropost.count }.by(1)
+      expect { click_button '投稿する', match: :first }.to change { Micropost.count }.by(1)
       expect(page).to have_content '投稿に成功しました'
       expect(page).to have_http_status 200
       expect(page).to have_title full_title("#{@user.name}")
@@ -162,7 +160,7 @@ RSpec.feature 'Feature Micropost', type: :feature do
     scenario 'Fail (no content)' do
       login(@user)
       fill_in 'micropost[content]', with: ''
-      expect{ click_button '投稿する', match: :first }.to change{ Micropost.count }.by(0)
+      expect { click_button '投稿する', match: :first }.to change { Micropost.count }.by(0)
       expect(page).to have_content '投稿に失敗しました。投稿文が入力されていません。'
       expect(page).to have_http_status 200
       expect(page).to have_title full_title("#{@user.name}")
@@ -171,7 +169,7 @@ RSpec.feature 'Feature Micropost', type: :feature do
     scenario 'Fail (more than 140 characters content)' do
       login(@user)
       fill_in 'micropost[content]', with: "#{'a' * 141}"
-      expect{ click_button '投稿する', match: :first }.to change{ Micropost.count }.by(0)
+      expect { click_button '投稿する', match: :first }.to change { Micropost.count }.by(0)
       expect(page).to have_content '投稿に失敗しました。投稿文は140文字以内で入力してください。'
       expect(page).to have_http_status 200
       expect(page).to have_title full_title("#{@user.name}")
@@ -181,7 +179,7 @@ RSpec.feature 'Feature Micropost', type: :feature do
   feature 'Delete Micropost' do
     scenario 'Success' do
       login(@user)
-      expect{ click_on 'ゴミ箱のアイコン', match: :first }.to change{ Micropost.count }.by(-1)
+      expect { click_on 'ゴミ箱のアイコン', match: :first }.to change { Micropost.count }.by(-1)
       expect(page).to have_content '投稿を削除しました'
       expect(page).to have_http_status 200
       expect(page).to have_title full_title("#{@user.name}")
