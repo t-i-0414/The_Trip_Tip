@@ -12,7 +12,7 @@ jobs:
           MYSQL_ALLOW_EMPTY_PASSWORD: true
           MYSQL_ROOT_HOST: '%'
 
-    working_directory: ~/The_Trip_Tip
+    working_directory: ~/myapp
 
     steps:
       - checkout
@@ -55,8 +55,8 @@ jobs:
       - run: rm ./config/database.yml
       - run: mv ./config/database.yml.ci ./config/database.yml
 
-      - run: bundle exec rails db:create
-      - run: bundle exec rails db:schema:load
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
 
       - run: bundle exec bin/webpack
 
