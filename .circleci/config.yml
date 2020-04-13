@@ -5,15 +5,10 @@ jobs:
       - image: circleci/ruby:2.6.5-node-browsers
         environment:
           BUNDLER_VERSION: 2.1.4
-          RAILS_ENV: test
-          DB_HOST: 127.0.0.1
-          DB_USERNAME: 'root'
-          DB_PASSWORD: ''
-          MYSQL_PORT: 3306
+          RAILS_ENV: 'test'
 
       - image: circleci/mysql:5.7
         environment:
-          MYSQL_DATABASE: The_Trip_Tip_test
           MYSQL_ALLOW_EMPTY_PASSWORD: true
           MYSQL_ROOT_HOST: '%'
 
@@ -61,11 +56,11 @@ jobs:
           name: run rspec
           command: bundle exec rspec
 
-      # - store_test_results:
-      #     path: /tmp/test-results
-      # - store_artifacts:
-      #     path: /tmp/test-results
-      #     destination: test-results
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
 
       - add_ssh_keys:
           fingerprints:
