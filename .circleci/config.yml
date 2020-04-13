@@ -6,11 +6,11 @@ jobs:
         environment:
           BUNDLER_VERSION: 2.1.4
           RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: 'root'
+          DB_PASSWORD: ''
 
       - image: circleci/mysql:5.7
-        environment:
-          MYSQL_USER: root
-          MYSQL_ROOT_PASSWORD: password
 
     working_directory: ~/The_Trip_Tip
 
@@ -20,13 +20,15 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
             - v1-dependencies-
+            - rails-demo-yarn-{{ checksum "yarn.lock" }}
+            - rails-demo-yarn-
 
       - run:
           name: install dependencies
           command: |
             gem install bundler -v 2.1.4
             bundle install --jobs=4 --retry=3 --path vendor/bundle
-            yarn install
+            yarn install --cache-folder ~/.cache/yarn
 
       - save_cache:
           paths:
