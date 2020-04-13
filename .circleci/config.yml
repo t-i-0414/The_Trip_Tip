@@ -11,6 +11,8 @@ jobs:
           DB_PASSWORD: ''
 
       - image: circleci/mysql:5.7
+        environment:
+          MYSQL_DATABASE: The_Trip_Tip_test
 
     working_directory: ~/The_Trip_Tip
 
@@ -36,6 +38,7 @@ jobs:
             - node_modules
           key: app-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
 
+      - run: mv ./config/database.yml.ci ./config/database.yml
       - run: bundle exec rake db:create --trace
       - run: bundle exec rake db:schema:load
       - run: bundle exec bin/webpack
@@ -47,3 +50,9 @@ jobs:
       - run:
           name: run rspec
           command: bundle exec rspec
+
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
