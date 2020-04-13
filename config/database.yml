@@ -14,7 +14,7 @@ development:
 test:
   <<: *default
   database: The_Trip_Tip_test
-  host: 127.0.0.1
+  host: db
 
 production:
   <<: *default
