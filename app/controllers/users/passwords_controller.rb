@@ -34,8 +34,7 @@ class Users::PasswordsController < Devise::PasswordsController
   # end
 
   protected
-
-  def check_guest
-    redirect_to new_user_password_path, alert: 'テストユーザーのパスワードはリセットできません。' if params[:user][:email].downcase == 'guest@example.com'
-  end
+    def check_guest
+      redirect_to new_user_password_path, alert: 'テストユーザーのパスワードはリセットできません。' if params[:user][:email].downcase == 'guest@example.com'
+    end
 end

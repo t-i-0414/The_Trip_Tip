@@ -27,7 +27,7 @@ RSpec.feature 'Feature Like', type: :feature do
       login(@user)
       visit root_path
 
-      expect{ click_on 'いいねのアイコン', match: :first }.to change{ Like.count }.by(1)
+      expect { click_on 'いいねのアイコン', match: :first }.to change { Like.count }.by(1)
 
       visit root_path
 
@@ -41,7 +41,7 @@ RSpec.feature 'Feature Like', type: :feature do
       micropost_id = Like.last.micropost_id
 
       visit root_path
-      expect{ click_on 'いいねのアイコン', match: :first }.to change{ Like.count }.by(-1)
+      expect { click_on 'いいねのアイコン', match: :first }.to change { Like.count }.by(-1)
 
       visit root_path
       expect(page).to have_link 'いいねのアイコン', href: likes_create_path(micropost_id: micropost_id), count: 1

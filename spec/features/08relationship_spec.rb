@@ -49,7 +49,7 @@ RSpec.feature 'Feature Relationship', type: :feature do
 
       visit user_path @users[1]
 
-      expect{ click_button 'フォローする', match: :first }.to change{ Relationship.count }.by(1)
+      expect { click_button 'フォローする', match: :first }.to change { Relationship.count }.by(1)
       expect(page).to have_content '1'
     end
 
@@ -58,7 +58,7 @@ RSpec.feature 'Feature Relationship', type: :feature do
 
       visit user_path @users[1]
 
-      expect{ click_button 'フォローしない', match: :first }.to change{ Relationship.count }.by(-1)
+      expect { click_button 'フォローしない', match: :first }.to change { Relationship.count }.by(-1)
       expect(page).to have_content '0'
     end
   end
