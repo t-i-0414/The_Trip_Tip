@@ -13,16 +13,12 @@ jobs:
       - image: circleci/mysql:5.7
         environment:
           MYSQL_DATABASE: The_Trip_Tip_test
+          MYSQL_ROOT_HOST: '%'
 
     working_directory: ~/The_Trip_Tip
 
     steps:
       - checkout
-      - run:
-          name: install dockerize
-          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
-          environment:
-            DOCKERIZE_VERSION: v0.3.0
 
       - restore_cache:
           keys:
@@ -47,6 +43,8 @@ jobs:
       - run:
           name: 'wait for db'
           command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
+
+      - run: mv config/database.yml.ci config/database.yml
 
       - run: bundle exec rake db:create --trace
       - run: bundle exec rake db:schema:load
