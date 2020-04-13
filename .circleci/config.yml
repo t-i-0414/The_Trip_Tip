@@ -9,6 +9,7 @@ jobs:
       # specify the version you desire here
       - image: circleci/ruby:2.6.5-node-browsers
         environment:
+          BUNDLER_VERSION: 2.1.4
           RAILS_ENV: test
           DB_HOST: 127.0.0.1
           DB_USERNAME: 'root'
@@ -34,6 +35,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
+            gem install bundler -v 2.1.4
             bundle install --jobs=4 --retry=3 --path vendor/bundle
 
       - save_cache:
