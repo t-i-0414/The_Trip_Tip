@@ -6,7 +6,7 @@ jobs:
         environment:
           BUNDLER_VERSION: 2.1.4
           RAILS_ENV: test
-          DB_HOST: 127.0.0.1
+          DB_HOST: localhost
           DB_USERNAME: 'root'
           DB_PASSWORD: ''
           MYSQL_PORT: 3306
@@ -48,8 +48,8 @@ jobs:
       - run: rm ./config/database.yml
       - run: mv config/database.yml.ci config/database.yml
 
-      - run: rails db:create
-      - run: rails db:schema:load
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
 
       - run: bundle exec bin/webpack
 
