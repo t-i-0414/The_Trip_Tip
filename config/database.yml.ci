@@ -4,7 +4,5 @@ test:
   pool: 5
   database: The_Trip_Tip_test
   username: 'root'
-  password: ''
   port: 3306
-  host: localhost
-  socket: /var/run/mysqld/mysqld.sock
+  host: '127.0.0.1'
