@@ -36,12 +36,12 @@ class MicropostController < ApplicationController
       redirect_to root_url
     else
       flash[:alert] = if @micropost.content.empty?
-                        '投稿に失敗しました。投稿文が入力されていません。'
-                      elsif @micropost.content.length > 140
-                        '投稿に失敗しました。投稿文は140文字以内で入力してください。'
-                      else
-                        '投稿に失敗しました。'
-                      end
+        '投稿に失敗しました。投稿文が入力されていません。'
+      elsif @micropost.content.length > 140
+        '投稿に失敗しました。投稿文は140文字以内で入力してください。'
+      else
+        '投稿に失敗しました。'
+      end
       redirect_to user_url current_user
     end
   end
@@ -58,26 +58,24 @@ class MicropostController < ApplicationController
   end
 
   protected
+    def logged_in_user
+      return if user_signed_in?
 
-  def logged_in_user
-    return if user_signed_in?
-
-    flash[:alert] = 'アカウント登録もしくはログインしてください。'
-    redirect_to new_user_session_path
-  end
+      flash[:alert] = 'アカウント登録もしくはログインしてください。'
+      redirect_to new_user_session_path
+    end
 
   private
+    def micropost_params
+      params.require(:micropost).permit(:content, :image)
+    end
 
-  def micropost_params
-    params.require(:micropost).permit(:content, :image)
-  end
+    def correct_user
+      @micropost = Micropost.find(params[:id])
 
-  def correct_user
-    @micropost = Micropost.find(params[:id])
+      return if @micropost.user_id == current_user.id
 
-    return if @micropost.user_id == current_user.id
-
-    flash[:alert] = 'ログインユーザーではない投稿は削除できません'
-    redirect_to root_url
-  end
+      flash[:alert] = 'ログインユーザーではない投稿は削除できません'
+      redirect_to root_url
+    end
 end
