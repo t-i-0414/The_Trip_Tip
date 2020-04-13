@@ -25,6 +25,12 @@ jobs:
             - rails-demo-yarn-
 
       - run:
+          name: default mysql client install
+          command: |
+            sudo apt update
+            sudo apt-get install default-mysql-client
+
+      - run:
           name: install dependencies
           command: |
             gem install bundler -v 2.1.4
@@ -36,10 +42,6 @@ jobs:
             - ./vendor/bundle
             - node_modules
           key: app-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
-
-      - run:
-          name: MySQL version
-          command: bundle exec ruby mysql_version.rb
 
       - run:
           name: install dockerize
