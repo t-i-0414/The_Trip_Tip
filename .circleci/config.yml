@@ -48,8 +48,8 @@ jobs:
       - run: rm ./config/database.yml
       - run: mv config/database.yml.ci config/database.yml
 
-      - run: bundle exec rake db:create --trace
-      - run: bundle exec rake db:schema:load
+      - run: rails db:create
+      - run: rails db:schema:load
 
       - run: bundle exec bin/webpack
 
@@ -66,3 +66,11 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+  deproy:
+    - add_ssh_keys:
+      fingerprints:
+        - '54:a5:fa:1d:c5:01:11:0d:65:f8:3b:85:7c:c3:06:26'
+
+    - deploy:
+        name: Capistrano deploy
+        command: bundle exec cap production deploy
