@@ -4,17 +4,16 @@ default: &default
   pool: 5
   username: root
   password: password
+  host: db
   socket: /tmp/mysql.sock
 
 development:
   <<: *default
   database: The_Trip_Tip_development
-  host: db
 
 test:
   <<: *default
   database: The_Trip_Tip_test
-  host: db
 
 production:
   <<: *default
