@@ -21,7 +21,7 @@ jobs:
           MYSQL_USER: root
           MYSQL_ROOT_PASSWORD: password
 
-    working_directory: ~/the_trip_tip
+    working_directory: ~/The_Trip_Tip
 
     steps:
       - checkout
