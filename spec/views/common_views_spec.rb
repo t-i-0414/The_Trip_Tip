@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'View Common Views', type: :request do
   describe 'Should render right templates' do
     it 'Layouts' do

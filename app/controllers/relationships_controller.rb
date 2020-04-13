@@ -17,11 +17,10 @@ class RelationshipsController < ApplicationController
   end
 
   protected
+    def logged_in_user
+      return if user_signed_in?
 
-  def logged_in_user
-    return if user_signed_in?
-
-    flash[:alert] = 'アカウント登録もしくはログインしてください。'
-    redirect_to new_user_session_path
-  end
+      flash[:alert] = 'アカウント登録もしくはログインしてください。'
+      redirect_to new_user_session_path
+    end
 end
