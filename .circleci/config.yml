@@ -9,6 +9,7 @@ jobs:
           DB_HOST: 127.0.0.1
           DB_USERNAME: 'root'
           DB_PASSWORD: ''
+          MYSQL_PORT: 3306
 
       - image: circleci/mysql:5.7
         environment:
@@ -44,6 +45,7 @@ jobs:
           name: 'wait for db'
           command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
 
+      - run: rm ./config/database.yml
       - run: mv config/database.yml.ci config/database.yml
 
       - run: bundle exec rake db:create --trace
