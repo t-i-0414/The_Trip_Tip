@@ -1,19 +1,19 @@
 default: &default
   adapter: mysql2
-  encoding: utf8
-  username: root
-  password: password
-  host: db
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch("DB_HOST") { 'localhost' } %>
+  username: <%= ENV.fetch("DB_USERNAME") %>
+  password: <%= ENV.fetch("DB_PASSWORD") %>
+  socket: /tmp/mysql.sock
 
 development:
   <<: *default
   database: The_Trip_Tip_development
-  socket: /tmp/mysql.sock
 
 test:
   <<: *default
   database: The_Trip_Tip_test
-  socket: /tmp/mysql.sock
 
 production:
   <<: *default
