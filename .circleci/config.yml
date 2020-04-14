@@ -17,7 +17,7 @@ jobs:
           MYSQL_ALLOW_EMPTY_PASSWORD: true
           MYSQL_ROOT_HOST: '%'
 
-    working_directory: ~/myapp
+    # working_directory: ~/myapp
 
     steps:
       - checkout
@@ -55,13 +55,13 @@ jobs:
             DOCKERIZE_VERSION: v0.3.0
       - run:
           name: 'wait for db'
-          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 3m
+          command: dockerize -wait tcp://localhost:3306 -timeout 3m
 
       - run: rm ./config/database.yml
       - run: mv ./config/database.yml.ci ./config/database.yml
 
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
+      # - run: bundle exec rake db:create
+      # - run: bundle exec rake db:schema:load
 
       - run: bundle exec bin/webpack
 
