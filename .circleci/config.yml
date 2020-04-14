@@ -55,20 +55,10 @@ jobs:
       - *restore_code_cache
       - *restore_gem_cache
       - *restore_node_module_cache
-      - run: echo ${ENV} > ~/.env
 
       - run: gem install bundler -v 2.1.4
       - run: bundle install --path vendor/bundle --jobs 4 --retry 3
-      - save_cache:
-          key: v1-bundle-{{ checksum "Gemfile.lock" }}
-          paths:
-            - ./vendor/bundle
-
       - run: yarn install --check-files
-      - save_cache:
-          key: v1-yarn-{{ checksum "yarn.lock" }}
-          paths:
-            - ./node_modules
 
       - run: mv -f ./config/database.yml.ci ./config/database.yml
       - run: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
@@ -90,6 +80,13 @@ jobs:
       - *ruby_docker_image
     steps:
       - checkout
+      - *restore_code_cache
+      - *restore_gem_cache
+      - *restore_node_module_cache
+
+      - run: gem install bundler -v 2.1.4
+      - run: bundle install --path vendor/bundle --jobs 4 --retry 3
+      - run: yarn install --check-files
       - add_ssh_keys:
           fingerprints:
             - '54:a5:fa:1d:c5:01:11:0d:65:f8:3b:85:7c:c3:06:26'
