@@ -85,7 +85,8 @@ jobs:
       - *restore_code_cache
       - *restore_gem_cache
       - *restore_node_module_cache
-      - run: bundle --path vendor/bundle
+      - run: gem install bundler -v 2.1.4
+      - run: bundle install --path vendor/bundle
       - run: mv -f ./config/database.yml.ci ./config/database.yml
       - run: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
       - run: bundle exec rake db:create
@@ -99,13 +100,18 @@ jobs:
           path: /tmp/test-results
           destination: test-results
 
-  # deproy:
-  #   - add_ssh_keys:
-  #       fingerprints:
-  #         - '54:a5:fa:1d:c5:01:11:0d:65:f8:3b:85:7c:c3:06:26'
-  #   - deploy:
-  #       name: Capistrano deploy
-  #       command: bundle exec cap production deploy
+  deploy:
+    <<: *defaults
+    docker:
+      - *ruby_docker_image
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - '54:a5:fa:1d:c5:01:11:0d:65:f8:3b:85:7c:c3:06:26'
+      - deploy:
+          name: Capistrano deploy
+          command: bundle exec cap production deploy
 
 workflows:
   version: 2.1
@@ -122,9 +128,9 @@ workflows:
           requires:
             - bundle_dependencies
             - yarn_dependencies
-      # - deploy:
-      #     requires:
-      #       - test
-      #     filters:
-      #       branches:
-      #         only: master
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
