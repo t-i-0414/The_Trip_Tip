@@ -21,6 +21,7 @@ jobs:
 
     steps:
       - checkout
+
       - run:
           name: yarn install
           command: yarn install
@@ -32,7 +33,6 @@ jobs:
             sudo rm /usr/local/bin/bundle
             sudo rm /usr/local/bin/bundler
             gem install bundler -v 2.1.4
-
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
@@ -51,7 +51,6 @@ jobs:
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
             yarn install --check-files
-
       - save_cache:
           paths:
             - ./vendor/bundle
@@ -65,14 +64,19 @@ jobs:
       #       DOCKERIZE_VERSION: v0.3.0
 
       - run:
+          name: overwrite database.yml
+          command: mv -f ./config/database.yml.ci ./config/database.yml
+      - run:
+          name: wait for db
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
+      - run:
           name: bundle exec for db
           command: |
-            rm ./config/database.yml
-            mv ./config/database.yml.ci ./config/database.yml
-            dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
             bundle exec rake db:create
             bundle exec rake db:schema:load
-            bundle exec bin/webpack
+      - run:
+          name: bundle exec bin/webpack
+          command: bundle exec bin/webpack
 
       # - run:
       #     name: 'wait for db'
@@ -84,11 +88,9 @@ jobs:
       - run:
           name: run rubocop
           command: bundle exec rubocop
-
       - run:
           name: run rspec
           command: bundle exec rspec
-
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
