@@ -51,7 +51,7 @@ jobs:
       - *restore_code_cache
       - *restore_gem_cache
       - run: gem install bundler -v 2.1.4
-      - run: bundle check --path=vendor/bundle || bundle install --path vendor/bundle --jobs 4 --retry 3
+      - run: bundle install --path vendor/bundle --jobs 4 --retry 3
       - save_cache:
           key: v1-bundle-{{ checksum "Gemfile.lock" }}
           paths:
@@ -84,9 +84,7 @@ jobs:
       - *restore_gem_cache
       - *restore_node_module_cache
       - run: bundle --path vendor/bundle
-      - run:
-          name: overwrite database.yml
-          command: mv -f ./config/database.yml.ci ./config/database.yml
+      - run: mv -f ./config/database.yml.ci ./config/database.yml
       - run: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
