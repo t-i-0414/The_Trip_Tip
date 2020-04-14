@@ -55,6 +55,7 @@ jobs:
       - *restore_code_cache
       - *restore_gem_cache
       - *restore_node_module_cache
+      - run: echo ${ENV} > ~/.env
 
       - run: gem install bundler -v 2.1.4
       - run: bundle install --path vendor/bundle --jobs 4 --retry 3
