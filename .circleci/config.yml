@@ -17,19 +17,19 @@ references:
   restore_code_cache: &restore_code_cache
     restore_cache:
       keys:
-        - v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+        - v-repo-{{ .Environment.CIRCLE_SHA1 }}
 
   restore_gem_cache: &restore_gem_cache
     restore_cache:
       keys:
-        - v1-bundle-{{ checksum "Gemfile.lock" }}
-        - v1-bundle
+        - v1-dependencies-{{ checksum "Gemfile.lock" }}
+        - v1-dependencies-
 
   restore_node_module_cache: &restore_node_module_cache
     restore_cache:
       keys:
-        - v1-yarn-{{ checksum "yarn.lock" }}
-        - v1-yarn
+        - v1-dependencies-yarn-{{ checksum "yarn.lock" }}
+        - v1-dependencies-yarn
 
 jobs:
   checkout_code:
