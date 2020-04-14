@@ -20,16 +20,16 @@ references:
         - v-repo-{{ .Environment.CIRCLE_SHA1 }}
 
   restore_gem_cache: &restore_gem_cache
-    - restore_cache:
-        keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          - v1-dependencies-
+    restore_cache:
+      keys:
+        - v1-dependencies-{{ checksum "Gemfile.lock" }}
+        - v1-dependencies-
 
   restore_node_module_cache: &restore_node_module_cache
-    - restore_cache:
-        keys:
-          - v1-dependencies-yarn-{{ checksum "yarn.lock" }}
-          - v1-dependencies-yarn
+    restore_cache:
+      keys:
+        - v1-dependencies-yarn-{{ checksum "yarn.lock" }}
+        - v1-dependencies-yarn
 
 jobs:
   checkout_code:
