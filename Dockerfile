@@ -1,6 +1,5 @@
 FROM ruby:2.6.5
 
-# 必要なライブラリインストール
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev
 
 RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
