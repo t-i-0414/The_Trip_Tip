@@ -1,15 +1,113 @@
 version: 2.1
-orbs:
-  ruby: circleci/ruby@0.1.2 
+
+references:
+  defaults: &defaults
+    working_directory: ~/The_Trip_Tip
+
+  ruby_docker_image: &ruby_docker_image
+    image: circleci/ruby:2.6.5-node-browsers
+    environment:
+      BUNDLER_VERSION: 2.1.4
+      RAILS_ENV: test
+      MYSQL_HOST: 127.0.0.1
+      MYSQL_USERNAME: 'root'
+      MYSQL_PASSWORD: ''
+      MYSQL_PORT: 3306
+
+  restore_code_cache: &restore_code_cache
+    restore_cache:
+      keys:
+        - v-repo-{{ .Environment.CIRCLE_SHA1 }}
+
+  restore_gem_cache: &restore_gem_cache
+    restore_cache:
+      keys:
+        - v1-dependencies-{{ checksum "Gemfile.lock" }}
+        - v1-dependencies-
+
+  restore_node_module_cache: &restore_node_module_cache
+    restore_cache:
+      keys:
+        - v1-dependencies-yarn-{{ checksum "yarn.lock" }}
+        - v1-dependencies-yarn
 
 jobs:
-  build:
+  checkout_code:
+    <<: *defaults
     docker:
-      - image: circleci/ruby:2.6.3-stretch-node
-    executor: ruby/default
+      - *ruby_docker_image
     steps:
       - checkout
-      - run:
-          name: Which bundler?
-          command: bundle -v
-      - ruby/bundle-install
+      - save_cache:
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/project
+
+  test:
+    <<: *defaults
+    docker:
+      - *ruby_docker_image
+      - image: circleci/mysql:5.7
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+    steps:
+      - checkout
+      - *restore_code_cache
+      - *restore_gem_cache
+      - *restore_node_module_cache
+      - run: echo ${ENV} > ~/.env
+
+      - run: gem install bundler -v 2.1.4
+      - run: bundle install --path vendor/bundle --jobs 4 --retry 3
+      - save_cache:
+          key: v1-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ./vendor/bundle
+
+      - run: yarn install --check-files
+      - save_cache:
+          key: v1-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+
+      - run: mv -f ./config/database.yml.ci ./config/database.yml
+      - run: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
+      - run: bundle exec rake db:create db:schema:load --trace
+
+      - run: bundle exec bin/webpack
+
+      - run: bundle exec rubocop
+      - run: bundle exec rspec
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+
+  deploy:
+    <<: *defaults
+    docker:
+      - *ruby_docker_image
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - '54:a5:fa:1d:c5:01:11:0d:65:f8:3b:85:7c:c3:06:26'
+      - deploy:
+          name: Capistrano deploy
+          command: bundle exec cap production deploy
+
+workflows:
+  version: 2.1
+  test_and_deploy:
+    jobs:
+      - checkout_code
+      - test:
+          requires:
+            - checkout_code
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master

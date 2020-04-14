@@ -29,6 +29,10 @@ gem "sass-rails", "~> 6"
 gem "turbolinks", "~> 5"
 gem "webpacker", "~> 4.0"
 
+group :development do
+  gem "web-console", "~> 3.3.0"
+end
+
 group :development, :test do
   gem "byebug", platforms: %i[
     mri
@@ -41,16 +45,12 @@ group :development, :test do
   gem "capistrano-rbenv", "~> 2.1.6"
   gem "factory_bot_rails", "~> 5.1.1"
   gem "spring-commands-rspec", "~> 1.0.4"
-end
-
-group :development do
   gem "listen", "~> 3.0.8"
   gem "rubocop", require: false
   gem "rubocop-rails"
   gem "rubocop-performance"
   gem "spring", "~> 2.1.0"
   gem "spring-watcher-listen", "~> 2.0.0"
-  gem "web-console", "~> 3.3.0"
 end
 
 group :test do
