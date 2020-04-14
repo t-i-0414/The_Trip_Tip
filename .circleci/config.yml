@@ -13,7 +13,7 @@ jobs:
           MYSQL_PASSWORD: ''
           MYSQL_PORT: 3306
 
-      - image: circleci/mysql:5.7
+      - image: circleci/mysql:5.7.29
         environment:
           MYSQL_DATABASE: The_Trip_Tip_test
           MYSQL_ALLOW_EMPTY_PASSWORD: true
@@ -21,6 +21,17 @@ jobs:
 
     steps:
       - checkout
+      - run:
+          name: yarn install
+          command: yarn install
+      - run:
+          name: setup bundler
+          command: |
+            sudo gem update --system
+            sudo gem uninstall bundler
+            sudo rm /usr/local/bin/bundle
+            sudo rm /usr/local/bin/bundler
+            gem install bundler -v 2.1.4
 
       - restore_cache:
           keys:
@@ -29,16 +40,15 @@ jobs:
             - rails-demo-yarn-{{ checksum "yarn.lock" }}
             - rails-demo-yarn-
 
-      - run:
-          name: default mysql client install
-          command: |
-            sudo apt update
-            sudo apt-get install default-mysql-client
+      # - run:
+      #     name: default mysql client install
+      #     command: |
+      #       sudo apt update
+      #       sudo apt-get install default-mysql-client
 
       - run:
           name: install dependencies
           command: |
-            gem install bundler -v 2.1.4
             bundle install --jobs=4 --retry=3 --path vendor/bundle
             yarn install --check-files
 
@@ -48,22 +58,28 @@ jobs:
             - node_modules
           key: app-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
 
-      - run:
-          name: install dockerize
-          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
-          environment:
-            DOCKERIZE_VERSION: v0.3.0
-      - run:
-          name: 'wait for db'
-          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 3m
+      # - run:
+      #     name: install dockerize
+      #     command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+      #     environment:
+      #       DOCKERIZE_VERSION: v0.3.0
 
-      - run: rm ./config/database.yml
-      - run: mv ./config/database.yml.ci ./config/database.yml
+      - run:
+          name: bundle exec for db
+          command: |
+            rm ./config/database.yml
+            mv ./config/database.yml.ci ./config/database.yml
+            dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
+            bundle exec rake db:create
+            bundle exec rake db:schema:load
+            bundle exec bin/webpack
+
+      # - run:
+      #     name: 'wait for db'
+      #     command: dockerize -wait tcp://127.0.0.1:3306 -timeout 3m
 
       # - run: bundle exec rake db:create
       # - run: bundle exec rake db:schema:load
-
-      - run: bundle exec bin/webpack
 
       - run:
           name: run rubocop
