@@ -5,11 +5,11 @@
 Devise.setup do |config|
   # omniauth
   config.omniauth :facebook,
-                  ENV.fetch('API_KEY_FACEBOOK'),
-                  ENV.fetch('API_SECRET_FACEBOOK')
+                  Rails.application.credentials.facebook[:key],
+                  Rails.application.credentials.facebook[:secret]
   config.omniauth :twitter,
-                  ENV.fetch('API_KEY_TWITTER'),
-                  ENV.fetch('API_SECRET_TWITTER')
+                  Rails.application.credentials.twitter[:key],
+                  Rails.application.credentials.twitter[:secret]
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
