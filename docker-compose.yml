@@ -19,6 +19,7 @@ services:
     volumes:
       - .:/myapp
       - bundle:/usr/local/bundle
+      - node_modules:/myapp/node_modules
     depends_on:
       - db
       - chrome
@@ -32,3 +33,4 @@ volumes:
   db-data:
     driver: local
   bundle:
+  node_modules:
