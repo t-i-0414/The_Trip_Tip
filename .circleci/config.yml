@@ -48,6 +48,7 @@ jobs:
     docker:
       - *ruby_docker_image
     steps:
+      - checkout
       - *restore_code_cache
       - *restore_gem_cache
       - run: gem install bundler -v 2.1.4
@@ -80,6 +81,7 @@ jobs:
           MYSQL_ALLOW_EMPTY_PASSWORD: true
           MYSQL_ROOT_HOST: '%'
     steps:
+      - checkout
       - *restore_code_cache
       - *restore_gem_cache
       - *restore_node_module_cache
