@@ -16,7 +16,6 @@ jobs:
           MYSQL_DATABASE: The_Trip_Tip_test
           MYSQL_ALLOW_EMPTY_PASSWORD: true
           MYSQL_ROOT_HOST: '%'
-        command: mysqld
 
     working_directory: ~/myapp
 
