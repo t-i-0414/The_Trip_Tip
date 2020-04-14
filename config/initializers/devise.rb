@@ -6,7 +6,7 @@ Devise.setup do |config|
   # omniauth
   config.omniauth :facebook,
                   ENV.fetch('API_KEY_FACEBOOK'),
-                  ENV.fetch('API_SECRET_FACEBOOKR')
+                  ENV.fetch('API_SECRET_FACEBOOK')
   config.omniauth :twitter,
                   ENV.fetch('API_KEY_TWITTER'),
                   ENV.fetch('API_SECRET_TWITTER')
