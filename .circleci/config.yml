@@ -73,7 +73,7 @@ jobs:
 
       - run: mv -f ./config/database.yml.ci ./config/database.yml
       - run: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
-      - run: bundle exec rake db:create
+      - run: bundle exec rails db:create
       - run: bundle exec rake db:schema:load
 
       - run: bundle exec bin/webpack
