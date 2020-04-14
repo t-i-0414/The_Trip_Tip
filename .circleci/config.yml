@@ -1,105 +1,130 @@
-version: 2
+version: 2.1
+
+references:
+  defaults: &defaults
+    working_directory: ~/The_Trip_Tip
+
+  ruby_docker_image: &ruby_docker_image
+    image: circleci/ruby:2.6.5-node-browsers
+    environment:
+      BUNDLER_VERSION: 2.1.4
+      RAILS_ENV: test
+      MYSQL_HOST: 127.0.0.1
+      MYSQL_USERNAME: 'root'
+      MYSQL_PASSWORD: ''
+      MYSQL_PORT: 3306
+
+  restore_code_cache: &restore_code_cache
+    restore_cache:
+      keys:
+        - v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+
+  restore_gem_cache: &restore_gem_cache
+    restore_cache:
+      keys:
+        - v1-bundle-{{ checksum "Gemfile.lock" }}
+        - v1-bundle
+
+  restore_node_module_cache: &restore_node_module_cache
+    restore_cache:
+      keys:
+        - v1-yarn-{{ checksum "yarn.lock" }}
+        - v1-yarn
+
 jobs:
-  build:
-    working_directory: ~/myapp
-
+  checkout_code:
+    <<: *defaults
     docker:
-      - image: circleci/ruby:2.6.5-node-browsers
-        environment:
-          BUNDLER_VERSION: 2.1.4
-          RAILS_ENV: test
-          MYSQL_HOST: 127.0.0.1
-          MYSQL_USERNAME: 'root'
-          MYSQL_PASSWORD: ''
-          MYSQL_PORT: 3306
+      - *ruby_docker_image
+    steps:
+      - checkout
+      - save_cache:
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/project
 
-      - image: circleci/mysql:5.7.29
+  bundle_dependencies:
+    <<: *defaults
+    docker:
+      - *ruby_docker_image
+    steps:
+      - *restore_code_cache
+      - *restore_gem_cache
+      - run: gem install bundler -v 2.1.4
+      - run: bundle check --path=vendor/bundle || bundle install --path vendor/bundle --jobs 4 --retry 3
+      - save_cache:
+          key: v1-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ./vendor/bundle
+
+  yarn_dependencies:
+    <<: *defaults
+    docker:
+      - *ruby_docker_image
+    steps:
+      - *restore_code_cache
+      - *restore_node_module_cache
+      - run: yarn install --check-files
+      - save_cache:
+          key: v1-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+
+  test:
+    <<: *defaults
+    docker:
+      - *ruby_docker_image
+      - image: circleci/mysql:5.7
         environment:
           MYSQL_DATABASE: The_Trip_Tip_test
           MYSQL_ALLOW_EMPTY_PASSWORD: true
           MYSQL_ROOT_HOST: '%'
-
     steps:
-      - checkout
-
-      - run:
-          name: yarn install
-          command: yarn install
-      - run:
-          name: setup bundler
-          command: |
-            sudo gem update --system
-            sudo gem uninstall bundler
-            sudo rm /usr/local/bin/bundle
-            sudo rm /usr/local/bin/bundler
-            gem install bundler -v 2.1.4
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "Gemfile.lock" }}
-            - v1-dependencies-
-            - rails-demo-yarn-{{ checksum "yarn.lock" }}
-            - rails-demo-yarn-
-
-      # - run:
-      #     name: default mysql client install
-      #     command: |
-      #       sudo apt update
-      #       sudo apt-get install default-mysql-client
-
-      - run:
-          name: install dependencies
-          command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
-            yarn install --check-files
-      - save_cache:
-          paths:
-            - ./vendor/bundle
-            - node_modules
-          key: app-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
-
-      # - run:
-      #     name: install dockerize
-      #     command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
-      #     environment:
-      #       DOCKERIZE_VERSION: v0.3.0
-
+      - *restore_code_cache
+      - *restore_gem_cache
+      - *restore_node_module_cache
+      - run: bundle --path vendor/bundle
       - run:
           name: overwrite database.yml
           command: mv -f ./config/database.yml.ci ./config/database.yml
-      - run:
-          name: wait for db
-          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
-      - run:
-          name: bundle exec for db
-          command: |
-            bundle exec rake db:create
-            bundle exec rake db:schema:load
-      - run:
-          name: bundle exec bin/webpack
-          command: bundle exec bin/webpack
-
-      # - run:
-      #     name: 'wait for db'
-      #     command: dockerize -wait tcp://127.0.0.1:3306 -timeout 3m
-
-      # - run: bundle exec rake db:create
-      # - run: bundle exec rake db:schema:load
-
-      - run:
-          name: run rubocop
-          command: bundle exec rubocop
-      - run:
-          name: run rspec
-          command: bundle exec rspec
+      - run: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
+      - run: bundle exec bin/webpack
+      - run: bundle exec rubocop
+      - run: bundle exec rspec
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
 
-      - add_ssh_keys:
-          fingerprints:
-            - '54:a5:fa:1d:c5:01:11:0d:65:f8:3b:85:7c:c3:06:26'
-      - deploy:
-          name: Capistrano deploy
-          command: bundle exec cap production deploy
+  # deproy:
+  #   - add_ssh_keys:
+  #       fingerprints:
+  #         - '54:a5:fa:1d:c5:01:11:0d:65:f8:3b:85:7c:c3:06:26'
+  #   - deploy:
+  #       name: Capistrano deploy
+  #       command: bundle exec cap production deploy
+
+workflows:
+  version: 2.1
+  test_and_deploy:
+    jobs:
+      - checkout_code
+      - bundle_dependencies:
+          requires:
+            - checkout_code
+      - yarn_dependencies:
+          requires:
+            - checkout_code
+      - test:
+          requires:
+            - bundle_dependencies
+            - yarn_dependencies
+      # - deploy:
+      #     requires:
+      #       - test
+      #     filters:
+      #       branches:
+      #         only: master
