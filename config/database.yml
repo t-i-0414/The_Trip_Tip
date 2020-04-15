@@ -1,23 +1,22 @@
 default: &default
   adapter: mysql2
   encoding: utf8
+  pool: 5
   username: root
   password: password
   host: db
+  socket: /tmp/mysql.sock
 
 development:
   <<: *default
   database: The_Trip_Tip_development
-  socket: /tmp/mysql.sock
 
 test:
   <<: *default
   database: The_Trip_Tip_test
-  socket: /tmp/mysql.sock
 
 production:
   <<: *default
-  pool: 5
   database: The_Trip_Tip_production
   username: root
   password:
