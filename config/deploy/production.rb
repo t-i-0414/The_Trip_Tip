@@ -43,7 +43,7 @@ server '54.238.99.35', user: 'takuya', roles: %w[app db web]
 #    forward_agent: false,
 #    auth_methods: %w(password)
 #  }
-set :ssh_options, keys: '~/.ssh/thetriptip_key_rsa'
+set :ssh_options, keys: ["#{ENV.fetch('PRODUCTION_SSH_KEY')}"]
 
 #
 # The server-based syntax can be used to override options:

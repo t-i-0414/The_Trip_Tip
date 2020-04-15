@@ -58,6 +58,10 @@ jobs:
 
       - run: gem install bundler -v 2.1.4
       - run: bundle install --path vendor/bundle --clean
+      - save_cache:
+          paths:
+            - vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
       - run: yarn install --check-files
 
       - run: mv -f ./config/database.yml.ci ./config/database.yml
