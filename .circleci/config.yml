@@ -14,22 +14,11 @@ references:
       MYSQL_PASSWORD: ''
       MYSQL_PORT: 3306
 
-  restore_code_cache: &restore_code_cache
-    restore_cache:
-      keys:
-        - v-repo-{{ .Environment.CIRCLE_SHA1 }}
-
   restore_gem_cache: &restore_gem_cache
     restore_cache:
       keys:
         - v1-dependencies-{{ checksum "Gemfile.lock" }}
         - v1-dependencies-
-
-  restore_node_module_cache: &restore_node_module_cache
-    restore_cache:
-      keys:
-        - v1-dependencies-yarn-{{ checksum "yarn.lock" }}
-        - v1-dependencies-yarn
 
 jobs:
   checkout_code:
@@ -52,15 +41,12 @@ jobs:
           MYSQL_ALLOW_EMPTY_PASSWORD: true
     steps:
       - checkout
-      - *restore_code_cache
       - *restore_gem_cache
-      - *restore_node_module_cache
-
       - run: gem install bundler -v 2.1.4
-      - run: bundle install --path vendor/bundle --clean
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - save_cache:
           paths:
-            - vendor/bundle
+            - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
       - run: yarn install --check-files
 
@@ -84,12 +70,9 @@ jobs:
       - *ruby_docker_image
     steps:
       - checkout
-      - *restore_code_cache
       - *restore_gem_cache
-      - *restore_node_module_cache
-
       - run: gem install bundler -v 2.1.4
-      - run: bundle install --path vendor/bundle --clean
+      # - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - run: yarn install --check-files
       - add_ssh_keys:
           fingerprints:
