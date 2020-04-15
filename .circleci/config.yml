@@ -72,7 +72,7 @@ jobs:
       - checkout
       - *restore_gem_cache
       - run: gem install bundler -v 2.1.4
-      # - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - run: yarn install --check-files
       - add_ssh_keys:
           fingerprints:
