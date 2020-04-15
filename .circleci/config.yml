@@ -57,7 +57,7 @@ jobs:
       - *restore_node_module_cache
 
       - run: gem install bundler -v 2.1.4
-      - run: bundle install --path vendor/bundle --jobs 4 --retry 3
+      - run: bundle install --path vendor/bundle --clean
       - run: yarn install --check-files
 
       - run: mv -f ./config/database.yml.ci ./config/database.yml
@@ -85,11 +85,11 @@ jobs:
       - *restore_node_module_cache
 
       - run: gem install bundler -v 2.1.4
-      - run: bundle install --path vendor/bundle --jobs 4 --retry 3
+      - run: bundle install --path vendor/bundle --clean
       - run: yarn install --check-files
       - add_ssh_keys:
           fingerprints:
-            - '54:a5:fa:1d:c5:01:11:0d:65:f8:3b:85:7c:c3:06:26'
+            - '23:1f:a5:a5:cd:54:71:f6:fc:7b:5c:a1:b5:07:5f:80'
       - deploy:
           name: Capistrano deploy
           command: bundle exec cap production deploy
