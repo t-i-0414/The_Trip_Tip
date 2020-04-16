@@ -11,25 +11,39 @@
 #   { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-100.times do |n|
-  name  = Faker::Name.name
-  email = "user-#{n + 1}@example.com"
-  password = 'password'
-  user = User.new(name: name,
-                  email: email,
-                  password: password,
-                  password_confirmation: password)
+require "csv"
+
+CSV.foreach('db/csv/users.csv', headers: true) do |row|
+  user = User.new(
+    name: row['name'],
+    email: row['email'],
+    password: row['password'],
+    password_confirmation: row['password_confirmation']
+  )
   user.skip_confirmation!
   user.save
-  50.times do
-    content = Faker::Lorem.sentence(word_count: 15)
-    user.microposts.create!(content: content)
-  end
+end
+
+CSV.foreach('db/csv/contents.csv', headers: true) do |row|
+  Micropost.create!(
+    user_id: row['user_id'],
+    content: row['content'],
+  )
 end
 
 users = User.all
-user  = users.first
-following = users[2..50]
-followers = users[3..40]
-following.each { |followed| user.follow(followed) }
-followers.each { |follower| follower.follow(user) }
+user_1  = users.first
+user_20 = users.last
+
+user_1.follow(users[1])
+user_1.follow(users[19])
+user_20.follow(users[0])
+user_20.follow(users[18])
+
+18.times do |n|
+  user = users[n + 1]
+  following1 = users[n]
+  user.follow(following1)
+  following2 = users[n + 2]
+  user.follow(following2)
+end
