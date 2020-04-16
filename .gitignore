@@ -44,10 +44,9 @@ yarn-debug.log*
 # アップロードされたテスト画像を無視する
 /public/uploads/*
 
-# dotenv-rails
+
+.browserslistrc
 /.env
-
-
 .eslintrc.js
 .prettierrc.js
 .stylelintrc.js

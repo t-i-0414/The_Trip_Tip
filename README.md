@@ -1,24 +1,119 @@
-# README
+# The Trip Tip
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+自身の転職活動用に作成した、ポートフォリオアプリです。<br>
+Ruby on Rails(ver.6.0.2)を用いて、旅行好きな方々のための SNS を作成いたしました。<br>
+ユーザビリティを考慮した UI/UX に取組み、ユーザーにとって使いやすいサービスとなるよう工夫いたしました。<br>
 
-Things you may want to cover:
+![top](https://user-images.githubusercontent.com/54778335/79400349-f0e1ce00-7fc0-11ea-9135-945c6dc9a590.png)
 
-* Ruby version
+<br>
 
-* System dependencies
+## 制作の背景
 
-* Configuration
+旅の思い出を簡単に残し、それを他の旅行好きな方と共有して情報交換ができるようなサービスがあったらいいなと思い、作成することといたしました。
 
-* Database creation
+<br>
 
-* Database initialization
+## 本番環境 URL
 
-* How to run the test suite
+https://the-trip-tip.com/<br>
 
-* Services (job queues, cache servers, search engines, etc.)
+閲覧の際は、通常のユーザー登録・ログイン機能によるご確認のほか、ログインページの「簡単ログイン」ボタンから、テストユーザーアカウントによるご確認もご利用いただけます。<br>
+ただし、テストユーザーはユーザー情報の更新機能及びアカウント削除機能に、制限がかけられております。<br>
+本ポートフォリオは、タブレット・スマートフォンからもご覧いただけます。
 
-* Deployment instructions
+<br>
 
-* ...
+## 使用技術
+
+- **バックエンド**
+
+  1. Ruby 2.6.5
+  2. Rails 6.0.2
+  3. MySQL 5.7.29
+
+- **フロントエンド**
+
+  1. html
+  2. Sass
+  3. JavaScript
+  4. jQuery
+  5. Vue.js 2.6.11
+
+- **インフラストラクチャー**
+
+  - ローカル開発環境
+
+    1. Docker 19.03.8
+    2. docker-compose 1.25.4
+
+  - CircleCI/CD
+
+    1. github 上の master 以外のブランチ への push→CI 実行（Rspec,rubocop)
+    2. github 上の master ブランチ へのプルリクエストのマージ →CD 実行（Capistrano)
+
+  - AWS
+    1. VPC
+    2. EC2
+    3. RDS
+    4. ELB
+    5. Route53
+    6. ACM
+    7. S3
+    8. Nginx, unicorn
+
+## アプリケーション構成図
+
+![cloud_architecture](https://user-images.githubusercontent.com/54778335/79449702-ae4ede80-801e-11ea-8ce2-6fdfb8ee39f7.png)
+
+## 機能一覧
+
+- ユーザーアカウント作成
+
+  - 認証メールの有効化によるユーザー登録方式
+  - 認証メールについて再送機能あり
+  - SNS(Twitter, Facebook) 認証によるユーザー登録可能
+  - ユーザーのプロフィール画像については Vue.js を用いた画像トリミング機能あり
+  - SNS 連携によるユーザー登録の場合は、ユーザープロフィール画像に、該当する SNS のものを初期登録
+
+- ユーザーログイン
+
+  - 登録済メールアドレスとパスワードによるログイン方式
+  - SNS 認証アカウントについては、該当する SNS ログインボタンを 1 クリックでログイン可能
+  - ポートフォリオ閲覧用に簡単ログイン機能あり
+  - Remember me 機能あり
+  - パスワードの入力を一定回数間違えることによる、アカウントロック機能あり
+  - ロックされたアカウントやパスワードを忘れたユーザーに向けて、パスワードのリセット機能あり
+
+- ユーザー情報
+
+  - メールアドレス等のユーザー情報を更新可能
+  - アカウント削除機能あり
+  - ログイン後は、全ユーザー,フォロー,フォロワーの一覧をそれぞれ表示可能。
+  - ユーザー詳細表示機能あり。詳細表示時は、そのユーザーの投稿一覧や、フォロー・フォロワー数などを表示。
+
+- つぶやき
+
+  - Vue.js を用いた画像トリミング機能を使った、画像の添付が可能
+  - いいね機能あり
+  - ログイン前のユーザーは、作成順にソートした全ユーザーの投稿一覧を閲覧可能<br>
+    ※ただし、詳細をクリックするとログインページへリダイレクト
+  - ログイン後は、自分及びフォローユーザーの投稿一覧を、タイムラインで確認
+
+- その他
+
+  - フォロー機能あり
+  - ページネーション機能あり
+  - ローディングアニメーション機能あり
+  - オリジナルエラーページ(404,500)あり
+
+![sample1](https://user-images.githubusercontent.com/54778335/79452615-5cf51e00-8023-11ea-821e-07ad7b115f17.jpg)
+
+## 今後について
+
+- 以下の機能を実装予定
+  - 検索機能（キーワードに合致するユーザー・投稿を検索し結果を表示）
+  - 各一覧の並べ替え機能
+  - つぶやきへのコメント機能、コメントへの返信機能
+  - つぶやきに添付できる画像枚数を３枚程度に増やす
+  - 旅行記機能（ユーザー旅行先で気に入ったスポットを Google Maps API を使って表示させる）
