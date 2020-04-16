@@ -28,39 +28,39 @@ https://the-trip-tip.com/<br>
 
 - **バックエンド**
 
-  1. Ruby 2.6.5
-  2. Rails 6.0.2
-  3. MySQL 5.7.29
+  - Ruby 2.6.5
+  - Rails 6.0.2
+  - MySQL 5.7.29
 
 - **フロントエンド**
 
-  1. html
-  2. Sass
-  3. JavaScript
-  4. jQuery
-  5. Vue.js 2.6.11
+  - html
+  - Sass
+  - JavaScript
+  - jQuery
+  - Vue.js 2.6.11
 
 - **インフラストラクチャー**
 
   - ローカル開発環境
 
-    1. Docker 19.03.8
-    2. docker-compose 1.25.4
+    - Docker 19.03.8
+    - docker-compose 1.25.4
 
   - CircleCI/CD
 
-    1. github 上の master 以外のブランチ への push→CI 実行（Rspec,rubocop)
-    2. github 上の master ブランチ へのプルリクエストのマージ →CD 実行（Capistrano)
+    - github 上の master 以外のブランチ への push→CI 実行（Rspec,rubocop)
+    - github 上の master ブランチ へのプルリクエストのマージ →CD 実行（Capistrano)
 
   - AWS
-    1. VPC
-    2. EC2
-    3. RDS
-    4. ELB
-    5. Route53
-    6. ACM
-    7. S3
-    8. Nginx, unicorn
+    - VPC
+    - EC2
+    - RDS
+    - ELB
+    - Route53
+    - ACM
+    - S3
+    - Nginx, unicorn
 
 ## アプリケーション構成図
 
