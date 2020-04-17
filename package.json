@@ -9,6 +9,7 @@
     "@types/vue": "^2.0.0",
     "axios": "^0.19.2",
     "imagemagick": "^0.1.3",
+    "lodash.istypedarray": "^4.0.1",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.11",
     "vue-cropperjs": "^4.0.1",
