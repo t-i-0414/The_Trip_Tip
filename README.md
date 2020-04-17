@@ -107,7 +107,7 @@ https://the-trip-tip.com/<br>
   - ローディングアニメーション機能あり
   - オリジナルエラーページ(404,500)あり
 
-![sample1](https://user-images.githubusercontent.com/54778335/79452615-5cf51e00-8023-11ea-821e-07ad7b115f17.jpg)
+![sample1](https://user-images.githubusercontent.com/54778335/79520729-636eae80-8092-11ea-9749-f6e41d1f2b66.png)
 
 ## 今後について
 
