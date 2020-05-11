@@ -86,6 +86,7 @@ export default {
         const reader = new FileReader();
         reader.onload = event => {
           this.imgSrc = event.target.result;
+          this.cropImg = event.target.result;
         };
         reader.readAsDataURL(file);
       } else {
