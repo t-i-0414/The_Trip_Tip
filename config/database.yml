@@ -17,8 +17,9 @@ test:
 
 production:
   <<: *default
+  pool: 5
   database: The_Trip_Tip_production
   username: root
-  password:
-  host: 127.0.0.1
+  password: XkZJbdYj
   socket: /var/lib/mysql/mysql.sock
+  host: thetriptip-mysql.cagpvf21wtdj.ap-northeast-1.rds.amazonaws.com
