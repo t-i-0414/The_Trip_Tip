@@ -169,7 +169,7 @@ Layout/SpaceInsideParens:
 #   EnforcedStyle: double_quotes
 
 # Detect hard tabs, no hard tabs.
-Layout/IndentationStyle:
+Layout/Tab:
   Enabled: true
 
 # Empty lines should not have any spaces.
